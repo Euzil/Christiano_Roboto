@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+../../build/ros_visuals/ros_visuals.egg-info/PKG-INFO
+../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt
+../../build/ros_visuals/ros_visuals.egg-info/dependency_links.txt
+../../build/ros_visuals/ros_visuals.egg-info/requires.txt
+../../build/ros_visuals/ros_visuals.egg-info/top_level.txt
+../../build/ros_visuals/ros_visuals.egg-info/zip-safe
+config/talos.rviz
+launch/talos_rviz.launch.py
+resource/ros_visuals
+ros_visuals/__init__.py

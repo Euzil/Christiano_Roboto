@@ -1,0 +1,39 @@
+Built target ament_cmake_python_copy_simulator
+running egg_info
+writing simulator.egg-info/PKG-INFO
+writing dependency_links to simulator.egg-info/dependency_links.txt
+writing top-level names to simulator.egg-info/top_level.txt
+reading manifest file 'simulator.egg-info/SOURCES.txt'
+writing manifest file 'simulator.egg-info/SOURCES.txt'
+Built target ament_cmake_python_build_simulator_egg
+-- Install configuration: ""
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/pythonpath.sh
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/pythonpath.dsv
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/PKG-INFO
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/SOURCES.txt
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/dependency_links.txt
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/top_level.txt
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/objects.py
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/body.py
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/__init__.py
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/robot.py
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/utilities.py
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/pybullet_wrapper.py
+Listing '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator'...
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/ament_prefix_path.sh
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/path.sh
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/path.dsv
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.bash
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.sh
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.zsh
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.dsv
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/package.dsv
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/packages/simulator
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+-- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/package.xml

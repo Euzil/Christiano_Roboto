@@ -1,0 +1,52 @@
+-- Found ament_cmake: 2.7.2 (/opt/ros/rolling/share/ament_cmake/cmake)
+-- Found ament_lint_auto: 0.19.1 (/opt/ros/rolling/share/ament_lint_auto/cmake)
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/devel/ros_ws_t7/build/simulator
+Built target ament_cmake_python_copy_simulator
+running egg_info
+creating simulator.egg-info
+writing simulator.egg-info/PKG-INFO
+writing dependency_links to simulator.egg-info/dependency_links.txt
+writing top-level names to simulator.egg-info/top_level.txt
+writing manifest file 'simulator.egg-info/SOURCES.txt'
+reading manifest file 'simulator.egg-info/SOURCES.txt'
+writing manifest file 'simulator.egg-info/SOURCES.txt'
+Built target ament_cmake_python_build_simulator_egg
+-- Install configuration: ""
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/pythonpath.sh
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/pythonpath.dsv
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/PKG-INFO
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/SOURCES.txt
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/dependency_links.txt
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/top_level.txt
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/objects.py
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/body.py
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/__init__.py
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/robot.py
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/utilities.py
+-- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/pybullet_wrapper.py
+Listing '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator'...
+Compiling '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/__init__.py'...
+Compiling '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/body.py'...
+Compiling '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/objects.py'...
+Compiling '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/pybullet_wrapper.py'...
+Compiling '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/robot.py'...
+Compiling '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/utilities.py'...
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/ament_prefix_path.sh
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/path.sh
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/path.dsv
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.bash
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.sh
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.zsh
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.dsv
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/package.dsv
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/packages/simulator
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+-- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/package.xml

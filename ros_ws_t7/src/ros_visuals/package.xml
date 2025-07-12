@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ros_visuals</name>
+  <version>0.0.0</version>
+  <description>Visualization tools for the Talos robot in ROS 2</description>
+
+  <maintainer email="your_email@example.com">your_name</maintainer>
+  <license>MIT</license>
+
+  <!-- Build system -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Dependencies needed at runtime -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <!-- Needed for share directory lookup -->
+  <exec_depend>ament_index_python</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

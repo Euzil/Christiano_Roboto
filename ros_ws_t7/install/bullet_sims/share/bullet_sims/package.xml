@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>bullet_sims</name>
+  <version>0.0.1</version>
+  <description>Bullet simulation using pybullet and robot models</description>
+  <maintainer email="rogelio.guadarrama@tum.de">rogelio</maintainer>
+  <license>Apache License 2.0</license>
+
+  <!-- BUILD TOOL -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- EXEC DEPENDENCIES -->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>simulator</exec_depend>
+  <exec_depend>reemc_description</exec_depend>
+  <exec_depend>talos_description</exec_depend>
+
+  <!-- TEST -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

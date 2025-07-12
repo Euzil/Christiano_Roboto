@@ -1,0 +1,2 @@
+ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+Sorry: IndentationError: expected an indented block after function definition on line 129 (talos.py, line 142)

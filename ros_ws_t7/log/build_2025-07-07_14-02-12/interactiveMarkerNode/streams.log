@@ -1,0 +1,49 @@
+[0.584s] Invoking command in '/home/devel/ros_ws_t7/src/interactiveMarkerNode': PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/devel/ros_ws_t7/build/interactiveMarkerNode/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/interactiveMarkerNode build --build-base /home/devel/ros_ws_t7/build/interactiveMarkerNode/build install --record /home/devel/ros_ws_t7/build/interactiveMarkerNode/install.log --install-scripts $base/lib/interactiveMarkerNode --single-version-externally-managed install_data
+[0.667s] /usr/lib/python3/dist-packages/setuptools/dist.py:744: SetuptoolsDeprecationWarning: Invalid dash-separated options
+[0.667s] !!
+[0.667s] 
+[0.667s]         ********************************************************************************
+[0.667s]         Usage of dash-separated 'script-dir' will not be supported in future
+[0.667s]         versions. Please use the underscore name 'script_dir' instead.
+[0.667s] 
+[0.667s]         This deprecation is overdue, please update your project and remove deprecated
+[0.667s]         calls to avoid build errors in the future.
+[0.667s] 
+[0.667s]         See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+[0.668s]         ********************************************************************************
+[0.668s] 
+[0.668s] !!
+[0.668s]   opt = self.warn_dash_deprecation(opt, section)
+[0.742s] running egg_info
+[0.742s] creating ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info
+[0.751s] writing ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/PKG-INFO
+[0.752s] writing dependency_links to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/dependency_links.txt
+[0.752s] writing entry points to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/entry_points.txt
+[0.752s] writing requirements to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/requires.txt
+[0.752s] writing top-level names to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/top_level.txt
+[0.752s] writing manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+[0.792s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.879s] reading manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+[0.880s] writing manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+[0.880s] running build
+[0.880s] running build_py
+[0.880s] creating /home/devel/ros_ws_t7/build/interactiveMarkerNode/build
+[0.880s] creating /home/devel/ros_ws_t7/build/interactiveMarkerNode/build/lib
+[0.880s] creating /home/devel/ros_ws_t7/build/interactiveMarkerNode/build/lib/interactiveMarkerNode
+[0.881s] copying interactiveMarkerNode/interactiveMarkerNode.py -> /home/devel/ros_ws_t7/build/interactiveMarkerNode/build/lib/interactiveMarkerNode
+[0.881s] running install
+[0.884s] running install_lib
+[0.894s] creating /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode
+[0.894s] copying /home/devel/ros_ws_t7/build/interactiveMarkerNode/build/lib/interactiveMarkerNode/interactiveMarkerNode.py -> /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode
+[0.895s] byte-compiling /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode/interactiveMarkerNode.py to interactiveMarkerNode.cpython-312.pyc
+[0.896s] running install_data
+[0.896s] creating /home/devel/ros_ws_t7/install/interactiveMarkerNode/share/ament_index
+[0.896s] creating /home/devel/ros_ws_t7/install/interactiveMarkerNode/share/ament_index/resource_index
+[0.896s] creating /home/devel/ros_ws_t7/install/interactiveMarkerNode/share/ament_index/resource_index/packages
+[0.896s] copying resource/interactiveMarkerNode -> /home/devel/ros_ws_t7/install/interactiveMarkerNode/share/ament_index/resource_index/packages
+[0.896s] copying package.xml -> /home/devel/ros_ws_t7/install/interactiveMarkerNode/share/interactiveMarkerNode
+[0.896s] running install_egg_info
+[0.906s] Copying ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info to /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode-0.1.0-py3.12.egg-info
+[0.906s] running install_scripts
+[0.974s] Installing interactiveMarkerNode script to /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/interactiveMarkerNode
+[0.974s] writing list of installed files to '/home/devel/ros_ws_t7/build/interactiveMarkerNode/install.log'

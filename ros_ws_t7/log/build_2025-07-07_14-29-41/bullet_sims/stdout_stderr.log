@@ -1,0 +1,64 @@
+running egg_info
+creating ../../build/bullet_sims/bullet_sims.egg-info
+writing ../../build/bullet_sims/bullet_sims.egg-info/PKG-INFO
+writing dependency_links to ../../build/bullet_sims/bullet_sims.egg-info/dependency_links.txt
+writing entry points to ../../build/bullet_sims/bullet_sims.egg-info/entry_points.txt
+writing requirements to ../../build/bullet_sims/bullet_sims.egg-info/requires.txt
+writing top-level names to ../../build/bullet_sims/bullet_sims.egg-info/top_level.txt
+writing manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+reading manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+writing manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/devel/ros_ws_t7/build/bullet_sims/build
+creating /home/devel/ros_ws_t7/build/bullet_sims/build/lib
+creating /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/t4_standing.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/t4_one_leg_stand.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/foot_trajectory.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/t4_righthands.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/__init__.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/footstep_planner.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/t51.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/config.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/tsid_wrapper.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+copying bullet_sims/t4_squating.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+running install
+running install_lib
+creating /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_standing.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_one_leg_stand.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/foot_trajectory.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_righthands.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/__init__.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/footstep_planner.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t51.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/config.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/tsid_wrapper.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_squating.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_standing.py to t4_standing.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_one_leg_stand.py to t4_one_leg_stand.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/foot_trajectory.py to foot_trajectory.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_righthands.py to t4_righthands.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/footstep_planner.py to footstep_planner.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t51.py to t51.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/config.py to config.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/tsid_wrapper.py to tsid_wrapper.cpython-312.pyc
+byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_squating.py to t4_squating.cpython-312.pyc
+running install_data
+copying package.xml -> /home/devel/ros_ws_t7/install/bullet_sims/share/bullet_sims
+creating /home/devel/ros_ws_t7/install/bullet_sims/share/bullet_sims/launch
+creating /home/devel/ros_ws_t7/install/bullet_sims/share/bullet_sims/rviz
+running install_egg_info
+Copying ../../build/bullet_sims/bullet_sims.egg-info to /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims-0.0.1-py3.12.egg-info
+running install_scripts
+Installing foot_trajectory script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+Installing footstep_planner script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+Installing t41 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+Installing t42 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+Installing t43 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+Installing t44 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+Installing t51 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+writing list of installed files to '/home/devel/ros_ws_t7/build/bullet_sims/install.log'

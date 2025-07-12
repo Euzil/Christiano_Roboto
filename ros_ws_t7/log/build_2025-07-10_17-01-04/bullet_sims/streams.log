@@ -1,0 +1,30 @@
+[0.435s] Invoking command in '/home/devel/ros_ws_t7/src/bullet_sims': PYTHONPATH=/home/devel/ros_ws_t7/build/bullet_sims/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages:/opt/openrobots/lib/python3.12/site-packages:/opt/openrobots/lib/python3.12/site-packages:/opt/ros/rolling/lib/python3.12/site-packages VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bullet_sims build --build-base /home/devel/ros_ws_t7/build/bullet_sims/build install --record /home/devel/ros_ws_t7/build/bullet_sims/install.log --single-version-externally-managed install_data
+[0.578s] running egg_info
+[0.587s] writing ../../build/bullet_sims/bullet_sims.egg-info/PKG-INFO
+[0.587s] writing dependency_links to ../../build/bullet_sims/bullet_sims.egg-info/dependency_links.txt
+[0.587s] writing entry points to ../../build/bullet_sims/bullet_sims.egg-info/entry_points.txt
+[0.587s] writing requirements to ../../build/bullet_sims/bullet_sims.egg-info/requires.txt
+[0.588s] writing top-level names to ../../build/bullet_sims/bullet_sims.egg-info/top_level.txt
+[0.627s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.711s] reading manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+[0.711s] writing manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+[0.711s] running build
+[0.711s] running build_py
+[0.712s] copying bullet_sims/walking.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] running install
+[0.715s] running install_lib
+[0.725s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/walking.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.725s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/walking.py to walking.cpython-312.pyc
+[0.727s] running install_data
+[0.728s] running install_egg_info
+[0.736s] removing '/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims-0.0.1-py3.12.egg-info' (and everything under it)
+[0.736s] Copying ../../build/bullet_sims/bullet_sims.egg-info to /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims-0.0.1-py3.12.egg-info
+[0.737s] running install_scripts
+[0.797s] Installing foot_trajectory script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.797s] Installing footstep_planner script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.797s] Installing lip_mpc script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.797s] Installing talos script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.797s] Installing test script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.797s] Installing walking script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.797s] writing list of installed files to '/home/devel/ros_ws_t7/build/bullet_sims/install.log'
+[0.812s] Invoked command in '/home/devel/ros_ws_t7/src/bullet_sims' returned '0': PYTHONPATH=/home/devel/ros_ws_t7/build/bullet_sims/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages:/opt/openrobots/lib/python3.12/site-packages:/opt/openrobots/lib/python3.12/site-packages:/opt/ros/rolling/lib/python3.12/site-packages VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bullet_sims build --build-base /home/devel/ros_ws_t7/build/bullet_sims/build install --record /home/devel/ros_ws_t7/build/bullet_sims/install.log --single-version-externally-managed install_data

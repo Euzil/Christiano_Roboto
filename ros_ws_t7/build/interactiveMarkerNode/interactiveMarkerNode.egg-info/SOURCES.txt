@@ -1,0 +1,12 @@
+package.xml
+setup.cfg
+setup.py
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/PKG-INFO
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/dependency_links.txt
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/entry_points.txt
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/requires.txt
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/top_level.txt
+../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/zip-safe
+interactiveMarkerNode/interactiveMarkerNode.py
+resource/interactiveMarkerNode

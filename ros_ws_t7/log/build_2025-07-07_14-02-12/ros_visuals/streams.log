@@ -1,0 +1,37 @@
+[0.578s] Invoking command in '/home/devel/ros_ws_t7/src/ros_visuals': PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/devel/ros_ws_t7/build/ros_visuals/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ros_visuals build --build-base /home/devel/ros_ws_t7/build/ros_visuals/build install --record /home/devel/ros_ws_t7/build/ros_visuals/install.log --single-version-externally-managed install_data
+[0.738s] running egg_info
+[0.739s] creating ../../build/ros_visuals/ros_visuals.egg-info
+[0.748s] writing ../../build/ros_visuals/ros_visuals.egg-info/PKG-INFO
+[0.748s] writing dependency_links to ../../build/ros_visuals/ros_visuals.egg-info/dependency_links.txt
+[0.749s] writing requirements to ../../build/ros_visuals/ros_visuals.egg-info/requires.txt
+[0.749s] writing top-level names to ../../build/ros_visuals/ros_visuals.egg-info/top_level.txt
+[0.749s] writing manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+[0.789s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.877s] reading manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+[0.877s] writing manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+[0.877s] running build
+[0.877s] running build_py
+[0.878s] creating /home/devel/ros_ws_t7/build/ros_visuals/build
+[0.878s] creating /home/devel/ros_ws_t7/build/ros_visuals/build/lib
+[0.878s] creating /home/devel/ros_ws_t7/build/ros_visuals/build/lib/ros_visuals
+[0.878s] copying ros_visuals/__init__.py -> /home/devel/ros_ws_t7/build/ros_visuals/build/lib/ros_visuals
+[0.878s] running install
+[0.882s] running install_lib
+[0.892s] creating /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals
+[0.892s] copying /home/devel/ros_ws_t7/build/ros_visuals/build/lib/ros_visuals/__init__.py -> /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals
+[0.892s] byte-compiling /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals/__init__.py to __init__.cpython-312.pyc
+[0.892s] running install_data
+[0.892s] creating /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index
+[0.892s] creating /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index/resource_index
+[0.892s] creating /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index/resource_index/packages
+[0.892s] copying resource/ros_visuals -> /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index/resource_index/packages
+[0.892s] copying package.xml -> /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals
+[0.892s] creating /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/launch
+[0.893s] copying launch/talos_rviz.launch.py -> /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/launch
+[0.893s] creating /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/urdf
+[0.893s] creating /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/config
+[0.893s] copying config/talos.rviz -> /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/config
+[0.893s] running install_egg_info
+[0.903s] Copying ../../build/ros_visuals/ros_visuals.egg-info to /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals-0.0.0-py3.12.egg-info
+[0.903s] running install_scripts
+[0.971s] writing list of installed files to '/home/devel/ros_ws_t7/build/ros_visuals/install.log'

@@ -1,0 +1,36 @@
+running egg_info
+creating ../../build/ros_visuals/ros_visuals.egg-info
+writing ../../build/ros_visuals/ros_visuals.egg-info/PKG-INFO
+writing dependency_links to ../../build/ros_visuals/ros_visuals.egg-info/dependency_links.txt
+writing requirements to ../../build/ros_visuals/ros_visuals.egg-info/requires.txt
+writing top-level names to ../../build/ros_visuals/ros_visuals.egg-info/top_level.txt
+writing manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+reading manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+writing manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/devel/ros_ws_t7/build/ros_visuals/build
+creating /home/devel/ros_ws_t7/build/ros_visuals/build/lib
+creating /home/devel/ros_ws_t7/build/ros_visuals/build/lib/ros_visuals
+copying ros_visuals/__init__.py -> /home/devel/ros_ws_t7/build/ros_visuals/build/lib/ros_visuals
+running install
+running install_lib
+creating /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals
+copying /home/devel/ros_ws_t7/build/ros_visuals/build/lib/ros_visuals/__init__.py -> /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals
+byte-compiling /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index
+creating /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index/resource_index
+creating /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index/resource_index/packages
+copying resource/ros_visuals -> /home/devel/ros_ws_t7/install/ros_visuals/share/ament_index/resource_index/packages
+copying package.xml -> /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals
+creating /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/launch
+copying launch/talos_rviz.launch.py -> /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/launch
+creating /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/urdf
+creating /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/config
+copying config/talos.rviz -> /home/devel/ros_ws_t7/install/ros_visuals/share/ros_visuals/config
+running install_egg_info
+Copying ../../build/ros_visuals/ros_visuals.egg-info to /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals-0.0.0-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/home/devel/ros_ws_t7/build/ros_visuals/install.log'

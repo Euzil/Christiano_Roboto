@@ -1,0 +1,43 @@
+[0.019s] Invoking command in '/home/devel/ros_ws_t7/build/simulator': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/devel/ros_ws_t7/install/bullet_sims:/home/devel/ros_ws_t7/install/ros_visuals:/home/devel/ros_ws_t7/install/interactiveMarkerNode:/home/devel/ros_ws_t5/install/bullet_sims:/home/devel/ros_ws_t5/install/ros_visuals:/home/devel/ros_ws_t5/install/interactiveMarkerNode:/home/devel/ros_ws_t4/install/bullet_sims:/home/devel/ros_ws_t4/install/talos_description:/home/devel/ros_ws_t4/install/simulator:/home/devel/ros_ws_t4/install/ros_visuals:/home/devel/ros_ws_t4/install/reemc_description:/home/devel/ros_ws_t4/install/interactiveMarkerNode:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --build /home/devel/ros_ws_t7/build/simulator -- -j16 -l16
+[0.167s] Built target ament_cmake_python_copy_simulator
+[0.171s] running egg_info
+[0.177s] writing simulator.egg-info/PKG-INFO
+[0.178s] writing dependency_links to simulator.egg-info/dependency_links.txt
+[0.178s] writing top-level names to simulator.egg-info/top_level.txt
+[0.196s] reading manifest file 'simulator.egg-info/SOURCES.txt'
+[0.196s] writing manifest file 'simulator.egg-info/SOURCES.txt'
+[0.214s] Built target ament_cmake_python_build_simulator_egg
+[0.324s] Invoked command in '/home/devel/ros_ws_t7/build/simulator' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/devel/ros_ws_t7/install/bullet_sims:/home/devel/ros_ws_t7/install/ros_visuals:/home/devel/ros_ws_t7/install/interactiveMarkerNode:/home/devel/ros_ws_t5/install/bullet_sims:/home/devel/ros_ws_t5/install/ros_visuals:/home/devel/ros_ws_t5/install/interactiveMarkerNode:/home/devel/ros_ws_t4/install/bullet_sims:/home/devel/ros_ws_t4/install/talos_description:/home/devel/ros_ws_t4/install/simulator:/home/devel/ros_ws_t4/install/ros_visuals:/home/devel/ros_ws_t4/install/reemc_description:/home/devel/ros_ws_t4/install/interactiveMarkerNode:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --build /home/devel/ros_ws_t7/build/simulator -- -j16 -l16
+[0.324s] Invoking command in '/home/devel/ros_ws_t7/build/simulator': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/devel/ros_ws_t7/install/bullet_sims:/home/devel/ros_ws_t7/install/ros_visuals:/home/devel/ros_ws_t7/install/interactiveMarkerNode:/home/devel/ros_ws_t5/install/bullet_sims:/home/devel/ros_ws_t5/install/ros_visuals:/home/devel/ros_ws_t5/install/interactiveMarkerNode:/home/devel/ros_ws_t4/install/bullet_sims:/home/devel/ros_ws_t4/install/talos_description:/home/devel/ros_ws_t4/install/simulator:/home/devel/ros_ws_t4/install/ros_visuals:/home/devel/ros_ws_t4/install/reemc_description:/home/devel/ros_ws_t4/install/interactiveMarkerNode:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --install /home/devel/ros_ws_t7/build/simulator
+[0.330s] -- Install configuration: ""
+[0.330s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/pythonpath.sh
+[0.331s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/pythonpath.dsv
+[0.331s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info
+[0.331s] -- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/PKG-INFO
+[0.331s] -- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/SOURCES.txt
+[0.331s] -- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/dependency_links.txt
+[0.331s] -- Installing: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info/top_level.txt
+[0.331s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator
+[0.331s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/objects.py
+[0.332s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/body.py
+[0.332s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/__init__.py
+[0.332s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/robot.py
+[0.332s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/utilities.py
+[0.332s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator/pybullet_wrapper.py
+[0.355s] Listing '/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages/simulator'...
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/package_run_dependencies/simulator
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/parent_prefix_path/simulator
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/ament_prefix_path.sh
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/ament_prefix_path.dsv
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/path.sh
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/environment/path.dsv
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.bash
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.sh
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.zsh
+[0.358s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/local_setup.dsv
+[0.359s] -- Installing: /home/devel/ros_ws_t7/install/simulator/share/simulator/package.dsv
+[0.359s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/ament_index/resource_index/packages/simulator
+[0.359s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/cmake/simulatorConfig.cmake
+[0.359s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/cmake/simulatorConfig-version.cmake
+[0.359s] -- Up-to-date: /home/devel/ros_ws_t7/install/simulator/share/simulator/package.xml
+[0.360s] Invoked command in '/home/devel/ros_ws_t7/build/simulator' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/devel/ros_ws_t7/install/bullet_sims:/home/devel/ros_ws_t7/install/ros_visuals:/home/devel/ros_ws_t7/install/interactiveMarkerNode:/home/devel/ros_ws_t5/install/bullet_sims:/home/devel/ros_ws_t5/install/ros_visuals:/home/devel/ros_ws_t5/install/interactiveMarkerNode:/home/devel/ros_ws_t4/install/bullet_sims:/home/devel/ros_ws_t4/install/talos_description:/home/devel/ros_ws_t4/install/simulator:/home/devel/ros_ws_t4/install/ros_visuals:/home/devel/ros_ws_t4/install/reemc_description:/home/devel/ros_ws_t4/install/interactiveMarkerNode:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --install /home/devel/ros_ws_t7/build/simulator

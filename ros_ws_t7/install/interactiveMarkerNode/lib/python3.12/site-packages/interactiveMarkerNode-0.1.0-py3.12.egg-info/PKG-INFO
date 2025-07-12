@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: interactiveMarkerNode
+Version: 0.1.0
+Summary: Interactive Marker for controlling robot end-effector via RViz.
+Maintainer: your_name
+Maintainer-email: your_email@example.com
+License: MIT

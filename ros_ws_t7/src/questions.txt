@@ -1,0 +1,6 @@
+Question a8
+
+No.
+The t2_temp.py script is not a ROS node because it does not initialize a ROS client (it does not call rclpy.init() or rospy.init_node()). 
+Additionally, it does not subscribe to or publish any ROS topics, nor does it use any ROS services. 
+Instead, it is an independent Python script designed to run a Pybullet simulation and perform computations with Pinocchio, without integrating with the ROS communication infrastructure.

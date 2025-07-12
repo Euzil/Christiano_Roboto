@@ -1,0 +1,37 @@
+[0.614s] Invoking command in '/home/devel/ros_ws_t7/src/interactiveMarkerNode': PYTHONPATH=/home/devel/ros_ws_t7/build/interactiveMarkerNode/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/interactiveMarkerNode build --build-base /home/devel/ros_ws_t7/build/interactiveMarkerNode/build install --record /home/devel/ros_ws_t7/build/interactiveMarkerNode/install.log --install-scripts $base/lib/interactiveMarkerNode --single-version-externally-managed install_data
+[0.689s] /usr/lib/python3/dist-packages/setuptools/dist.py:744: SetuptoolsDeprecationWarning: Invalid dash-separated options
+[0.689s] !!
+[0.689s] 
+[0.689s]         ********************************************************************************
+[0.689s]         Usage of dash-separated 'script-dir' will not be supported in future
+[0.689s]         versions. Please use the underscore name 'script_dir' instead.
+[0.689s] 
+[0.689s]         This deprecation is overdue, please update your project and remove deprecated
+[0.689s]         calls to avoid build errors in the future.
+[0.689s] 
+[0.689s]         See https://setuptools.pypa.io/en/latest/userguide/declarative_config.html for details.
+[0.689s]         ********************************************************************************
+[0.689s] 
+[0.690s] !!
+[0.690s]   opt = self.warn_dash_deprecation(opt, section)
+[0.761s] running egg_info
+[0.769s] writing ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/PKG-INFO
+[0.770s] writing dependency_links to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/dependency_links.txt
+[0.770s] writing entry points to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/entry_points.txt
+[0.770s] writing requirements to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/requires.txt
+[0.770s] writing top-level names to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/top_level.txt
+[0.808s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.893s] reading manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+[0.893s] writing manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+[0.894s] running build
+[0.894s] running build_py
+[0.894s] running install
+[0.898s] running install_lib
+[0.908s] running install_data
+[0.909s] running install_egg_info
+[0.918s] removing '/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode-0.1.0-py3.12.egg-info' (and everything under it)
+[0.918s] Copying ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info to /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode-0.1.0-py3.12.egg-info
+[0.919s] running install_scripts
+[0.983s] Installing interactiveMarkerNode script to /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/interactiveMarkerNode
+[0.983s] writing list of installed files to '/home/devel/ros_ws_t7/build/interactiveMarkerNode/install.log'
+[0.999s] Invoked command in '/home/devel/ros_ws_t7/src/interactiveMarkerNode' returned '0': PYTHONPATH=/home/devel/ros_ws_t7/build/interactiveMarkerNode/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/interactiveMarkerNode build --build-base /home/devel/ros_ws_t7/build/interactiveMarkerNode/build install --record /home/devel/ros_ws_t7/build/interactiveMarkerNode/install.log --install-scripts $base/lib/interactiveMarkerNode --single-version-externally-managed install_data

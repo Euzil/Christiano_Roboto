@@ -1,0 +1,19 @@
+running egg_info
+writing ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/PKG-INFO
+writing dependency_links to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/dependency_links.txt
+writing entry points to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/entry_points.txt
+writing requirements to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/requires.txt
+writing top-level names to ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/top_level.txt
+reading manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+writing manifest file '../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode-0.1.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/interactiveMarkerNode/interactiveMarkerNode.egg-info to /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/python3.12/site-packages/interactiveMarkerNode-0.1.0-py3.12.egg-info
+running install_scripts
+Installing interactiveMarkerNode script to /home/devel/ros_ws_t7/install/interactiveMarkerNode/lib/interactiveMarkerNode
+writing list of installed files to '/home/devel/ros_ws_t7/build/interactiveMarkerNode/install.log'

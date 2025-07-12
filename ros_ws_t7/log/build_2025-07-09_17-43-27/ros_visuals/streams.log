@@ -1,0 +1,20 @@
+[0.622s] Invoking command in '/home/devel/ros_ws_t7/src/ros_visuals': PYTHONPATH=/home/devel/ros_ws_t7/build/ros_visuals/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ros_visuals build --build-base /home/devel/ros_ws_t7/build/ros_visuals/build install --record /home/devel/ros_ws_t7/build/ros_visuals/install.log --single-version-externally-managed install_data
+[0.771s] running egg_info
+[0.779s] writing ../../build/ros_visuals/ros_visuals.egg-info/PKG-INFO
+[0.779s] writing dependency_links to ../../build/ros_visuals/ros_visuals.egg-info/dependency_links.txt
+[0.780s] writing requirements to ../../build/ros_visuals/ros_visuals.egg-info/requires.txt
+[0.780s] writing top-level names to ../../build/ros_visuals/ros_visuals.egg-info/top_level.txt
+[0.834s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.922s] reading manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+[0.922s] writing manifest file '../../build/ros_visuals/ros_visuals.egg-info/SOURCES.txt'
+[0.922s] running build
+[0.922s] running build_py
+[0.922s] running install
+[0.926s] running install_lib
+[0.936s] running install_data
+[0.936s] running install_egg_info
+[0.945s] removing '/home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals-0.0.0-py3.12.egg-info' (and everything under it)
+[0.945s] Copying ../../build/ros_visuals/ros_visuals.egg-info to /home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages/ros_visuals-0.0.0-py3.12.egg-info
+[0.945s] running install_scripts
+[1.011s] writing list of installed files to '/home/devel/ros_ws_t7/build/ros_visuals/install.log'
+[1.028s] Invoked command in '/home/devel/ros_ws_t7/src/ros_visuals' returned '0': PYTHONPATH=/home/devel/ros_ws_t7/build/ros_visuals/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/ros_visuals/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ros_visuals build --build-base /home/devel/ros_ws_t7/build/ros_visuals/build install --record /home/devel/ros_ws_t7/build/ros_visuals/install.log --single-version-externally-managed install_data

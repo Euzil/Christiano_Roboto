@@ -1,0 +1,4 @@
+Invoking command in '/home/devel/ros_ws_t7/build/simulator': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --build /home/devel/ros_ws_t7/build/simulator -- -j16 -l16
+Invoked command in '/home/devel/ros_ws_t7/build/simulator' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --build /home/devel/ros_ws_t7/build/simulator -- -j16 -l16
+Invoking command in '/home/devel/ros_ws_t7/build/simulator': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --install /home/devel/ros_ws_t7/build/simulator
+Invoked command in '/home/devel/ros_ws_t7/build/simulator' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/rolling VIRTUAL_ENV_PROMPT=(env) /usr/bin/cmake --install /home/devel/ros_ws_t7/build/simulator

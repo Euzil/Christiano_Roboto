@@ -1,0 +1,17 @@
+Terminal 1： 
+colcon build
+source install/setup.bash
+python3 src/bullet_sims/bullet_sims/t22.py 
+
+
+Terminal 1：
+rm -rf build/ install/ log/
+colcon build
+source install/setup.bash
+
+echo $AMENT_PREFIX_PATH
+printenv | grep ros2
+
+Terminal 2：
+source install/setup.bash
+ros2 launch ros_visuals talos_rviz.launch.py

@@ -1,0 +1,66 @@
+[0.433s] Invoking command in '/home/devel/ros_ws_t7/src/bullet_sims': AMENT_PREFIX_PATH=/home/devel/ros_ws_t7/install/talos_description:/home/devel/ros_ws_t7/install/simulator:/home/devel/ros_ws_t7/install/reemc_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/devel/ros_ws_t7/install/talos_description:/home/devel/ros_ws_t7/install/simulator:/home/devel/ros_ws_t7/install/reemc_description:${CMAKE_PREFIX_PATH} PYTHONPATH=/home/devel/ros_ws_t7/build/bullet_sims/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bullet_sims build --build-base /home/devel/ros_ws_t7/build/bullet_sims/build install --record /home/devel/ros_ws_t7/build/bullet_sims/install.log --single-version-externally-managed install_data
+[0.584s] running egg_info
+[0.585s] creating ../../build/bullet_sims/bullet_sims.egg-info
+[0.593s] writing ../../build/bullet_sims/bullet_sims.egg-info/PKG-INFO
+[0.593s] writing dependency_links to ../../build/bullet_sims/bullet_sims.egg-info/dependency_links.txt
+[0.593s] writing entry points to ../../build/bullet_sims/bullet_sims.egg-info/entry_points.txt
+[0.593s] writing requirements to ../../build/bullet_sims/bullet_sims.egg-info/requires.txt
+[0.593s] writing top-level names to ../../build/bullet_sims/bullet_sims.egg-info/top_level.txt
+[0.593s] writing manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+[0.629s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.711s] reading manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+[0.711s] writing manifest file '../../build/bullet_sims/bullet_sims.egg-info/SOURCES.txt'
+[0.711s] running build
+[0.711s] running build_py
+[0.712s] creating /home/devel/ros_ws_t7/build/bullet_sims/build
+[0.712s] creating /home/devel/ros_ws_t7/build/bullet_sims/build/lib
+[0.712s] creating /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/t4_standing.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/t4_one_leg_stand.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/foot_trajectory.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/t4_righthands.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/__init__.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/footstep_planner.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/t51.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/config.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/tsid_wrapper.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] copying bullet_sims/t4_squating.py -> /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims
+[0.712s] running install
+[0.716s] running install_lib
+[0.725s] creating /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.725s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_standing.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_one_leg_stand.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/foot_trajectory.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_righthands.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/__init__.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/footstep_planner.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t51.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/config.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/tsid_wrapper.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] copying /home/devel/ros_ws_t7/build/bullet_sims/build/lib/bullet_sims/t4_squating.py -> /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims
+[0.726s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_standing.py to t4_standing.cpython-312.pyc
+[0.727s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_one_leg_stand.py to t4_one_leg_stand.cpython-312.pyc
+[0.729s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/foot_trajectory.py to foot_trajectory.cpython-312.pyc
+[0.730s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_righthands.py to t4_righthands.cpython-312.pyc
+[0.733s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__init__.py to __init__.cpython-312.pyc
+[0.733s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/footstep_planner.py to footstep_planner.cpython-312.pyc
+[0.734s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t51.py to t51.cpython-312.pyc
+[0.736s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/config.py to config.cpython-312.pyc
+[0.736s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/tsid_wrapper.py to tsid_wrapper.cpython-312.pyc
+[0.738s] byte-compiling /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/t4_squating.py to t4_squating.cpython-312.pyc
+[0.739s] running install_data
+[0.739s] copying package.xml -> /home/devel/ros_ws_t7/install/bullet_sims/share/bullet_sims
+[0.740s] creating /home/devel/ros_ws_t7/install/bullet_sims/share/bullet_sims/launch
+[0.740s] creating /home/devel/ros_ws_t7/install/bullet_sims/share/bullet_sims/rviz
+[0.740s] running install_egg_info
+[0.748s] Copying ../../build/bullet_sims/bullet_sims.egg-info to /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims-0.0.1-py3.12.egg-info
+[0.749s] running install_scripts
+[0.811s] Installing foot_trajectory script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] Installing footstep_planner script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] Installing t41 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] Installing t42 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] Installing t43 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] Installing t44 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] Installing t51 script to /home/devel/ros_ws_t7/install/bullet_sims/lib/bullet_sims
+[0.811s] writing list of installed files to '/home/devel/ros_ws_t7/build/bullet_sims/install.log'
+[0.826s] Invoked command in '/home/devel/ros_ws_t7/src/bullet_sims' returned '0': AMENT_PREFIX_PATH=/home/devel/ros_ws_t7/install/talos_description:/home/devel/ros_ws_t7/install/simulator:/home/devel/ros_ws_t7/install/reemc_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/devel/ros_ws_t7/install/talos_description:/home/devel/ros_ws_t7/install/simulator:/home/devel/ros_ws_t7/install/reemc_description:${CMAKE_PREFIX_PATH} PYTHONPATH=/home/devel/ros_ws_t7/build/bullet_sims/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages:/home/devel/ros_ws_t7/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(env) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bullet_sims build --build-base /home/devel/ros_ws_t7/build/bullet_sims/build install --record /home/devel/ros_ws_t7/build/bullet_sims/install.log --single-version-externally-managed install_data
