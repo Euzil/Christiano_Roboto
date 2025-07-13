@@ -1,481 +1,548 @@
 """
-talos walking simulation
+Walking with Path Visualization in PyBullet
+Display path in PyBullet, then follow the path step by step
+STANDING -> PLANNING (with visualization) -> WALKING (follow path)
 """
 
 import numpy as np
 import pinocchio as pin
-import matplotlib.pyplot as plt
-
 import rclpy
 from rclpy.node import Node
+import pybullet as pb
 
-# simulator
 from simulator.pybullet_wrapper import PybulletWrapper
-
-# robot configs
 import bullet_sims.talos_conf as conf
-
-# modules
 from bullet_sims.talos import Talos
-from bullet_sims.footstep_planner import FootStepPlanner, Side
-from bullet_sims.lip_mpc import LIPMPC
-from bullet_sims.lip_mpc import LIPInterpolator
-from bullet_sims.foot_trajectory import SwingFootTrajectory
+from bullet_sims.tsid_wrapper import TSIDWrapper
 
-################################################################################
-# main
-################################################################################  
-    
-def main(): 
-    
-    ############################################################################
-    # setup
-    ############################################################################
-    
-    # setup ros
-    rclpy.init()
-    node = rclpy.create_node('talos_walking')
-    print("Starting Talos Walking Simulation")
-    print("="*50)
-    
-    # setup the simulator
-    print("Setting up PyBullet simulator...")
-    simulator = PybulletWrapper()
-    
-    # setup the robot
-    print("Setting up Talos robot...")
-    robot = Talos(simulator)
-    print(f"   Robot created with floating base")
-    
-    # initial footsteps
-    print("Getting initial foot poses...")
-    T_swing_w = robot.stack.getFramePose(conf.lf_frame_name)    # set initial swing foot pose to left foot
-    T_support_w = robot.stack.getFramePose(conf.rf_frame_name)  # set initial support foot pose to right foot
-    
-    print(f"   Left foot (swing):   [{T_swing_w[0,3]:.3f}, {T_swing_w[1,3]:.3f}, {T_swing_w[2,3]:.3f}]")
-    print(f"   Right foot (support): [{T_support_w[0,3]:.3f}, {T_support_w[1,3]:.3f}, {T_support_w[2,3]:.3f}]")
-    
-    # setup the plan with 20 steps
-    no_steps = 20
-    print(f"Creating footstep plan with {no_steps} steps...")
-    planner = FootStepPlanner(conf)  # Create the planner
-    T_0_w = pin.SE3(np.eye(3), np.array([0, 0, 0]))  # Starting position
-    plan = planner.planLine(T_0_w, Side.LEFT, no_steps)  # Create the plan
-    
-    # Append the two last steps once more to the plan so our mpc horizon will never run out
-    if len(plan) >= 2:
-        plan.append(plan[-2])  # Second to last step
-        plan.append(plan[-1])  # Last step
-    
-    print(f"   Created plan with {len(plan)} total steps")
-    
-    # generate reference
-    print("Generating ZMP reference...")
-    ZMP_ref = []  # Generate the mpc reference
-    
-    for i, step in enumerate(plan):
-        # Simple ZMP reference: alternate between feet positions
-        if i < 2:  # Initial double support
-            zmp_pos = np.array([0.0, 0.0, 0.0])
-        elif i >= len(plan) - 2:  # Final double support
-            final_pos = plan[-1].position()
-            zmp_pos = np.array([final_pos[0], 0.0, 0.0])
-        else:
-            # During single support, ZMP toward support foot
-            step_pos = step.position()
-            if step.side == Side.LEFT:
-                # Right foot is support
-                zmp_pos = np.array([step_pos[0], conf.step_size_y, 0.0])
-            else:
-                # Left foot is support  
-                zmp_pos = np.array([step_pos[0], -conf.step_size_y, 0.0])
-        
-        ZMP_ref.append(zmp_pos)
-    
-    print(f"   Generated {len(ZMP_ref)} ZMP reference points")
-    
-    # plot the plan (make sure this works first)
-    print("Plotting footstep plan in PyBullet...")
-    planner.plot(simulator)
-    planner.print_plan()
-    
-    # setup the lip models
-    print("Setting up LIP MPC and interpolator...")
-    mpc = LIPMPC(conf)  # setup mpc
-    
-    # Assume the com is over the first support foot
-    com_pos = robot.stack.getCenterOfMass()
-    com_vel = robot.stack.getCenterOfMassVelocity()
-    x0 = np.array([com_pos[0], com_pos[1], com_vel[0], com_vel[1], com_pos[0], com_pos[1]])
-    interpolator = LIPInterpolator(x0, conf)  # Create the interpolator and set the initial state
-    
-    print(f"   Initial state: x={x0[0]:.3f}, y={x0[1]:.3f}, vx={x0[2]:.3f}, vy={x0[3]:.3f}")
-    
-    # set the com task reference to the initial support foot
-    c, c_dot, c_ddot = interpolator.comState()
-    robot.stack.setComReference(c, c_dot, c_ddot)  # Set the COM reference to be over supporting foot
-    
-    # Setup foot trajectory planner
-    T0 = pin.SE3(np.eye(3), np.array([0, 0, 0]))
-    T1 = pin.SE3(np.eye(3), np.array([0.2, 0, 0]))
-    duration = 0.8
-    height = 0.08
-    foot_trajectory = SwingFootTrajectory(T0, T1, duration, height)
-    
-    
-    # Set initial support and swing feet
-    robot.setSupportFoot(Side.RIGHT)
-    robot.setSwingFoot(Side.LEFT)
-    
-    print("   MPC and interpolator configured")
-    
-    ############################################################################
-    # logging setup
-    ############################################################################
-
-    pre_dur = 3.0   # Time to wait before walking should start
-    
-    # Compute number of iterations:
-    N_pre = int(pre_dur / conf.dt_sim)  # number of sim steps before walking starts 
-    N_sim = len(plan) * conf.no_sim_per_step  # total number of sim steps during walking
-    N_mpc = N_sim // conf.no_sim_per_mpc  # total number of mpc steps during walking
-    
-    print(f"Simulation parameters:")
-    print(f"   Pre-walking: {N_pre} steps ({pre_dur}s)")
-    print(f"   Walking: {N_sim} steps ({N_sim * conf.dt_sim:.1f}s)")
-    print(f"   MPC updates: {N_mpc}")
-    
-    # Create vectors to log all the data of the simulation
-    TIME = np.nan * np.empty(N_sim)
-    
-    # COM data (planned reference, pinocchio and pybullet)
-    COM_POS_ref = np.nan * np.empty((N_sim, 3))
-    COM_VEL_ref = np.nan * np.empty((N_sim, 3))
-    COM_ACC_ref = np.nan * np.empty((N_sim, 3))
-    COM_POS_pin = np.nan * np.empty((N_sim, 3))
-    COM_VEL_pin = np.nan * np.empty((N_sim, 3))
-    
-    # Angular momentum from pinocchio
-    ANGULAR_MOMENTUM = np.nan * np.empty((N_sim, 3))
-    
-    # Foot data (planned reference, pinocchio)
-    LFOOT_POS_ref = np.nan * np.empty((N_sim, 3))
-    LFOOT_VEL_ref = np.nan * np.empty((N_sim, 3)) 
-    LFOOT_ACC_ref = np.nan * np.empty((N_sim, 3))
-    RFOOT_POS_ref = np.nan * np.empty((N_sim, 3))
-    RFOOT_VEL_ref = np.nan * np.empty((N_sim, 3))
-    RFOOT_ACC_ref = np.nan * np.empty((N_sim, 3))
-    
-    LFOOT_POS_pin = np.nan * np.empty((N_sim, 3))
-    RFOOT_POS_pin = np.nan * np.empty((N_sim, 3))
-    
-    # ZMP data (planned reference, from estimator)
-    ZMP_ref_log = np.nan * np.empty((N_sim, 3))
-    ZMP_est = np.nan * np.empty((N_sim, 3))
-    
-    # DCM from estimator
-    DCM_est = np.nan * np.empty((N_sim, 3))
-    
-    # Forces (from sensors and pinocchio)
-    LFOOT_FORCE = np.nan * np.empty((N_sim, 6))
-    RFOOT_FORCE = np.nan * np.empty((N_sim, 6))
-    
-    print("   Data logging arrays initialized")
-    
-    ############################################################################
-    # main control loop
-    ############################################################################
-    
-    k = 0                           # current MPC index                          
-    plan_idx = 1                    # current index of the step within foot step plan
-    t_step_elapsed = 0.0            # elapsed time within current step (use to evaluate spline)
-    t_publish = 0.0                 # last publish time (last time we published something)
-    
-    print("\nStarting main control loop...")
-    print("   Pre-walking phase: robot will stabilize")
-    print("   Walking phase: following footstep plan")
-    print("   Press Ctrl+C to stop simulation")
+def visualize_footstep_path(simulator, footstep_plan, current_foot_positions):
+    """
+    Visualize footstep path in PyBullet
+    """
+    print("\n=== Visualizing Path in PyBullet ===")
     
     try:
-        for i in range(-N_pre, N_sim):
-            t = simulator.simTime()  # simulator time
-            dt = conf.dt_sim        # simulator dt
+        # Clear previous visualization markers
+        # pb.removeAllUserDebugItems()  # If need to clear all markers
+        
+        # Color definitions
+        RED = [1, 0, 0]      # Right foot - red
+        BLUE = [0, 0, 1]     # Left foot - blue  
+        GREEN = [0, 1, 0]    # Current position - green
+        YELLOW = [1, 1, 0]   # Path connection lines - yellow
+        
+        visual_ids = []
+        
+        # 1. Show current foot positions
+        rf_current, lf_current = current_foot_positions
+        
+        # Current right foot position (green sphere)
+        rf_sphere_id = pb.addUserDebugText(
+            "RF_START", 
+            [rf_current[0], rf_current[1], rf_current[2] + 0.1],
+            textColorRGB=GREEN,
+            textSize=1.2
+        )
+        visual_ids.append(rf_sphere_id)
+        
+        # Current left foot position (green sphere)
+        lf_sphere_id = pb.addUserDebugText(
+            "LF_START", 
+            [lf_current[0], lf_current[1], lf_current[2] + 0.1],
+            textColorRGB=GREEN,
+            textSize=1.2
+        )
+        visual_ids.append(lf_sphere_id)
+        
+        # 2. Show planned footsteps
+        for i, (foot_side, position) in enumerate(footstep_plan):
+            color = RED if foot_side == 'right' else BLUE
+            foot_label = "RF" if foot_side == 'right' else "LF"
             
-            ########################################################################
-            # update the mpc every no_sim_per_mpc steps
-            ########################################################################
+            # Add footstep marker (colored box)
+            box_id = pb.addUserDebugText(
+                f"{foot_label}_{i+1}",
+                [position[0], position[1], position[2] + 0.05],
+                textColorRGB=color,
+                textSize=1.5
+            )
+            visual_ids.append(box_id)
             
-            if i >= 0 and i % conf.no_sim_per_mpc == 0:  # when to update mpc
-                # Get current LIP state
-                xk = interpolator.x
-                
-                # Extract ZMP reference over the current horizon
-                horizon_start = k
-                horizon_end = min(horizon_start + conf.mpc_horizon, len(ZMP_ref))
-                ZMP_ref_k = ZMP_ref[horizon_start:horizon_end]
-                
-                # Pad with last value if necessary
-                while len(ZMP_ref_k) < conf.mpc_horizon:
-                    ZMP_ref_k.append(ZMP_ref_k[-1] if ZMP_ref_k else np.zeros(3))
-                
-                # Solve MPC
-                uk = mpc.solve(xk, ZMP_ref_k)
-                
-                # Update interpolator
-                interpolator.update(uk)
-                
-                k += 1        
-
-            ########################################################################
-            # update the foot spline every no_sim_per_step steps
-            ########################################################################
-
-            if i >= 0 and i % conf.no_sim_per_step == 0 and plan_idx < len(plan):  # when to update spline
-                # Get next step from plan
-                next_step = plan[plan_idx]
-                
-                print(f"Step {plan_idx}: {next_step.side.name} foot to [{next_step.position()[0]:.3f}, {next_step.position()[1]:.3f}]")
-                
-                # Update support/swing feet
-                robot.setSwingFoot(next_step.side)
-                robot.setSupportFoot(Side.LEFT if next_step.side == Side.RIGHT else Side.RIGHT)
-                
-                # Get current swing foot pose
-                current_swing_pose = robot.swingFootPose()
-                current_pos = current_swing_pose[:3, 3]
-                
-                # Plan foot trajectory
-                target_pos = next_step.position()
-                foot_trajectory.planTrajectory(
-                    start_pos=current_pos,
-                    end_pos=target_pos,
-                    duration=conf.step_duration,
-                    step_height=conf.step_height
+            # Add footstep outline (rectangle representing foot shape)
+            foot_corners = [
+                [position[0] - 0.05, position[1] - 0.03, position[2]],  # Back left
+                [position[0] + 0.05, position[1] - 0.03, position[2]],  # Back right
+                [position[0] + 0.05, position[1] + 0.03, position[2]],  # Front right
+                [position[0] - 0.05, position[1] + 0.03, position[2]],  # Front left
+                [position[0] - 0.05, position[1] - 0.03, position[2]]   # Close the loop
+            ]
+            
+            # Draw footstep outline
+            for j in range(len(foot_corners) - 1):
+                line_id = pb.addUserDebugLine(
+                    foot_corners[j], 
+                    foot_corners[j + 1],
+                    lineColorRGB=color,
+                    lineWidth=3
                 )
-                
-                t_step_elapsed = 0.0
-                plan_idx += 1
-                
-            ########################################################################
-            # in every iteration when walking
-            ########################################################################
+                visual_ids.append(line_id)
+        
+        # 3. Draw path connection lines
+        if len(footstep_plan) > 1:
+            # From current position to first step
+            first_foot, first_pos = footstep_plan[0]
+            start_pos = rf_current if first_foot == 'right' else lf_current
             
-            if i >= 0:
-                # Update foot trajectory
-                if t_step_elapsed < conf.step_duration and plan_idx > 1:
-                    foot_pos_ref, foot_vel_ref, foot_acc_ref = foot_trajectory.getReference(t_step_elapsed)
-                    
-                    # Create homogeneous transformation matrix
-                    T_swing_ref = np.eye(4)
-                    T_swing_ref[:3, 3] = foot_pos_ref
-                    
-                    # Update swing foot reference
-                    robot.updateSwingFootRef(T_swing_ref, foot_vel_ref, foot_acc_ref)
+            path_line_id = pb.addUserDebugLine(
+                start_pos,
+                first_pos,
+                lineColorRGB=YELLOW,
+                lineWidth=2
+            )
+            visual_ids.append(path_line_id)
+            
+            # Connect each footstep
+            for i in range(len(footstep_plan) - 1):
+                current_pos = footstep_plan[i][1]
+                next_pos = footstep_plan[i + 1][1]
                 
-                # Update COM reference
-                c, c_dot, c_ddot = interpolator.comState()
-                robot.stack.setComReference(c, c_dot, c_ddot)
-                
-                t_step_elapsed += dt
+                path_line_id = pb.addUserDebugLine(
+                    current_pos,
+                    next_pos, 
+                    lineColorRGB=YELLOW,
+                    lineWidth=2
+                )
+                visual_ids.append(path_line_id)
+        
+        # 4. Add path information text
+        if len(footstep_plan) > 0:
+            info_text = f"Path: {len(footstep_plan)} steps planned"
+            info_id = pb.addUserDebugText(
+                info_text,
+                [rf_current[0] - 0.5, rf_current[1] + 0.5, rf_current[2] + 0.3],
+                textColorRGB=[0, 0, 0],
+                textSize=1.0
+            )
+            visual_ids.append(info_id)
+        
+        print(f"Visualized {len(footstep_plan)} footsteps in PyBullet")
+        print(f"  Red markers: Right foot steps")
+        print(f"  Blue markers: Left foot steps")
+        print(f"  Yellow lines: Path connections")
+        print(f"  Green text: Current positions")
+        
+        return visual_ids
+        
+    except Exception as e:
+        print(f"Visualization error: {e}")
+        return []
+    
+    
+def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase, step_elapsed):
+    """
+    Execute a single gait step along the path (with landing detection and knee bend contact logic)
+    """
+    if step_index >= len(footstep_plan):
+        return True  # All steps completed
 
-            ########################################################################
-            # update the simulation
-            ########################################################################
+    foot_side, target_position = footstep_plan[step_index]
 
-            # update the simulator and the robot
+    # Phase timing settings
+    phase_duration = 1.5
+    com_shift_phase = 1 * phase_duration
+    lift_move_phase = 2 * phase_duration
+    place_phase = 3 * phase_duration
+    shift_back_phase = 4 * phase_duration
+
+    try:
+        # Phase 1: COM shift to support foot
+        if step_elapsed < com_shift_phase:
+            if step_phase != "com_shift":
+                print(f"  Step {step_index + 1}: COM shifting to {'left' if foot_side == 'right' else 'right'} foot...")
+                step_phase = "com_shift"
+
+                if foot_side == 'right':
+                    support_pos = tsid_wrapper.get_placement_LF().translation
+                else:
+                    support_pos = tsid_wrapper.get_placement_RF().translation
+
+                com_current = tsid_wrapper.comState().pos()
+                p_com_new = np.array([support_pos[0], support_pos[1], com_current[2]])
+                tsid_wrapper.setComRefState(p_com_new)
+
+        # Phase 2: Lift foot and move
+        elif step_elapsed < lift_move_phase:
+            if step_phase != "lift_move":
+                print(f"  Step {step_index + 1}: Lifting and moving {foot_side} foot...")
+                step_phase = "lift_move"
+
+                if foot_side == 'right' and hasattr(tsid_wrapper, 'remove_contact_RF'):
+                    tsid_wrapper.remove_contact_RF()
+                elif foot_side == 'left' and hasattr(tsid_wrapper, 'remove_contact_LF'):
+                    tsid_wrapper.remove_contact_LF()
+
+            lift_progress = (step_elapsed - com_shift_phase) / phase_duration
+
+            if foot_side == 'right':
+                current_foot_pos = tsid_wrapper.get_placement_RF().translation
+            else:
+                current_foot_pos = tsid_wrapper.get_placement_LF().translation
+
+            # Lift -> Move -> Lower
+            if lift_progress < 0.3:
+                target_pos = current_foot_pos.copy()
+                target_pos[2] += 0.15 * (lift_progress / 0.3)
+            elif lift_progress < 0.7:
+                ratio = (lift_progress - 0.3) / 0.4
+                target_pos = current_foot_pos + ratio * (target_position - current_foot_pos)
+                target_pos[2] = current_foot_pos[2] + 0.15
+            else:
+                ratio = (lift_progress - 0.7) / 0.3
+                target_pos = target_position.copy()
+                target_pos[2] += 0.15 * (1 - ratio)
+
+            foot_pose = pin.SE3(np.eye(3), target_pos)
+            if foot_side == 'right' and hasattr(tsid_wrapper, 'set_RF_pose_ref'):
+                tsid_wrapper.set_RF_pose_ref(foot_pose)
+            elif foot_side == 'left' and hasattr(tsid_wrapper, 'set_LF_pose_ref'):
+                tsid_wrapper.set_LF_pose_ref(foot_pose)
+
+        # Phase 3: Place foot -> Check if landed
+        elif step_elapsed < place_phase:
+            if step_phase != "place":
+                print(f"  Step {step_index + 1}: Placing {foot_side} foot...")
+                step_phase = "place"
+
+                # Directly set foot pose
+                foot_pose = pin.SE3(np.eye(3), target_position)
+                if foot_side == 'right' and hasattr(tsid_wrapper, 'set_RF_pose_ref'):
+                    tsid_wrapper.set_RF_pose_ref(foot_pose)
+                elif foot_side == 'left' and hasattr(tsid_wrapper, 'set_LF_pose_ref'):
+                    tsid_wrapper.set_LF_pose_ref(foot_pose)
+
+            # If foot hasn't touched ground (suspended), try "bending knee" to lower base/com
+            actual_z = tsid_wrapper.get_placement_RF().translation[2] if foot_side == 'right' \
+                       else tsid_wrapper.get_placement_LF().translation[2]
+            expected_z = target_position[2]
+
+            if abs(actual_z - expected_z) > 0.015:  # >1.5cm suspended
+                print(" Foot not contacting ground - lowering COM to help foot land...")
+                com_current = tsid_wrapper.comState().pos()
+                lowered_com = com_current.copy()
+                lowered_com[2] -= 0.02  # Bend knee and lower 2cm
+                tsid_wrapper.setComRefState(lowered_com)
+
+        # Phase 4: After successful landing, add contact -> COM transfer
+        elif step_elapsed < shift_back_phase:
+            if step_phase != "shift_back":
+                actual_pos = tsid_wrapper.get_placement_RF().translation if foot_side == 'right' \
+                             else tsid_wrapper.get_placement_LF().translation
+
+                if abs(actual_pos[2] - target_position[2]) < 0.01:  # Already landed
+                    print(f"  Step {step_index + 1}: COM shifting to newly placed {foot_side} foot...")
+                    step_phase = "shift_back"
+
+                    # Add contact
+                    if foot_side == 'right' and hasattr(tsid_wrapper, 'add_contact_RF'):
+                        tsid_wrapper.add_contact_RF()
+                    elif foot_side == 'left' and hasattr(tsid_wrapper, 'add_contact_LF'):
+                        tsid_wrapper.add_contact_LF()
+
+                    # Transfer COM to this foot
+                    com_current = tsid_wrapper.comState().pos()
+                    p_com_new = np.array([target_position[0], target_position[1], com_current[2]])
+                    tsid_wrapper.setComRefState(p_com_new)
+                    
+                    com_current = tsid_wrapper.comState().pos()
+                    lowered_com = com_current.copy()
+                    lowered_com[2] += 0.02  # Restore height after bending knee
+                    tsid_wrapper.setComRefState(lowered_com)
+                    
+                else:
+                    # Still not in contact, don't make transition, wait for next loop
+                    print("  Waiting for foot to contact ground before COM shift...")
+
+        # Step completion
+        else:
+            if step_phase != "complete":
+                print(f"  Step {step_index + 1} completed: {foot_side} foot at [{target_position[0]:.3f}, {target_position[1]:.3f}, {target_position[2]:.3f}]")
+                step_phase = "complete"
+            return True
+
+    except Exception as e:
+        print(f"  Step execution error: {e}")
+        return True
+
+    return False  # Step still in progress
+
+
+
+
+def main():
+    rclpy.init()
+    node = rclpy.create_node('walking_with_path_visualization')
+    
+    try:
+        print("=" * 70)
+        print("WALKING WITH PATH VISUALIZATION IN PYBULLET")
+        print("=" * 70)
+        print("Features:")
+        print("- Visual footstep path in PyBullet")
+        print("- Color-coded foot markers (Red=Right, Blue=Left)")
+        print("- Step-by-step execution following the path")
+        print("- Real-time progress feedback")
+        print("=" * 70)
+        
+        # Initialize system
+        tsid_wrapper = TSIDWrapper(conf)
+        simulator = PybulletWrapper()
+        model = tsid_wrapper.robot.model()
+        
+        robot = Talos(
+            simulator=simulator,
+            urdf=conf.urdf,
+            model=model,
+            q=conf.q_home,
+            verbose=True,
+            useFixedBase=False
+        )
+        
+        # Initial settling
+        robot.enablePositionControl()
+        for i in range(30):
+            robot.setActuatedJointPositions(conf.q_home)
             simulator.step()
             robot.update()
-
-            # publish to ros
-            if t - t_publish > 1./30.:
-                t_publish = t
-                try:
-                    robot.publish()
-                    rclpy.spin_once(node, timeout_sec=0.001)
-                except:
-                    pass  # Skip if ROS not available
-                
-            # store for visualizations
-            if i >= 0:
-                TIME[i] = t
-                
-                # Log COM data
-                com_ref_pos, com_ref_vel, com_ref_acc = interpolator.comState()
-                COM_POS_ref[i] = com_ref_pos
-                COM_VEL_ref[i] = com_ref_vel
-                COM_ACC_ref[i] = com_ref_acc
-                
-                COM_POS_pin[i] = robot.stack.getCenterOfMass()
-                COM_VEL_pin[i] = robot.stack.getCenterOfMassVelocity()
-                
-                # Angular momentum
-                ANGULAR_MOMENTUM[i] = robot.stack.getAngularMomentum()
-                
-                # Foot positions
-                lfoot_pose = robot.stack.getFramePose(conf.lf_frame_name)
-                rfoot_pose = robot.stack.getFramePose(conf.rf_frame_name)
-                LFOOT_POS_pin[i] = lfoot_pose[:3, 3]
-                RFOOT_POS_pin[i] = rfoot_pose[:3, 3]
-                
-                # Foot references
-                if t_step_elapsed < conf.step_duration and plan_idx > 1:
-                    foot_pos_ref, foot_vel_ref, foot_acc_ref = foot_trajectory.getReference(t_step_elapsed)
-                    if robot.swing_foot == Side.LEFT:
-                        LFOOT_POS_ref[i] = foot_pos_ref
-                        LFOOT_VEL_ref[i] = foot_vel_ref
-                        LFOOT_ACC_ref[i] = foot_acc_ref
-                        RFOOT_POS_ref[i] = RFOOT_POS_pin[i]  # Support foot doesn't move
-                        RFOOT_VEL_ref[i] = np.zeros(3)
-                        RFOOT_ACC_ref[i] = np.zeros(3)
-                    else:
-                        RFOOT_POS_ref[i] = foot_pos_ref
-                        RFOOT_VEL_ref[i] = foot_vel_ref
-                        RFOOT_ACC_ref[i] = foot_acc_ref
-                        LFOOT_POS_ref[i] = LFOOT_POS_pin[i]  # Support foot doesn't move
-                        LFOOT_VEL_ref[i] = np.zeros(3)
-                        LFOOT_ACC_ref[i] = np.zeros(3)
-                else:
-                    # Both feet stationary
-                    LFOOT_POS_ref[i] = LFOOT_POS_pin[i]
-                    RFOOT_POS_ref[i] = RFOOT_POS_pin[i]
-                    LFOOT_VEL_ref[i] = np.zeros(3)
-                    RFOOT_VEL_ref[i] = np.zeros(3)
-                    LFOOT_ACC_ref[i] = np.zeros(3)
-                    RFOOT_ACC_ref[i] = np.zeros(3)
-                
-                # ZMP and DCM
-                if k < len(ZMP_ref):
-                    ZMP_ref_log[i] = ZMP_ref[k]
-                else:
-                    ZMP_ref_log[i] = ZMP_ref[-1]
-                
-                ZMP_est[i] = robot.zmp
-                DCM_est[i] = robot.dcm
-                
-                # Contact forces
-                contact_forces = robot.stack.getContactForces()
-                LFOOT_FORCE[i] = contact_forces.get("left_foot", np.zeros(6))
-                RFOOT_FORCE[i] = contact_forces.get("right_foot", np.zeros(6))
+        robot.enableTorqueControl()
+        
+        # State machine
+        current_state = "STANDING"
+        state_start_time = 0.0
+        t_publish = 0.0
+        publish_rate = 30.0
+        
+        # Phase durations
+        standing_duration = 3.0
+        planning_duration = 3.0
+        
+        # Walking data
+        footstep_plan = []
+        visual_ids = []
+        current_step_index = 0
+        step_start_time = 0.0
+        step_phase = "none"
+        
+        print("\nStarting walking with path visualization...")
+        
+        while rclpy.ok():
+            t = simulator.simTime()
             
-            # Progress indicator
-            if i >= 0 and i % 1000 == 0:
-                progress = (i / N_sim) * 100
-                print(f"Progress: {progress:.1f}% - Time: {t:.2f}s - Step: {plan_idx-1}/{len(plan)-2}")
+            ###################################################################
+            # PHASE 1: STANDING
+            ###################################################################
+            if current_state == "STANDING":
+                if t - state_start_time == 0:
+                    state_start_time = t
+                    print(f"\n[{t:.1f}s] PHASE 1: STANDING")
+                    print("- Establishing stable base")
+                
+                if t - state_start_time > standing_duration:
+                    current_state = "PLANNING"
+                    state_start_time = t
+                    print(f"\nStanding stable - Ready for path planning")
+            
+            ###################################################################
+            # PHASE 2: PLANNING WITH VISUALIZATION
+            ###################################################################
+            elif current_state == "PLANNING":
+                if t - state_start_time < 0.1:
+                    print(f"\n[{t:.1f}s] PHASE 2: PLANNING WITH VISUALIZATION")
+                    print("- Generating footstep path")
+                    print("- Visualizing in PyBullet")
+                
+                planning_elapsed = t - state_start_time
+                
+                # Generate footstep plan
+                if len(footstep_plan) == 0 and planning_elapsed > 0.5:
+                    try:
+                        print(f"[{t:.1f}s] Generating footstep plan...")
+                        
+                        # Get current foot positions
+                        rf_placement = tsid_wrapper.get_placement_RF()
+                        lf_placement = tsid_wrapper.get_placement_LF()
+                        
+                        rf_pos = rf_placement.translation
+                        lf_pos = lf_placement.translation
+                        
+                        print(f"Current foot positions:")
+                        print(f"  Right foot: [{rf_pos[0]:.3f}, {rf_pos[1]:.3f}, {rf_pos[2]:.3f}]")
+                        print(f"  Left foot:  [{lf_pos[0]:.3f}, {lf_pos[1]:.3f}, {lf_pos[2]:.3f}]")
+                        
+                        # Create walking plan (alternating steps)
+                        rf_pos = rf_placement.translation.copy()
+                        lf_pos = lf_placement.translation.copy()
 
+                        rf_pos = rf_placement.translation.copy()
+                        lf_pos = lf_placement.translation.copy()
+
+                        footstep_plan = []
+
+                        # Step length settings
+                        first_step = 0.25
+                        other_step = 0.50
+                        num_steps = 6  # Even number: start with right foot
+
+                        for i in range(num_steps):
+                            if i == 0:
+                                step_length = first_step
+                            else:
+                                step_length = other_step
+
+                            if i % 2 == 0:
+                                # Right foot forward
+                                rf_pos[0] += step_length
+                                footstep_plan.append(('right', rf_pos.copy()))
+                            else:
+                                # Left foot forward
+                                lf_pos[0] += step_length
+                                footstep_plan.append(('left', lf_pos.copy()))
+
+
+                        
+                        print(f"Generated plan with {len(footstep_plan)} steps")
+                        
+                        # Visualize path
+                        current_positions = (rf_pos, lf_pos)
+                        visual_ids = visualize_footstep_path(simulator, footstep_plan, current_positions)
+                        
+                        print(f"\nStep sequence:")
+                        for i, (side, pos) in enumerate(footstep_plan):
+                            print(f"  {i+1}. {side:>5} foot -> [{pos[0]:.3f}, {pos[1]:.3f}, {pos[2]:.3f}]")
+                        
+                    except Exception as e:
+                        print(f"Planning error: {e}")
+                        # Create simple fallback plan
+                        rf_simple = rf_placement.translation.copy()
+                        rf_simple[0] += 0.3
+                        footstep_plan = [('right', rf_simple)]
+                        print("Created simple fallback plan")
+                
+                # Complete planning phase
+                if planning_elapsed > planning_duration and len(footstep_plan) > 0:
+                    current_state = "WALKING"
+                    state_start_time = t
+                    step_start_time = t
+                    current_step_index = 0
+                    step_phase = "none"
+                    print(f"\nPlanning complete - Starting path execution")
+                    print(f"Path visualized with {len(visual_ids)} markers")
+            
+            ###################################################################
+            # PHASE 3: WALKING ALONG PATH
+            ###################################################################
+            elif current_state == "WALKING":
+                walking_elapsed = t - state_start_time
+                
+                if walking_elapsed < 0.1:
+                    print(f"\n[{t:.1f}s] PHASE 3: WALKING ALONG PATH")
+                    print(f"- Executing {len(footstep_plan)} planned steps")
+                    print("- Following visualized path")
+                
+                # Execute current step
+                if current_step_index < len(footstep_plan):
+                    step_elapsed = t - step_start_time
+                    
+                    # Start new step
+                    if step_elapsed < 0.1:
+                        foot_side, target_pos = footstep_plan[current_step_index]
+                        print(f"\n[{t:.1f}s] Executing Step {current_step_index + 1}/{len(footstep_plan)}")
+                        print(f"  {foot_side.upper()} foot -> [{target_pos[0]:.3f}, {target_pos[1]:.3f}, {target_pos[2]:.3f}]")
+                    
+                    # Execute step
+                    step_complete = execute_step_along_path(
+                        tsid_wrapper, current_step_index, footstep_plan, step_phase, step_elapsed
+                    )
+                    
+                    # Check if step is complete
+                    # Step completion criteria: 4 phases total 6.0 seconds
+                    if step_complete and step_elapsed > 6.0:
+                        current_step_index += 1
+                        step_start_time = t
+                        step_phase = "none"
+                        
+                        if current_step_index < len(footstep_plan):
+                            print(f"\nStep {current_step_index} completed, moving to next step...")
+                        else:
+                            print(f"\nAll {len(footstep_plan)} steps completed!")
+                            break
+
+                
+                # All steps completed
+                else:
+                    print(f"\nWALKING COMPLETED!")
+                    print(f"Successfully executed all {len(footstep_plan)} planned steps")
+                    break
+            
+            ###################################################################
+            # Simulation update
+            ###################################################################
+            simulator.step()
+            robot.update()
+            
+            # TSID control
+            q_current = np.ascontiguousarray(robot.q(), dtype=np.float64)
+            v_current = np.ascontiguousarray(robot.v(), dtype=np.float64)
+            
+            tau_sol, acc_sol = tsid_wrapper.update(q_current, v_current, t)
+            tau_sol = np.array(tau_sol)
+            if len(tau_sol) > conf.na:
+                tau_sol = tau_sol[:conf.na]
+            
+            robot.tau = tau_sol
+            robot.setActuatedJointTorques(tau_sol)
+            
+            # Publishing
+            if t - t_publish >= 1.0 / publish_rate:
+                t_publish = t
+                T_b_w = tsid_wrapper.baseState()
+                robot.publish(T_b_w)
+            
+            rclpy.spin_once(node, timeout_sec=0.001)
+    
     except KeyboardInterrupt:
-        print("\nSimulation interrupted by user")
-    
-    print("Walking simulation completed!")
-
-    ########################################################################
-    # enough with the simulation, lets plot
-    ########################################################################
-    
-    print("Generating analysis plots...")
-    
-    import matplotlib.pyplot as plt
-    plt.style.use('seaborn-v0_8')
-    
-    # Remove NaN values for plotting
-    valid_indices = ~np.isnan(TIME)
-    TIME_clean = TIME[valid_indices]
-    
-    if len(TIME_clean) > 0:
-        # Create comprehensive plots
-        fig, axes = plt.subplots(3, 2, figsize=(15, 12))
-        
-        # COM Position
-        axes[0,0].plot(TIME_clean, COM_POS_ref[valid_indices, 0], 'b-', label='COM Ref X', linewidth=2)
-        axes[0,0].plot(TIME_clean, COM_POS_pin[valid_indices, 0], 'b--', label='COM Actual X', linewidth=1)
-        axes[0,0].plot(TIME_clean, COM_POS_ref[valid_indices, 1], 'r-', label='COM Ref Y', linewidth=2)
-        axes[0,0].plot(TIME_clean, COM_POS_pin[valid_indices, 1], 'r--', label='COM Actual Y', linewidth=1)
-        axes[0,0].set_ylabel('COM Position [m]')
-        axes[0,0].legend()
-        axes[0,0].grid(True)
-        axes[0,0].set_title('Center of Mass Position')
-        
-        # COM Velocity
-        axes[0,1].plot(TIME_clean, COM_VEL_ref[valid_indices, 0], 'b-', label='COM Vel X Ref', linewidth=2)
-        axes[0,1].plot(TIME_clean, COM_VEL_pin[valid_indices, 0], 'b--', label='COM Vel X Actual', linewidth=1)
-        axes[0,1].plot(TIME_clean, COM_VEL_ref[valid_indices, 1], 'r-', label='COM Vel Y Ref', linewidth=2)
-        axes[0,1].plot(TIME_clean, COM_VEL_pin[valid_indices, 1], 'r--', label='COM Vel Y Actual', linewidth=1)
-        axes[0,1].set_ylabel('COM Velocity [m/s]')
-        axes[0,1].legend()
-        axes[0,1].grid(True)
-        axes[0,1].set_title('Center of Mass Velocity')
-        
-        # Foot Positions
-        axes[1,0].plot(TIME_clean, LFOOT_POS_ref[valid_indices, 0], 'b-', label='Left Foot X Ref', linewidth=2)
-        axes[1,0].plot(TIME_clean, LFOOT_POS_pin[valid_indices, 0], 'b--', label='Left Foot X Actual', linewidth=1)
-        axes[1,0].plot(TIME_clean, RFOOT_POS_ref[valid_indices, 0], 'r-', label='Right Foot X Ref', linewidth=2)
-        axes[1,0].plot(TIME_clean, RFOOT_POS_pin[valid_indices, 0], 'r--', label='Right Foot X Actual', linewidth=1)
-        axes[1,0].set_ylabel('Foot Position X [m]')
-        axes[1,0].legend()
-        axes[1,0].grid(True)
-        axes[1,0].set_title('Foot Positions X')
-        
-        axes[1,1].plot(TIME_clean, LFOOT_POS_ref[valid_indices, 1], 'b-', label='Left Foot Y Ref', linewidth=2)
-        axes[1,1].plot(TIME_clean, LFOOT_POS_pin[valid_indices, 1], 'b--', label='Left Foot Y Actual', linewidth=1)
-        axes[1,1].plot(TIME_clean, RFOOT_POS_ref[valid_indices, 1], 'r-', label='Right Foot Y Ref', linewidth=2)
-        axes[1,1].plot(TIME_clean, RFOOT_POS_pin[valid_indices, 1], 'r--', label='Right Foot Y Actual', linewidth=1)
-        axes[1,1].set_ylabel('Foot Position Y [m]')
-        axes[1,1].legend()
-        axes[1,1].grid(True)
-        axes[1,1].set_title('Foot Positions Y')
-        
-        # ZMP and DCM
-        axes[2,0].plot(TIME_clean, ZMP_ref_log[valid_indices, 0], 'b-', label='ZMP Ref X', linewidth=2)
-        axes[2,0].plot(TIME_clean, ZMP_est[valid_indices, 0], 'b--', label='ZMP Est X', linewidth=1)
-        axes[2,0].plot(TIME_clean, ZMP_ref_log[valid_indices, 1], 'r-', label='ZMP Ref Y', linewidth=2)
-        axes[2,0].plot(TIME_clean, ZMP_est[valid_indices, 1], 'r--', label='ZMP Est Y', linewidth=1)
-        axes[2,0].plot(TIME_clean, DCM_est[valid_indices, 0], 'g:', label='DCM X', linewidth=2)
-        axes[2,0].plot(TIME_clean, DCM_est[valid_indices, 1], 'm:', label='DCM Y', linewidth=2)
-        axes[2,0].set_ylabel('Position [m]')
-        axes[2,0].set_xlabel('Time [s]')
-        axes[2,0].legend()
-        axes[2,0].grid(True)
-        axes[2,0].set_title('ZMP and DCM')
-        
-        # Contact Forces
-        axes[2,1].plot(TIME_clean, LFOOT_FORCE[valid_indices, 2], 'b-', label='Left Foot Fz', linewidth=2)
-        axes[2,1].plot(TIME_clean, RFOOT_FORCE[valid_indices, 2], 'r-', label='Right Foot Fz', linewidth=2)
-        total_force = LFOOT_FORCE[valid_indices, 2] + RFOOT_FORCE[valid_indices, 2]
-        axes[2,1].plot(TIME_clean, total_force, 'g-', label='Total Force', linewidth=1)
-        axes[2,1].axhline(y=robot.robot.mass() * 9.81, color='k', linestyle='--', label='Robot Weight')
-        axes[2,1].set_ylabel('Normal Force [N]')
-        axes[2,1].set_xlabel('Time [s]')
-        axes[2,1].legend()
-        axes[2,1].grid(True)
-        axes[2,1].set_title('Contact Forces')
-        
-        plt.tight_layout()
-        plt.savefig('talos_walking_analysis.png', dpi=150, bbox_inches='tight')
-        plt.show()
-        
-        # Performance analysis
-        print(f"\nPerformance Summary:")
-        com_error = np.linalg.norm(COM_POS_pin[valid_indices] - COM_POS_ref[valid_indices], axis=1)
-        max_com_error = np.max(com_error)
-        avg_com_error = np.mean(com_error)
-        
-        print(f"   Simulation time: {TIME_clean[-1]:.1f}s")
-        print(f"   Steps completed: {plan_idx-1}/{len(plan)-2}")
-        print(f"   Max COM error: {max_com_error:.4f}m")
-        print(f"   Avg COM error: {avg_com_error:.4f}m")
-        
-        if max_com_error < 0.05:
-            print("   Excellent tracking performance!")
-        elif max_com_error < 0.1:
-            print("   Good tracking performance")
-        else:
-            print("   Tracking performance needs improvement")
-        
-        print("Analysis saved as 'talos_walking_analysis.png'")
-    else:
-        print("No valid data to plot")
-
-if __name__ == '__main__': 
-    try:
-        main()
+        print("\nWalking interrupted")
+    except Exception as e:
+        print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
     finally:
+        print("\n" + "=" * 70)
+        print("WALKING WITH PATH VISUALIZATION COMPLETE")
+        print("=" * 70)
+        
+        print(f"\n=== Execution Summary ===")
+        if len(footstep_plan) > 0:
+            completion_rate = (current_step_index / len(footstep_plan)) * 100
+            print(f"Path planned: {len(footstep_plan)} steps")
+            print(f"Steps executed: {current_step_index}/{len(footstep_plan)} ({completion_rate:.1f}%)")
+            print(f"Visualization markers: {len(visual_ids)}")
+        
+        print(f"\n=== Path Visualization Features ===")
+        print("Real-time footstep markers in PyBullet")
+        print("Color-coded foot identification")
+        print("Path connection lines")
+        print("Step-by-step execution tracking")
+        
+        print(f"\n=== Walking Execution ===")
+        print("COM shifting to support foot")
+        print("Coordinated foot lifting and placement")
+        print("Following pre-planned path precisely")
+        print("Real-time progress feedback")
+        
+        if 'simulator' in locals():
+            simulator.disconnect()
         rclpy.shutdown()
+        print("\nPath visualization walking ended successfully.")
+
+if __name__ == '__main__':
+    main()

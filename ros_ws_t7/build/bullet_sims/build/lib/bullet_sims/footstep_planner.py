@@ -1,6 +1,6 @@
 """
-增强版的 footstep_planner.py
-添加更多功能和更好的集成支持
+Enhanced footstep_planner.py
+Adds more functionality and better integration support
 """
 
 import numpy as np
@@ -286,7 +286,7 @@ class FootStepPlanner:
                 )
                 self.debug_ids.append(line_id)
         
-        print(f"📊 Footstep Plan Summary:")
+        print(f"Footstep Plan Summary:")
         print(f"   Total steps: {len(self.steps)}")
         print(f"   Duration: {self.steps[-1].time:.1f}s")
         print(f"   Path length: {self._calculate_path_length():.2f}m")
@@ -306,7 +306,7 @@ class FootStepPlanner:
     
     def print_plan(self):
         """Print detailed plan information"""
-        print(f"\n📋 Detailed Footstep Plan:")
+        print(f"\nDetailed Footstep Plan:")
         print(f"{'Step':<4} {'Side':<5} {'X':<8} {'Y':<8} {'Time':<8}")
         print("-" * 40)
         for i, step in enumerate(self.steps):
@@ -354,10 +354,10 @@ if __name__=='__main__':
     
     # Test conversion to dictionary format
     dict_plan = planner.to_dict_list()
-    print(f"\n🔄 Converted to dictionary format: {len(dict_plan)} steps")
+    print(f"\nConverted to dictionary format: {len(dict_plan)} steps")
     
     # Add some interactive features
-    print(f"\n🎮 Interactive Features:")
+    print(f"\nInteractive Features:")
     print(f"   Press 'c' to test circular pattern")
     print(f"   Press 'r' to reset to linear pattern")
     print(f"   Press Ctrl+C to exit")
@@ -368,14 +368,14 @@ if __name__=='__main__':
             keys = p.getKeyboardEvents()
             
             if ord('c') in keys and keys[ord('c')] & p.KEY_WAS_TRIGGERED:
-                print("🔄 Switching to circular pattern...")
+                print("Switching to circular pattern...")
                 planner.clear_visualization()
                 planner.planCircle(T0, radius=1.0, no_steps=12)
                 planner.plot(p)
                 planner.print_plan()
             
             if ord('r') in keys and keys[ord('r')] & p.KEY_WAS_TRIGGERED:
-                print("🔄 Switching back to linear pattern...")
+                print("Switching back to linear pattern...")
                 planner.clear_visualization()
                 planner.planLine(T0, Side.LEFT, 8)
                 planner.plot(p)
@@ -384,6 +384,6 @@ if __name__=='__main__':
             time.sleep(0.1)
             
     except KeyboardInterrupt:
-        print(f"\n👋 Exiting footstep planner test")
+        print(f"\nExiting footstep planner test")
         planner.clear_visualization()
         p.disconnect()

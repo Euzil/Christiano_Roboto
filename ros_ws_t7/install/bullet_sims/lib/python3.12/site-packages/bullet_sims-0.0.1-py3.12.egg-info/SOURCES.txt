@@ -9,6 +9,7 @@ setup.py
 ../../build/bullet_sims/bullet_sims.egg-info/requires.txt
 ../../build/bullet_sims/bullet_sims.egg-info/top_level.txt
 bullet_sims/__init__.py
+bullet_sims/com_reference_fix.py
 bullet_sims/foot_trajectory.py
 bullet_sims/footstep_planner.py
 bullet_sims/lip_mpc.py

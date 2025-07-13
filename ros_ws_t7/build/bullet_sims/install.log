@@ -1,4 +1,5 @@
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/foot_trajectory.py
+/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/com_reference_fix.py
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/talos.py
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__init__.py
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/footstep_planner.py
@@ -8,6 +9,7 @@
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/tsid_wrapper.py
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/test.py
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__pycache__/foot_trajectory.cpython-312.pyc
+/home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__pycache__/com_reference_fix.cpython-312.pyc
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__pycache__/talos.cpython-312.pyc
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__pycache__/__init__.cpython-312.pyc
 /home/devel/ros_ws_t7/install/bullet_sims/lib/python3.12/site-packages/bullet_sims/__pycache__/footstep_planner.cpython-312.pyc
