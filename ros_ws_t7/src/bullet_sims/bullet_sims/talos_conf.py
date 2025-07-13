@@ -2,13 +2,14 @@ import os
 import pinocchio as pin
 import numpy as np
 import rospkg
+from ament_index_python.packages import get_package_share_directory
 
 ################################################################################
 # robot
 ################################################################################
 
 rospack = rospkg.RosPack()
-talos_description = '/home/devel/ros_ws_t7/src/talos_description'
+talos_description = get_package_share_directory("talos_description")
 urdf = os.path.join(talos_description, "robots/talos_reduced_no_hands.urdf")
 path = os.path.join(talos_description, "meshes/../..")
 

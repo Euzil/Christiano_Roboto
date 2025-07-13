@@ -9,11 +9,194 @@ import pinocchio as pin
 import rclpy
 from rclpy.node import Node
 import pybullet as pb
+import matplotlib.pyplot as plt
+import os
 
 from simulator.pybullet_wrapper import PybulletWrapper
 import bullet_sims.talos_conf as conf
 from bullet_sims.talos import Talos
 from bullet_sims.tsid_wrapper import TSIDWrapper
+from ament_index_python.packages import get_package_share_directory
+
+import matplotlib.pyplot as plt
+
+class Visualization:
+    def __init__(self, tsid_wrapper, robot):
+        self.tsid_wrapper = tsid_wrapper
+        self.robot = robot
+
+        self.time_log = []
+
+        # COM logs
+        self.com_ref_log = []
+        self.com_state_log = []
+        self.com_sim_log = []
+
+        self.com_vel_ref_log = []
+        self.com_vel_state_log = []
+        self.com_vel_sim_log = []
+
+        self.com_acc_ref_log = []
+        self.com_acc_state_log = []
+        self.com_acc_sim_log = []
+
+        self.zmp_log = []
+
+    def getCOMStates(self, t):
+        # Save current time
+        self.time_log.append(t)
+
+        # Get COM reference and actual states
+        ref = self.tsid_wrapper.comReference()
+        state = self.tsid_wrapper.comState()
+
+        self.com_ref_log.append(np.array(ref.value()))
+        self.com_state_log.append(np.array(state.value()))
+        self.com_sim_log.append(np.array(self.robot.baseWorldPosition()))
+
+        self.com_vel_ref_log.append(np.array(ref.derivative()))
+        self.com_vel_state_log.append(np.array(state.derivative()))
+        self.com_vel_sim_log.append(np.array(self.robot.baseCoMVelocity()))
+
+        # Estimate COM acceleration from velocity difference
+        com_sim_acc = np.zeros(3)
+        if len(self.com_vel_sim_log) >= 2:
+            com_sim_acc = (self.com_vel_sim_log[-1] - self.com_vel_sim_log[-2]) / conf.dt
+
+        self.com_acc_ref_log.append(np.array(ref.second_derivative()))
+        self.com_acc_state_log.append(np.array(state.second_derivative()))
+        self.com_acc_sim_log.append(com_sim_acc)
+
+    def getZMPStates(self):
+
+        # get zmp reference
+        #LIPMPC.ZMP_ref_k
+
+        # update zmp estimate
+        self.robot._update_zmp_estimate()
+
+        # get ZMP state
+        self.zmp_log.append(self.robot.zmp)
+        
+    def update_subplot_com(self, ax, t, data_ref, data_state, data_sim, title):
+        ax.clear()
+        ax.plot(t, data_ref, label='COM Ref', linestyle='--')
+        ax.plot(t, data_state, label='COM State', linestyle='-.')
+        ax.plot(t, data_sim, label='COM Sim', linestyle='-')
+        ax.legend()
+        ax.set_title(title)
+        ax.grid(True)
+
+    def update_subplot_zmp(self, ax, t, data_state, title):
+        ax.clear()
+        ax.plot(t, data_state, label='ZMP State', linestyle='-')
+        ax.legend()
+        ax.set_title(title)
+        ax.grid(True)
+
+    def plot_all(self):
+        # create plots
+        fig_pos, axs_pos = plt.subplots(3, 1, figsize=(15, 10))
+        fig_vel, axs_vel = plt.subplots(3, 1, figsize=(15, 10))
+        fig_acc, axs_acc = plt.subplots(3, 1, figsize=(15, 10))
+        fig_zmp, axs_zmp = plt.subplots(3, 1, figsize=(15, 10))
+
+        for ax, label in zip(axs_pos, ['X', 'Y', 'Z']):
+            ax.set_title(f'CoM Position - {label}', fontsize=12)
+            ax.grid(True)
+
+        for ax, label in zip(axs_vel, ['X', 'Y', 'Z']):
+            ax.set_title(f'CoM Velocity - {label}', fontsize=12)
+            ax.grid(True)
+
+        for ax, label in zip(axs_acc, ['X', 'Y', 'Z']):
+            ax.set_title(f'CoM Acceleration - {label}', fontsize=12)
+            ax.grid(True)
+
+        for ax, label in zip(axs_zmp, ['X', 'Y', 'Z']):
+            ax.set_title(f'ZMP Posiiton - {label}', fontsize=12)
+            ax.grid(True)
+
+        # Add shared labels
+        fig_pos.supxlabel('Time [s]')
+        fig_pos.supylabel('CoM Position [m]')
+
+        fig_vel.supxlabel('Time [s]')
+        fig_vel.supylabel('CoM Velocity [m/s]')
+
+        fig_acc.supxlabel('Time [s]')
+        fig_acc.supylabel('CoM Acceleration [m/s²]')
+
+        fig_zmp.supxlabel('Time [s]')
+        fig_zmp.supylabel('ZMP position [m]')
+
+        # update plots
+        for i in range(3):
+            self.update_subplot_com(
+                axs_pos[i],
+                self.time_log,
+                [x[i] for x in self.com_ref_log],
+                [x[i] for x in self.com_state_log],
+                [x[i] for x in self.com_sim_log],
+                title=f"COM Position - {['X','Y','Z'][i]}"
+            )
+
+            self.update_subplot_com(
+                axs_vel[i],
+                self.time_log,
+                [x[i] for x in self.com_vel_ref_log],
+                [x[i] for x in self.com_vel_state_log],
+                [x[i] for x in self.com_vel_sim_log],
+                title=f"COM Velocity - {['X','Y','Z'][i]}"
+            )
+
+            self.update_subplot_com(
+                axs_acc[i],
+                self.time_log,
+                [x[i] for x in self.com_acc_ref_log],
+                [x[i] for x in self.com_acc_state_log],
+                [x[i] for x in self.com_acc_sim_log],
+                title=f"COM Acceleration - {['X','Y','Z'][i]}"
+            )
+
+            self.update_subplot_zmp(
+                axs_zmp[i],
+                self.time_log,
+                [x[i] for x in self.zmp_log],
+                title=f"ZMP Position - {['X','Y','Z'][i]}"
+            )
+
+        plt.pause(0.1)
+
+        fig_pos.tight_layout(pad=2.0)
+        fig_vel.tight_layout(pad=2.0)
+        fig_acc.tight_layout(pad=2.0)
+        fig_zmp.tight_layout(pad=2.0)
+        
+        # draw on windows
+        fig_pos.canvas.draw()
+        fig_pos.canvas.flush_events()
+
+        fig_vel.canvas.draw()
+        fig_vel.canvas.flush_events()
+
+        fig_acc.canvas.draw()
+        fig_acc.canvas.flush_events()
+
+        fig_zmp.canvas.draw()
+        fig_zmp.canvas.flush_events()
+
+        # get directory of current module
+        bullet_description = get_package_share_directory("bullet_sims")
+        print(bullet_description)
+
+        # store results
+        fig_pos.savefig(os.path.join(bullet_description, "com_position_plot.png"), dpi=300)
+        fig_vel.savefig(os.path.join(bullet_description, "com_velocity_plot.png"), dpi=300)
+        fig_acc.savefig(os.path.join(bullet_description, "com_acceleration_plot.png"), dpi=300)
+        fig_zmp.savefig(os.path.join(bullet_description, "zmp_plot.png"), dpi=300)
+
+
 
 def visualize_footstep_path(simulator, footstep_plan, current_foot_positions):
     """
@@ -136,7 +319,6 @@ def visualize_footstep_path(simulator, footstep_plan, current_foot_positions):
     except Exception as e:
         print(f"Visualization error: {e}")
         return []
-    
     
 def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase, step_elapsed):
     """
@@ -314,6 +496,9 @@ def main():
             simulator.step()
             robot.update()
         robot.enableTorqueControl()
+
+        # initialize visualization
+        visual_class = Visualization(tsid_wrapper, robot)
         
         # State machine
         current_state = "STANDING"
@@ -488,6 +673,12 @@ def main():
             ###################################################################
             simulator.step()
             robot.update()
+
+            if current_state == "WALKING":
+
+                # store CoM and ZMP data
+                visual_class.getCOMStates(t)
+                visual_class.getZMPStates()
             
             # TSID control
             q_current = np.ascontiguousarray(robot.q(), dtype=np.float64)
@@ -539,6 +730,9 @@ def main():
         print("Following pre-planned path precisely")
         print("Real-time progress feedback")
         
+        # visualize results
+        visual_class.plot_all()
+
         if 'simulator' in locals():
             simulator.disconnect()
         rclpy.shutdown()

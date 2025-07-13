@@ -5,9 +5,12 @@ import os
 
 def generate_launch_description():
     
-    urdf_file = "/home/devel/ros_ws_t5/src/talos_description/robots/talos_reduced_no_hands.urdf"
+    urdf_path = os.path.join(
+    get_package_share_directory("talos_description"),
+    "robots/talos_reduced_no_hands.urdf"
+    )
     
-    with open(urdf_file, 'r') as infp:
+    with open(urdf_path, 'r') as infp:
         robot_description_content = infp.read()
 
     your_package_path = get_package_share_directory('ros_visuals')

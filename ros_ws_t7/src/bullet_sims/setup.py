@@ -22,12 +22,12 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'foot_trajectory = bullet_sims.bullet_sims.foot_trajectory:main',
-            'footstep_planner = bullet_sims.bullet_sims.footstep_planner:main',
-            'talos = bullet_sims.bullet_sims.talos:main',
-            'test = bullet_sims.bullet_sims.test:main',
-            'walking = bullet_sims.bullet_sims.walking:main',
-            'lip_mpc = bullet_sims.bullet_sims.lip_mpc:main',
+            'foot_trajectory = bullet_sims.foot_trajectory:main',
+            'footstep_planner = bullet_sims.footstep_planner:main',
+            'talos = bullet_sims.talos:main',
+            'test = bullet_sims.test:main',
+            'walking = bullet_sims.walking:main',
+            'lip_mpc = bullet_sims.lip_mpc:main',
             
         ],
     },
