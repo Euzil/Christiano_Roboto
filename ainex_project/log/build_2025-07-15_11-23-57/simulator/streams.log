@@ -1,0 +1,19 @@
+[0.400s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/src/simulator': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/simulator build --build-base /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build install --record /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/install.log --single-version-externally-managed install_data
+[0.524s] running egg_info
+[0.532s] writing ../../build/simulator/simulator.egg-info/PKG-INFO
+[0.532s] writing dependency_links to ../../build/simulator/simulator.egg-info/dependency_links.txt
+[0.532s] writing requirements to ../../build/simulator/simulator.egg-info/requires.txt
+[0.533s] writing top-level names to ../../build/simulator/simulator.egg-info/top_level.txt
+[0.849s] reading manifest file '../../build/simulator/simulator.egg-info/SOURCES.txt'
+[0.850s] writing manifest file '../../build/simulator/simulator.egg-info/SOURCES.txt'
+[0.850s] running build
+[0.850s] running build_py
+[0.850s] running install
+[0.853s] running install_lib
+[0.862s] running install_data
+[0.862s] running install_egg_info
+[0.870s] removing '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info' (and everything under it)
+[0.870s] Copying ../../build/simulator/simulator.egg-info to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info
+[0.871s] running install_scripts
+[0.929s] writing list of installed files to '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/install.log'
+[0.943s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/src/simulator' returned '0': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/simulator build --build-base /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build install --record /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/install.log --single-version-externally-managed install_data

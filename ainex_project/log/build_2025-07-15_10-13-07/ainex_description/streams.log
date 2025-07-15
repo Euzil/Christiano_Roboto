@@ -1,0 +1,77 @@
+[0.112s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/opt/ros/rolling /usr/bin/cmake /workspaces/workspaces/Christiano_Roboto/ainex_project/src/ainex_description -DCMAKE_INSTALL_PREFIX=/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description
+[0.150s] -- The C compiler identification is GNU 13.3.0
+[0.182s] -- The CXX compiler identification is GNU 13.3.0
+[0.200s] -- Detecting C compiler ABI info
+[0.263s] -- Detecting C compiler ABI info - done
+[0.267s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.268s] -- Detecting C compile features
+[0.268s] -- Detecting C compile features - done
+[0.275s] -- Detecting CXX compiler ABI info
+[0.351s] -- Detecting CXX compiler ABI info - done
+[0.353s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.353s] -- Detecting CXX compile features
+[0.353s] -- Detecting CXX compile features - done
+[0.357s] -- Found ament_cmake: 2.7.2 (/opt/ros/rolling/share/ament_cmake/cmake)
+[0.480s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.570s] -- Found urdf: 2.12.2 (/opt/ros/rolling/share/urdf/cmake)
+[0.584s] -- Found xacro: 2.0.13 (/opt/ros/rolling/share/xacro/cmake)
+[0.587s] -- Found ament_lint_auto: 0.19.1 (/opt/ros/rolling/share/ament_lint_auto/cmake)
+[0.656s] -- Added test 'lint_cmake' to check CMake code style
+[0.657s] -- Added test 'xmllint' to check XML markup files
+[0.658s] -- Configuring done (0.5s)
+[0.660s] -- Generating done (0.0s)
+[0.661s] -- Build files have been written to: /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description
+[0.665s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/opt/ros/rolling /usr/bin/cmake /workspaces/workspaces/Christiano_Roboto/ainex_project/src/ainex_description -DCMAKE_INSTALL_PREFIX=/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description
+[0.665s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/opt/ros/rolling /usr/bin/cmake --build /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description -- -j24 -l24
+[0.692s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/opt/ros/rolling /usr/bin/cmake --build /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description -- -j24 -l24
+[0.699s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/opt/ros/rolling /usr/bin/cmake --install /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description
+[0.707s] -- Install configuration: ""
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_el_pitch_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/body_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_hip_pitch_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_ank_roll_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_hip_yaw_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_el_yaw_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/head_tilt_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_hip_pitch_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_ank_roll_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/head_pan_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_hip_yaw_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_ank_pitch_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_ank_pitch_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_sho_pitch_link.STL
+[0.707s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_el_pitch_link.STL
+[0.708s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_knee_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_hip_roll_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_sho_pitch_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_sho_roll_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_el_yaw_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_hip_roll_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/l_gripper_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_gripper_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_sho_roll_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/meshes/r_knee_link.STL
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots/ainex.urdf
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots/materials.xacro
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots/ainex.urdf.xacro
+[0.709s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots/ainex.xacro
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots/gazebo.xacro
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/robots/transmissions.xacro
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ament_index/resource_index/package_run_dependencies/ainex_description
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ament_index/resource_index/parent_prefix_path/ainex_description
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/environment/ament_prefix_path.sh
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/environment/ament_prefix_path.dsv
+[0.710s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/environment/path.sh
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/environment/path.dsv
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/local_setup.bash
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/local_setup.sh
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/local_setup.zsh
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/local_setup.dsv
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/package.dsv
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ament_index/resource_index/packages/ainex_description
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/cmake/ainex_descriptionConfig.cmake
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/cmake/ainex_descriptionConfig-version.cmake
+[0.711s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_description/share/ainex_description/package.xml
+[0.712s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/opt/ros/rolling /usr/bin/cmake --install /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description

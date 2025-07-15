@@ -1,0 +1,53 @@
+[0.389s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/src/simulator': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/simulator build --build-base /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build install --record /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/install.log --single-version-externally-managed install_data
+[0.515s] running egg_info
+[0.515s] creating ../../build/simulator/simulator.egg-info
+[0.523s] writing ../../build/simulator/simulator.egg-info/PKG-INFO
+[0.523s] writing dependency_links to ../../build/simulator/simulator.egg-info/dependency_links.txt
+[0.523s] writing requirements to ../../build/simulator/simulator.egg-info/requires.txt
+[0.524s] writing top-level names to ../../build/simulator/simulator.egg-info/top_level.txt
+[0.524s] writing manifest file '../../build/simulator/simulator.egg-info/SOURCES.txt'
+[0.845s] reading manifest file '../../build/simulator/simulator.egg-info/SOURCES.txt'
+[0.845s] writing manifest file '../../build/simulator/simulator.egg-info/SOURCES.txt'
+[0.845s] running build
+[0.845s] running build_py
+[0.845s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build
+[0.845s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib
+[0.845s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.845s] copying simulator/pybullet_wrapper.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.845s] copying simulator/robot_old.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.845s] copying simulator/objects.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.845s] copying simulator/utilities.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.846s] copying simulator/__init__.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.846s] copying simulator/body.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.846s] copying simulator/robot.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.846s] copying simulator/pybullet_wrapper_old.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator
+[0.846s] running install
+[0.849s] running install_lib
+[0.858s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/pybullet_wrapper.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/robot_old.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/objects.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/utilities.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/__init__.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/body.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/robot.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.858s] copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build/lib/simulator/pybullet_wrapper_old.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator
+[0.859s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/pybullet_wrapper.py to pybullet_wrapper.cpython-312.pyc
+[0.862s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/robot_old.py to robot_old.cpython-312.pyc
+[0.863s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/objects.py to objects.cpython-312.pyc
+[0.864s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/utilities.py to utilities.cpython-312.pyc
+[0.864s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/__init__.py to __init__.cpython-312.pyc
+[0.864s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/body.py to body.cpython-312.pyc
+[0.866s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/robot.py to robot.cpython-312.pyc
+[0.867s] byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator/pybullet_wrapper_old.py to pybullet_wrapper_old.cpython-312.pyc
+[0.870s] running install_data
+[0.870s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/ament_index
+[0.870s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/ament_index/resource_index
+[0.870s] creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/ament_index/resource_index/packages
+[0.870s] copying resource/simulator -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/ament_index/resource_index/packages
+[0.870s] copying package.xml -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/simulator
+[0.870s] running install_egg_info
+[0.879s] Copying ../../build/simulator/simulator.egg-info to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator-0.0.0-py3.12.egg-info
+[0.879s] running install_scripts
+[0.939s] writing list of installed files to '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/install.log'
+[0.953s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/src/simulator' returned '0': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/simulator build --build-base /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build install --record /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/install.log --single-version-externally-managed install_data
