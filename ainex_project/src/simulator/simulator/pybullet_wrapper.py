@@ -85,6 +85,12 @@ class PybulletWrapper:
                            COV_ENABLE_DEPTH_BUFFER_PREVIEW=False,
                            COV_ENABLE_SEGMENTATION_MARK_PREVIEW=False)
 
+        self.robot_id = None  # Initialize robot_id as None
+
+    def set_robot_id(self, robot_id):
+        """Set the robot ID."""
+        self.robot_id = robot_id
+
     def setRealTime(self):
         '''
         set into real time mode:

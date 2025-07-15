@@ -1,0 +1,16 @@
+[0.385s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build --no-deps symlink_data --force
+[0.554s] running develop
+[0.641s] running egg_info
+[0.649s] writing simulator.egg-info/PKG-INFO
+[0.649s] writing dependency_links to simulator.egg-info/dependency_links.txt
+[0.649s] writing requirements to simulator.egg-info/requires.txt
+[0.649s] writing top-level names to simulator.egg-info/top_level.txt
+[0.964s] writing manifest file 'simulator.egg-info/SOURCES.txt'
+[0.974s] running build_ext
+[0.975s] Creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator.egg-link (link to .)
+[0.976s] 
+[0.976s] Installed /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator
+[0.976s] running symlink_data
+[0.976s] symbolically linking /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/resource/simulator -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/ament_index/resource_index/packages
+[0.976s] symbolically linking /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/package.xml -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/share/simulator
+[0.993s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator' returned '0': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build --no-deps symlink_data --force

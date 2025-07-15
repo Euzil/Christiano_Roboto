@@ -1,0 +1,31 @@
+running egg_info
+writing ../../build/whole_body_control/whole_body_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/whole_body_control/whole_body_control.egg-info/dependency_links.txt
+writing entry points to ../../build/whole_body_control/whole_body_control.egg-info/entry_points.txt
+writing requirements to ../../build/whole_body_control/whole_body_control.egg-info/requires.txt
+writing top-level names to ../../build/whole_body_control/whole_body_control.egg-info/top_level.txt
+writing manifest file '../../build/whole_body_control/whole_body_control.egg-info/SOURCES.txt'
+running build
+running build_py
+copying whole_body_control/t4_standing.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/build/lib/whole_body_control
+copying whole_body_control/config.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/build/lib/whole_body_control
+copying whole_body_control/simple_standing_controller.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/build/lib/whole_body_control
+running install
+running install_lib
+copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/build/lib/whole_body_control/t4_standing.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control
+copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/build/lib/whole_body_control/config.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control
+copying /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/build/lib/whole_body_control/simple_standing_controller.py -> /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control
+byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control/t4_standing.py to t4_standing.cpython-312.pyc
+byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control/config.py to config.cpython-312.pyc
+byte-compiling /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control/simple_standing_controller.py to simple_standing_controller.cpython-312.pyc
+running install_data
+running install_egg_info
+removing '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/whole_body_control/whole_body_control.egg-info to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole_body_control-0.0.0-py3.12.egg-info
+running install_scripts
+Installing 02_one_leg_stand script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing 03_squating script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing t4_standing script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing t51 script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing t52 script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+writing list of installed files to '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control/install.log'
