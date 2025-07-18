@@ -750,7 +750,7 @@
     </collision>
   </link>
   <joint name="r_sho_roll" type="revolute">
-    <origin rpy="0 0 0" xyz="0.020003499818653 -0.021505961295104 0"/>
+    <origin rpy="1.5708 0 0" xyz="0.020003499818653 -0.021505961295104 0"/>
     <parent link="r_sho_pitch_link"/>
     <child link="r_sho_roll_link"/>
     <axis xyz="1 0 0"/>
@@ -890,7 +890,7 @@
     </collision>
   </link>
   <joint name="l_sho_roll" type="revolute">
-    <origin rpy="0 0 0" xyz="0.020003 0.021507 0"/>
+    <origin rpy="-1.5708 0 0" xyz="0.020003 0.021507 0"/>
     <parent link="l_sho_pitch_link"/>
     <child link="l_sho_roll_link"/>
     <axis xyz="1 0 0"/>
