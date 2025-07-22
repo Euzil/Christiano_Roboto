@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service" FILES "/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/servo_service/environment")

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "servo_service__py",
+		"source" : "/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/servo_service__py"
+	}
+}

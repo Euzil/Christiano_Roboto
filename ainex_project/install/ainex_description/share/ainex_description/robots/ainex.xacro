@@ -1,5 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<robot name="ainex" xmlns:xacro="http://ros.org/wiki/xacro">
-    <xacro:include filename="$(find ainex_description)/urdf/ainex.urdf.xacro"/>
-    <xacro:include filename="$(find ainex_description)/urdf/gazebo.xacro" />
-</robot>
+/workspaces/workspaces/Christiano_Roboto/ainex_project/src/ainex_description/robots/ainex.xacro

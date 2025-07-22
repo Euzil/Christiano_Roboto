@@ -1,0 +1,1 @@
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/ament_cmake_environment_hooks/pythonpath.sh
