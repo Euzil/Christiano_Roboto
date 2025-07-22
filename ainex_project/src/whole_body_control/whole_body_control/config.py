@@ -22,18 +22,20 @@ na = 24                                         # number of actuated joints for 
 # homing pose for Ainex robot
 q_actuated_home = np.zeros(na)
 # Ainex joint configuration: left leg (6) + right leg (6) + left arm (6) + right arm (6) = 24 joints
-q_actuated_home[:6] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])    # left leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
-q_actuated_home[6:12] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])  # right leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
-q_actuated_home[12:18] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])   # left arm (sho_pitch, sho_roll, el_pitch, el_yaw, gripper)
-q_actuated_home[18:24] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])   # right arm (sho_pitch, sho_roll, el_pitch, el_yaw, gripper)
+q_actuated_home[:2] = np.array([0.0, 0.0])                              # head (head pan, head tilt)
+q_actuated_home[2:8] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])         # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+q_actuated_home[8:13] = np.array([0.0, 0.0, 0.0, 0.0, 0.0])             # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+q_actuated_home[13:19] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])       # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+q_actuated_home[19:24] = np.array([0.0, 0.0, 0.0, 0.0, 0.0])            # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
 q_home = np.hstack([np.array([0, 0, 0.23, 0, 0, 0, 1]), q_actuated_home])  # Lower initial height for Ainex
 
 '''
 Ainex joint mapping:
-0, 1, 2, 3, 4, 5,       # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, l_knee, l_ank_pitch, l_ank_roll)
-6, 7, 8, 9, 10, 11,     # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
-12, 13, 14, 15, 16, 17, # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
-18, 19, 20, 21, 22, 23, # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
+0, 1,                    # head (head pan, head tilt)
+2, 3, 4, 5, 6, 7,        # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+8, 9, 10, 11, 12,        # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+13, 14, 15, 16, 17, 18,  # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+19, 20, 21, 22, 23,      # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper) 
 '''
 
 ################################################################################
