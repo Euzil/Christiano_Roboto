@@ -87,7 +87,7 @@ import rclpy
 from rclpy.node import Node
 import math
 import time
-
+import numpy as np 
 from servo_service.msg import *
 from servo_service.srv import *
 
@@ -224,6 +224,9 @@ class JointController:
         :param duration: duration for the movement (float, in seconds)
         :param unit: unit of the provided positions ('rad' or 'deg')
         """
+        #if not isinstance(positions, (list, np.ndarray)):
+         #   raise TypeError(f"Expected positions to be iterable, but got {type(positions)}")
+
         if unit == 'deg':
             # Convert degrees to radians
             positions = list(map(math.radians, positions))

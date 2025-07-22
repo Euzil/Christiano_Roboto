@@ -18,6 +18,8 @@ import tf2_ros
 from sensor_msgs.msg import JointState
 from geometry_msgs.msg import TransformStamped
 
+# Ainex Hardware 
+from ainex_motion.joint_controller import JointController
 ################################################################################
 # settings
 ################################################################################
@@ -34,18 +36,18 @@ class Ainex():
 
         self.node = node
 
+        self.hardware_controller = JointController(self.node)
         # add publisher
         self.pub_joint = self.node.create_publisher(
             JointState, "/joint_states", 10)
 
         self.joint_msg = JointState()
-        self.joint_msg.name = ['r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 
-                               'r_ank_pitch', 'r_ank_roll', 'l_hip_yaw', 'l_hip_roll', 
-                               'l_hip_pitch', 'l_knee', 'l_ank_pitch', 'l_ank_roll', 
-                               'head_pan', 'head_tilt', 'r_sho_pitch', 'r_sho_roll', 
-                               'r_el_pitch', 'r_el_yaw', 'r_gripper', 'l_sho_pitch', 
-                               'l_sho_roll', 'l_el_pitch', 'l_el_yaw', 'l_gripper']
-
+        self.joint_msg.name = ['head_pan', 'head_tilt',
+                               'l_hip_yaw', 'l_hip_roll', 'l_hip_pitch', 'l_knee', 'l_ank_pitch', 'l_ank_roll',
+                               'l_sho_pitch', 'l_sho_roll', 'l_el_pitch', 'l_el_yaw', 'l_gripper',
+                               'r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 'r_ank_pitch', 'r_ank_roll',
+                               'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
+      
         # add tf broadcaster
         self.br = tf2_ros.TransformBroadcaster(self.node)
 
@@ -67,6 +69,7 @@ class Ainex():
     def get_v(self):
         return self.v
 
+    
     def publish(self, T_b_w):
         # publish jointstate
         self.joint_msg.header.stamp = self.node.get_clock().now().to_msg()
@@ -105,6 +108,15 @@ class T4StandingRobotSimNode(Node):
     def __init__(self):
         super().__init__('tutorial_4_standing_node')
 
+        self.hardware_controller = JointController(self)
+        # Initialisiere die Joint-Namen
+        self.joint_names = ['head_pan', 'head_tilt',
+                            'l_hip_yaw', 'l_hip_roll', 'l_hip_pitch', 'l_knee', 'l_ank_pitch', 'l_ank_roll',
+                            'l_sho_pitch', 'l_sho_roll', 'l_el_pitch', 'l_el_yaw', 'l_gripper',
+                            'r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 'r_ank_pitch', 'r_ank_roll',
+                            'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
+
+        
         z_init = 0.23
 
         # init TSIDWrapper
@@ -127,6 +139,7 @@ class T4StandingRobotSimNode(Node):
         # Set a timer to run periodically 
         self.timer_frequenz = 30 
         self.timer = self.create_timer(1/self.timer_frequenz, self.timer_callback)
+        self.hardware_controller.setPosture('stand', 0.8)
 
     def timer_callback(self):
         
@@ -159,7 +172,28 @@ class T4StandingRobotSimNode(Node):
         self.q_tsid, self.v_tsid = self.tsid_wrapper.integrate_dv(self.q_tsid, self.v_tsid, dv_sol, 1/self.timer_frequenz)      
 
         # TODO:command to the hardware robot - should have reached q_tsid for next timer call
+        
+        # Ensure q_tsid is a list or array
+        #if not isinstance(self.q_tsid, (list, np.ndarray)):
+        if len(self.q_tsid) < 7:
+            self.get_logger().error("q_tsid does not have enough elements for slicing.")
+            return
+        
+        #self.q_tsid = self.q_tsid.tolist()  # Convert to list if it's a NumPy array
+        position = float(self.q_tsid[7])  # Convert to float if needed
+        self.get_logger().info(f"Set positions for joints {self.joint_names[:1]} to {position} radians.")
+        self.get_logger().info(f"q_tsid type: {type(self.q_tsid)}, value: {self.q_tsid}")
+        joint_names = ['l_sho_roll', 'l_sho_pitch']
 
+
+
+        joint_positions = self.q_tsid[7:].tolist()
+        
+        # Command to the hardware robot
+        self.hardware_controller.setJointPositions(self.joint_names, joint_positions, 0.2, unit='rad')
+        
+        self.get_logger().info(f"Set positions for joints {self.joint_names} to {joint_positions}")
+      
         # get current BASE Pose
         T_b_w, _ = self.tsid_wrapper.baseState()
 

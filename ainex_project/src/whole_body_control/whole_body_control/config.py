@@ -30,10 +30,11 @@ q_home = np.hstack([np.array([0, 0, 0.23, 0, 0, 0, 1]), q_actuated_home])  # Low
 
 '''
 Ainex joint mapping:
-0, 1, 2, 3, 4, 5,       # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, l_knee, l_ank_pitch, l_ank_roll)
-6, 7, 8, 9, 10, 11,     # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
-12, 13, 14, 15, 16, 17, # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
-18, 19, 20, 21, 22, 23, # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
+0, 1,                    # head (head pan, head tilt)
+2, 3, 4, 5, 6, 7,        # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+8, 9, 10, 11, 12,        # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+13, 14, 15, 16, 17, 18,  # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+19, 20, 21, 22, 23,      # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper) 
 '''
 
 ################################################################################

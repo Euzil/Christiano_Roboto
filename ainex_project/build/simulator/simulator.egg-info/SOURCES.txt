@@ -7,6 +7,9 @@ setup.py
 prefix_override/sitecustomize.py
 prefix_override/__pycache__/sitecustomize.cpython-312.pyc
 resource/simulator
+share/simulator/hook/pythonpath_develop.dsv
+share/simulator/hook/pythonpath_develop.ps1
+share/simulator/hook/pythonpath_develop.sh
 simulator/__init__.py
 simulator/body.py
 simulator/objects.py
@@ -21,3 +24,10 @@ simulator.egg-info/dependency_links.txt
 simulator.egg-info/requires.txt
 simulator.egg-info/top_level.txt
 simulator.egg-info/zip-safe
+simulator/__pycache__/__init__.cpython-312.pyc
+simulator/__pycache__/body.cpython-312.pyc
+simulator/__pycache__/config.cpython-312.pyc
+simulator/__pycache__/pybullet_wrapper.cpython-312.pyc
+simulator/__pycache__/robot.cpython-312.pyc
+simulator/__pycache__/tsid_wrapper.cpython-312.pyc
+simulator/__pycache__/utilities.cpython-312.pyc
