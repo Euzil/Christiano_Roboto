@@ -10,11 +10,6 @@ from ament_index_python.packages import get_package_share_directory
 # robot
 ################################################################################
 
-# Talos robot configuration (commented out)
-#talos_description = get_package_share_directory('talos_description')
-#urdf = os.path.join(talos_description, "robots/talos_reduced_no_hands.urdf")
-#path = os.path.join(talos_description, "meshes/../..")
-
 # Ainex robot configuration
 ainex_description = get_package_share_directory('ainex_description')
 urdf = os.path.join(ainex_description, "robots/ainex.urdf")
@@ -27,17 +22,11 @@ na = 24                                         # number of actuated joints for 
 # homing pose for Ainex robot
 q_actuated_home = np.zeros(na)
 # Ainex joint configuration: left leg (6) + right leg (6) + left arm (6) + right arm (6) = 24 joints
-q_actuated_home[:6] = np.array([0.0, 0.0, -0.2, 0.4, -0.2, 0.0])    # left leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
-q_actuated_home[6:12] = np.array([0.0, 0.0, -0.2, 0.4, -0.2, 0.0])  # right leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
+q_actuated_home[:6] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])    # left leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
+q_actuated_home[6:12] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])  # right leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
 q_actuated_home[12:18] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])   # left arm (sho_pitch, sho_roll, el_pitch, el_yaw, gripper)
 q_actuated_home[18:24] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])   # right arm (sho_pitch, sho_roll, el_pitch, el_yaw, gripper)
-q_home = np.hstack([np.array([0, 0, 0.3, 0, 0, 0, 1]), q_actuated_home])  # Lower initial height for Ainex
-
-# Talos homing pose (commented out)
-#q_actuated_home = np.zeros(30)  # Talos had 30 actuated joints
-#q_actuated_home[:6] = np.array([0.0004217227847487237, -0.00457389353360238, -0.44288825380502317, 0.9014217614029372, -0.4586176441428318, 0.00413219379047014])
-#q_actuated_home[6:12] = np.array([-0.0004612402198835852, -0.0031162522884748967, -0.4426315354712109, 0.9014369887125069, -0.4588832011407824, 0.003546732694320376])
-#q_home = np.hstack([np.array([0, 0, 0.9, 0, 0, 0, 1]), q_actuated_home])  # Talos was taller (0.9m)
+q_home = np.hstack([np.array([0, 0, 0.23, 0, 0, 0, 1]), q_actuated_home])  # Lower initial height for Ainex
 
 '''
 Ainex joint mapping:
@@ -47,23 +36,13 @@ Ainex joint mapping:
 18, 19, 20, 21, 22, 23, # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
 '''
 
-'''
-Talos joint mapping (commented out):
-0, 1, 2, 3, 4, 5,       # left leg
-6, 7, 8, 9, 10, 11,     # right leg
-12, 13,                 # torso
-14, 15, 16, 17, 18, 19, 20      # left arm
-21, 22, 23, 24, 25, 26, 27      # right arm
-28, 29                  # head
-'''
-
 ################################################################################
 # foot print
 ################################################################################
 
 foot_scaling = 1.
-lfxp = foot_scaling*0.12                # foot length in positive x direction
-lfxn = foot_scaling*0.08                # foot length in negative x direction
+lfxp = foot_scaling*0.145                # foot length in positive x direction
+lfxn = foot_scaling*0.07                # foot length in negative x direction
 lfyp = foot_scaling*0.065               # foot length in positive y direction
 lfyn = foot_scaling*0.065               # foot length in negative y direction
 
@@ -84,14 +63,6 @@ rh_frame_name = "r_gripper_link"        # right hand frame name
 lh_frame_name = "l_gripper_link"        # left hand frame name
 torso_frame_name = "body_link"          # torso frame name
 base_frame_name = "base_link"           # base link
-
-# Talos robot frame names (commented out)
-#rf_frame_name = "leg_right_sole_fix_joint"  # right foot frame name
-#lf_frame_name = "leg_left_sole_fix_joint"   # left foot frame name
-#rh_frame_name = "contact_right_link"        # right arm frame name
-#lh_frame_name = "contact_left_link"         # left arm frame name
-#torso_frame_name = "torso_2_link"           # keep the imu horizontal
-#base_frame_name = "base_link"               # base link
 
 ################################################################################
 # TSID
@@ -125,16 +96,6 @@ kp_posture = np.array([
         10., 10., 10., 10., 10., 10.,           # left arm
         10., 10., 10., 10., 10., 10.,           # right arm
 ])
-
-# Talos proportional gain of joint posture task (commented out)
-#kp_posture = np.array([
-#        10., 10., 10., 10., 10., 10.,           # left leg  #low gain on axis along y and knee
-#        10., 10., 10., 10., 10., 10.,           # right leg #low gain on axis along y and knee
-#        5000., 5000.,                           # torso really high to make them stiff
-#        10., 10., 10., 10., 10., 10., 10.,      # right arm make the x direction soft
-#        10., 10., 10., 10., 10., 10., 10.,      # left arm make the x direction soft
-#        1000., 1000.                            # head
-#])
 
 masks_posture = np.ones(na)                     # mask out joint (here none)
 
