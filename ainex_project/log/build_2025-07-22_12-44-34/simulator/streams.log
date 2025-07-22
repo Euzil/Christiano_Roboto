@@ -1,0 +1,14 @@
+[1.514s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build --no-deps symlink_data
+[2.006s] running develop
+[2.249s] running egg_info
+[2.272s] writing simulator.egg-info/PKG-INFO
+[2.273s] writing dependency_links to simulator.egg-info/dependency_links.txt
+[2.273s] writing requirements to simulator.egg-info/requires.txt
+[2.273s] writing top-level names to simulator.egg-info/top_level.txt
+[3.052s] writing manifest file 'simulator.egg-info/SOURCES.txt'
+[3.077s] running build_ext
+[3.077s] Creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages/simulator.egg-link (link to .)
+[3.078s] 
+[3.078s] Installed /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator
+[3.078s] running symlink_data
+[3.115s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator' returned '0': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/workspaces/Christiano_Roboto/ainex_project/build/simulator/build --no-deps symlink_data

@@ -50,7 +50,7 @@ def generate_launch_description():
     
     t4_node = Node(
         package='whole_body_control',
-        executable='t4_standing',
+        executable='without_pybullet_t4',
         name='t4_standing_unique',
         output='screen',
         parameters=[{'use_sim_time': False}],
