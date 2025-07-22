@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'joint_controller = ainex_motion.joint_controller:main',
-            #TODO: add the executables here
+            'joint_state_publisher = ainex_motion.joint_visualization_node:main',
+            'mock_servo_service = ainex_motion.mock_servo_service:main',
         ],
     },
 )

@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing whole_body_control.egg-info/PKG-INFO
+writing dependency_links to whole_body_control.egg-info/dependency_links.txt
+writing entry points to whole_body_control.egg-info/entry_points.txt
+writing requirements to whole_body_control.egg-info/requires.txt
+writing top-level names to whole_body_control.egg-info/top_level.txt
+writing manifest file 'whole_body_control.egg-info/SOURCES.txt'
+running build_ext
+Creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/python3.12/site-packages/whole-body-control.egg-link (link to .)
+Installing 02_one_leg_stand script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing 03_squating script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing t4_standing script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing t51 script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+Installing t52 script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control/lib/whole_body_control
+
+Installed /workspaces/workspaces/Christiano_Roboto/ainex_project/build/whole_body_control
+running symlink_data
