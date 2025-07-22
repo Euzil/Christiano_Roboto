@@ -111,7 +111,7 @@ class T4StandingRobotSimNode(Node):
         self.tsid_wrapper = TSIDWrapper(conf)
 
         # init Simulator
-        q_init = np.hstack([np.array([0, 0, z_init, 0, 0, 0, 1]), np.zeros(conf.na)])
+        q_init = conf.q_home
 
         # init ROBOT - change class name
         self.robot = Ainex(self, q_init)
@@ -130,23 +130,23 @@ class T4StandingRobotSimNode(Node):
 
     def timer_callback(self):
         
-        # change KP and Kd of right hand 
-        self.tsid_wrapper.rightHandTask.setKp(100*np.array([1,1,1,0,0,0]))
-        self.tsid_wrapper.rightHandTask.setKd(2.0*np.sqrt(100)*np.array([1,1,1,0,0,0]))
+        # # change KP and Kd of right hand 
+        # self.tsid_wrapper.rightHandTask.setKp(100*np.array([1,1,1,0,0,0]))
+        # self.tsid_wrapper.rightHandTask.setKd(2.0*np.sqrt(100)*np.array([1,1,1,0,0,0]))
 
-        # activate hand motion
-        self.tsid_wrapper.add_motion_RH()
+        # # activate hand motion
+        # self.tsid_wrapper.add_motion_RH()
 
-        # get current right hand position
-        rh_pos_current = self.tsid_wrapper.get_pose_RH().translation
+        # # get current right hand position
+        # rh_pos_current = self.tsid_wrapper.get_pose_RH().translation
 
-        # define the desired right hand position such that it is at the starting position of the circle
-        rh_pos_current[0] = 0.4
-        rh_pos_current[1] = 0
-        rh_pos_current[2] = 1.1
+        # # define the desired right hand position such that it is at the starting position of the circle
+        # rh_pos_current[0] = 0.1
+        # rh_pos_current[1] = 0.0
+        # rh_pos_current[2] = 0.25
 
-        # update reference position
-        self.tsid_wrapper.set_RH_pos_ref(rh_pos_current, np.zeros((3,)), np.zeros((3,)))
+        # # update reference position
+        # self.tsid_wrapper.set_RH_pos_ref(rh_pos_current, np.zeros((3,)), np.zeros((3,)))
 
         # update robot simulator
         self.robot.update(self.q_tsid, self.v_tsid, self.tau) 
@@ -157,8 +157,6 @@ class T4StandingRobotSimNode(Node):
 
         # integrate dv_sol for position control
         self.q_tsid, self.v_tsid = self.tsid_wrapper.integrate_dv(self.q_tsid, self.v_tsid, dv_sol, 1/self.timer_frequenz)      
-
-        self.get_logger().info(str(self.q_tsid.shape))
 
         # TODO:command to the hardware robot - should have reached q_tsid for next timer call
 
