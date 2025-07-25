@@ -23,6 +23,7 @@ whole_body_control/t4_standing_without_pybullet.py
 whole_body_control/tsid_wrapper.py
 whole_body_control/vic
 whole_body_control/wakling_HW.py
+whole_body_control/walking copy_theresa.py
 whole_body_control/walking copy_youran.py
 whole_body_control/walking.py
 whole_body_control.egg-info/PKG-INFO
@@ -35,9 +36,11 @@ whole_body_control.egg-info/zip-safe
 whole_body_control/__pycache__/02_one_leg_stand.cpython-312.pyc
 whole_body_control/__pycache__/03_squating.cpython-312.pyc
 whole_body_control/__pycache__/__init__.cpython-312.pyc
+whole_body_control/__pycache__/ainex.cpython-312.pyc
 whole_body_control/__pycache__/config.cpython-312.pyc
 whole_body_control/__pycache__/t4_standing.cpython-312.pyc
 whole_body_control/__pycache__/t4_standing_without_pybullet.cpython-312.pyc
 whole_body_control/__pycache__/t51.cpython-312.pyc
 whole_body_control/__pycache__/t52.cpython-312.pyc
 whole_body_control/__pycache__/tsid_wrapper.cpython-312.pyc
+whole_body_control/__pycache__/walking.cpython-312.pyc
