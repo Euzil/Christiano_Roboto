@@ -145,7 +145,7 @@ class Visualization:
 # Method for executing steps
 ################################################################################
 
-def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase, step_elapsed, height):
+def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase, step_elapsed, height, phase_duration):
     """
     Execute a single gait step along the path (with landing detection and knee bend contact logic)
     """
@@ -155,7 +155,6 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
     foot_side, target_position = footstep_plan[step_index]
 
     # Phase timing settings
-    phase_duration = 1.5
     com_shift_phase = 1 * phase_duration
     lift_move_phase = 2 * phase_duration
     place_phase = 3 * phase_duration
@@ -349,13 +348,16 @@ def main():
         home_duration = 4.0
         standing_duration = 3.0
         planning_duration = 3.0
-        end_duration = 3.0
+        end_duration = 4.0
         
         # Step length settings
         first_step = 0.065  # and used for last step
         other_step = 0.13   # used for every step except first and last one
         num_steps = 10      # Even number: start with right foot
         height = 0.04       # max step height
+
+        # how long one step takes
+        phase_duration = 1.5
 
         print("\nStarting walking with path visualization...")
         
@@ -486,7 +488,7 @@ def main():
                     
                     # Execute step
                     step_complete = execute_step_along_path(
-                        tsid_wrapper, current_step_index, footstep_plan, step_phase, step_elapsed, height
+                        tsid_wrapper, current_step_index, footstep_plan, step_phase, step_elapsed, height, phase_duration
                     )
                     
                     # Check if step is complete
