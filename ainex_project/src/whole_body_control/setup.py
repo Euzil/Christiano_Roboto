@@ -1,4 +1,5 @@
 from setuptools import find_packages, setup
+import glob  # Add this import
 
 package_name = 'whole_body_control'
 
@@ -10,8 +11,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/launch.py']),  
-        ('share/' + package_name + '/launch', ['launch/sliders.launch.py']),
+        ('share/' + package_name + '/launch', glob.glob('launch/*.py')),  # Launch-Dateien hinzufügen
+        
     ],
     install_requires=[
         'setuptools',
