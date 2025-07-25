@@ -16,6 +16,7 @@ from whole_body_control.tsid_wrapper import TSIDWrapper
 from ament_index_python.packages import get_package_share_directory
 
 import matplotlib.pyplot as plt
+from ainex_motion.joint_controller import JointController
 
 
 ################################################################################
@@ -231,11 +232,11 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
                        else tsid_wrapper.get_placement_LF().translation[2]
             expected_z = target_position[2]
 
-            if abs(actual_z - expected_z) > 0.004:  # >0.4cm suspended
+            if abs(actual_z - expected_z) > 0.015:  # >0.4cm suspended
                 print(" Foot not contacting ground - lowering COM to help foot land...")
                 com_current = tsid_wrapper.comState().pos()
-                lowered_com = com_current.copy()
-                lowered_com[2] -= 0.01  # Bend knee and lower 2cm
+                #lowered_com = com_current.copy()
+                #lowered_com[2] -= 0.02  # Bend knee and lower 2cm
                 tsid_wrapper.setComRefState(lowered_com)
 
         # Phase 4: After successful landing, add contact -> COM transfer
@@ -255,14 +256,14 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
                         tsid_wrapper.add_contact_LF()
 
                     # Transfer COM to this foot
-                    com_current = tsid_wrapper.comState().pos()
+                    #com_current = tsid_wrapper.comState().pos()
                     p_com_new = np.array([target_position[0], target_position[1], com_current[2]])
                     tsid_wrapper.setComRefState(p_com_new)
                     
-                    com_current = tsid_wrapper.comState().pos()
-                    lowered_com = com_current.copy()
-                    lowered_com[2] += 0.01  # Restore height after bending knee
-                    tsid_wrapper.setComRefState(lowered_com)
+                    #com_current = tsid_wrapper.comState().pos()
+                    #lowered_com = com_current.copy()
+                    #lowered_com[2] += 0.0  # Restore height after bending knee
+                    #tsid_wrapper.setComRefState(lowered_com)
                     
                 else:
                     # Still not in contact, don't make transition, wait for next loop
@@ -285,10 +286,21 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
 # main walking controller managing everything
 ################################################################################
 
-def main():
+def main(args=None):
     rclpy.init()
     node = rclpy.create_node('walking_with_path_visualization')
     
+    joint_names = ['head_pan', 'head_tilt',
+                            'l_hip_yaw', 'l_hip_roll', 'l_hip_pitch', 'l_knee', 'l_ank_pitch', 'l_ank_roll',
+                            'l_sho_pitch', 'l_sho_roll', 'l_el_pitch', 'l_el_yaw', 'l_gripper',
+                            'r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 'r_ank_pitch', 'r_ank_roll',
+                            'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
+    hardware_controller = JointController(node)
+    
+    # Flag für Hardware-Controller Aktivierung
+    hardware_control_active = False
+    hardware_start_time = 4.0  # 2 Sekunden Verzögerung
+    hardware_controller.setPosture('stand', 2.5)
     try:
         print("=" * 70)
         print("WALKING WITH PATH VISUALIZATION IN PYBULLET")
@@ -351,10 +363,10 @@ def main():
         end_duration = 4.0
         
         # Step length settings
-        first_step = 0.065  # and used for last step
-        other_step = 0.13   # used for every step except first and last one
-        num_steps = 10      # Even number: start with right foot
-        height = 0.04       # max step height
+        first_step = 0.065/2  # and used for last step
+        other_step = 0.13/2   # used for every step except first and last one
+        num_steps = 5      # Even number: start with right foot
+        height = 0.03       # max step height
 
         # how long one step takes
         phase_duration = 1.5
@@ -500,6 +512,7 @@ def main():
                         
                         if current_step_index < len(footstep_plan):
                             print(f"\nStep {current_step_index} completed, moving to next step...")
+                            
                         else:
                             print(f"\nAll {len(footstep_plan)} steps completed!")
                             current_state = "END POSITION"
@@ -572,7 +585,28 @@ def main():
             q_tsid, v_tsid = tsid_wrapper.integrate_dv(q_tsid, v_tsid, acc_sol, 1/timer_frequency)
             
             # TODO:command to the hardware robot - should have reached q_tsid for next timer call
-
+            if len(q_tsid) < 7:
+                node.get_logger().error("q_tsid does not have enough elements for slicing.")
+                continue  # Use continue instead of return
+            
+            # Hardware control activation check
+            if not hardware_control_active and t >= hardware_start_time:
+                hardware_control_active = True
+                print(f"\n[{t:.1f}s] Hardware control activated - Starting joint position commands")
+            
+            # Only send joint commands after delay
+            if hardware_control_active:
+                # Convert numpy array slice to list for setJointPositions
+                joint_positions = q_tsid[7:].tolist()
+                
+                # Command to the hardware robot
+                hardware_controller.setJointPositions(joint_names, joint_positions, 0.03, unit='rad')
+            else:
+                # Optional: Log that hardware control is waiting
+                if int(t * 10) % 10 == 0:  # Log every 1 second
+                    remaining_time = hardware_start_time - t
+                    print(f"[{t:.1f}s] Hardware control starts in {remaining_time:.1f}s...")
+            
             # get current BASE Pose
             T_b_w, _ = tsid_wrapper.baseState()
             
@@ -615,7 +649,7 @@ def main():
         print("Real-time progress feedback")
         
         # visualize results
-        visual_class.plot_all()
+        # visual_class.plot_all()
 
         rclpy.shutdown()
         print("\nPath visualization walking ended successfully.")

@@ -116,6 +116,8 @@ class T4StandingRobotSimNode(Node):
                             'r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 'r_ank_pitch', 'r_ank_roll',
                             'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
 
+        # Flag für einmalige Pose-Setzung
+        self.initial_pose_set = False
         
         z_init = 0.23
 
@@ -139,60 +141,38 @@ class T4StandingRobotSimNode(Node):
         # Set a timer to run periodically 
         self.timer_frequenz = 30 
         self.timer = self.create_timer(1/self.timer_frequenz, self.timer_callback)
-        self.hardware_controller.setPosture('stand', 0.8)
 
     def timer_callback(self):
+        # Setze die Pose nur einmal am Anfang
+        if not self.initial_pose_set:
+            self.hardware_controller.setPosture('stand', 0.8)
+            self.initial_pose_set = True
+            self.get_logger().info("Initial pose 'stand' set once.")
         
-        # # change KP and Kd of right hand 
-        # self.tsid_wrapper.rightHandTask.setKp(100*np.array([1,1,1,0,0,0]))
-        # self.tsid_wrapper.rightHandTask.setKd(2.0*np.sqrt(100)*np.array([1,1,1,0,0,0]))
-
-        # # activate hand motion
-        # self.tsid_wrapper.add_motion_RH()
-
-        # # get current right hand position
-        # rh_pos_current = self.tsid_wrapper.get_pose_RH().translation
-
-        # # define the desired right hand position such that it is at the starting position of the circle
-        # rh_pos_current[0] = 0.1
-        # rh_pos_current[1] = 0.0
-        # rh_pos_current[2] = 0.25
-
-        # # update reference position
-        # self.tsid_wrapper.set_RH_pos_ref(rh_pos_current, np.zeros((3,)), np.zeros((3,)))
-
         # update robot simulator
         self.robot.update(self.q_tsid, self.v_tsid, self.tau) 
 
-        # TODO: update TSID controller
+        # update TSID controller
         tau_sol, dv_sol = self.tsid_wrapper.update(self.robot.get_q(), self.robot.get_v(), self.t)  
         self.tau = tau_sol
 
         # integrate dv_sol for position control
         self.q_tsid, self.v_tsid = self.tsid_wrapper.integrate_dv(self.q_tsid, self.v_tsid, dv_sol, 1/self.timer_frequenz)      
 
-        # TODO:command to the hardware robot - should have reached q_tsid for next timer call
-        
-        # Ensure q_tsid is a list or array
-        #if not isinstance(self.q_tsid, (list, np.ndarray)):
+        # Ensure q_tsid has enough elements
         if len(self.q_tsid) < 7:
             self.get_logger().error("q_tsid does not have enough elements for slicing.")
             return
         
-        #self.q_tsid = self.q_tsid.tolist()  # Convert to list if it's a NumPy array
-        position = float(self.q_tsid[7])  # Convert to float if needed
-        self.get_logger().info(f"Set positions for joints {self.joint_names[:1]} to {position} radians.")
-        self.get_logger().info(f"q_tsid type: {type(self.q_tsid)}, value: {self.q_tsid}")
-        joint_names = ['l_sho_roll', 'l_sho_pitch']
-
-
-
+        # Convert numpy array slice to list for setJointPositions
         joint_positions = self.q_tsid[7:].tolist()
         
         # Command to the hardware robot
         self.hardware_controller.setJointPositions(self.joint_names, joint_positions, 0.4, unit='rad')
         
-        self.get_logger().info(f"Set positions for joints {self.joint_names} to {joint_positions}")
+        # Optional: Log positions (reduce frequency to avoid spam)
+        if self.t % 1.0 < 0.033:  # Log approximately once per second
+            self.get_logger().info(f"Set positions for {len(joint_positions)} joints")
       
         # get current BASE Pose
         T_b_w, _ = self.tsid_wrapper.baseState()
