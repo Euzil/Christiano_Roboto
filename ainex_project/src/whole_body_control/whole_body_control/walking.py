@@ -365,7 +365,7 @@ def main(args=None):
         # Step length settings
         first_step = 0.065*0.5  # and used for last step
         other_step = 0.13*0.5   # used for every step except first and last one
-        num_steps = 10      # Even number: start with right foot
+        num_steps = 5      # Even number: start with right foot
         height = 0.02       # max step height
 
         # how long one step takes
@@ -639,7 +639,7 @@ def main(args=None):
                         swing_end_pos = tsid_wrapper._swing_end_pos
                         
                         # 前踢轨迹
-                        strike_forward_distance = 0.20  # 向前踢20cm
+                        strike_forward_distance = 0.32  # 向前踢20cm
                         
                         # 使用平滑的踢腿轨迹
                         target_pos = swing_end_pos.copy()
