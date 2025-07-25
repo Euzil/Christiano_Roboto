@@ -363,10 +363,10 @@ def main(args=None):
         end_duration = 4.0
         
         # Step length settings
-        first_step = 0.065/2  # and used for last step
-        other_step = 0.13/2   # used for every step except first and last one
-        num_steps = 5      # Even number: start with right foot
-        height = 0.03       # max step height
+        first_step = 0.065*0.5  # and used for last step
+        other_step = 0.13*0.5   # used for every step except first and last one
+        num_steps = 10      # Even number: start with right foot
+        height = 0.02       # max step height
 
         # how long one step takes
         phase_duration = 1.5
