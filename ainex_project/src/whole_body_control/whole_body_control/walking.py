@@ -560,60 +560,63 @@ def main(args=None):
                 if t - state_start_time == 0:
                     state_start_time = t
                     print(f"\n[{t:.1f}s] PHASE 6: KICKING")
-                    print("- Kicking ball")
+                    print("- Performing kicking motion")
                 
                 kicking_elapsed = t - state_start_time
                 
-                # Kicking parameters
-                prepare_duration = 2.0      # 准备阶段
-                swing_duration = 1.5        # 摆腿阶段
-                strike_duration = 0.8       # 击球阶段
-                recovery_duration = 2.0     # 恢复阶段
+                # Kicking motion parameters
+                prepare_duration = 1.5      # 准备阶段
+                swing_duration = 1.0        # 摆腿阶段
+                strike_duration = 0.6       # 击球阶段
+                recovery_duration = 1.5     # 恢复阶段
                 total_kick_duration = prepare_duration + swing_duration + strike_duration + recovery_duration
                 
                 try:
                     # Phase 6.1: Prepare for kick (重心转移到支撑脚)
                     if kicking_elapsed < prepare_duration:
                         if kicking_elapsed < 0.1:
-                            print(f"  Kick Phase 1: Preparing stance for right foot kick")
+                            print(f"  Preparing for kicking motion")
                         
                         # 重心转移到支撑脚（左脚）
                         lf_pos = tsid_wrapper.get_placement_LF().translation
                         com_current = tsid_wrapper.comState().pos()
                         
-                        # 重心稍微向支撑脚偏移，为踢腿做准备
+                        # 重心向支撑脚偏移
                         prepare_progress = kicking_elapsed / prepare_duration
-                        lateral_offset = 0.02 * prepare_progress  # 向左偏移2cm
                         
                         com_target = np.array([
                             lf_pos[0], 
-                            lf_pos[1] + lateral_offset,  # 向支撑脚方向偏移
+                            lf_pos[1],  # 重心移到支撑脚上方
                             com_current[2]  # 保持高度
                         ])
                         tsid_wrapper.setComRefState(com_target)
-                        
-                        if kicking_elapsed > prepare_duration - 0.1:
-                            print(f"  Preparation complete - COM shifted to support foot")
                     
-                    # Phase 6.2: Swing back (后摆准备)
+                    # Phase 6.2: Swing back (后摆)
                     elif kicking_elapsed < prepare_duration + swing_duration:
                         swing_elapsed = kicking_elapsed - prepare_duration
                         if swing_elapsed < 0.1:
-                            print(f"  Kick Phase 2: Swinging right foot back")
+                            print(f"  Swinging right foot back")
                             # 移除踢球脚的接触约束
                             if hasattr(tsid_wrapper, 'remove_contact_RF'):
                                 tsid_wrapper.remove_contact_RF()
                         
                         swing_progress = swing_elapsed / swing_duration
                         
-                        # 获取当前踢球脚位置
-                        rf_pos = tsid_wrapper.get_placement_RF().translation
+                        # 获取踢球脚初始位置
+                        if swing_elapsed < 0.1:
+                            # 记录初始位置用于后摆计算
+                            initial_rf_pos = tsid_wrapper.get_placement_RF().translation.copy()
+                        else:
+                            # 使用记录的初始位置
+                            if not hasattr(tsid_wrapper, '_initial_rf_pos'):
+                                tsid_wrapper._initial_rf_pos = tsid_wrapper.get_placement_RF().translation.copy()
+                            initial_rf_pos = tsid_wrapper._initial_rf_pos
                         
-                        # 后摆轨迹：向后和向上
-                        swing_back_distance = 0.15  # 向后摆15cm
-                        swing_up_height = 0.08      # 向上抬8cm
+                        # 后摆轨迹
+                        swing_back_distance = 0.12  # 向后摆12cm
+                        swing_up_height = 0.06      # 向上抬6cm
                         
-                        target_pos = rf_pos.copy()
+                        target_pos = initial_rf_pos.copy()
                         target_pos[0] -= swing_back_distance * swing_progress  # 向后摆
                         target_pos[2] += swing_up_height * swing_progress      # 向上抬
                         
@@ -621,63 +624,54 @@ def main(args=None):
                         foot_pose = pin.SE3(np.eye(3), target_pos)
                         if hasattr(tsid_wrapper, 'set_RF_pose_ref'):
                             tsid_wrapper.set_RF_pose_ref(foot_pose)
-                        
-                        if swing_elapsed > swing_duration - 0.1:
-                            print(f"  Back swing complete - ready to strike")
                     
-                    # Phase 6.3: Strike (前踢击球)
+                    # Phase 6.3: Strike (前踢)
                     elif kicking_elapsed < prepare_duration + swing_duration + strike_duration:
                         strike_elapsed = kicking_elapsed - prepare_duration - swing_duration
                         if strike_elapsed < 0.1:
-                            print(f"  Kick Phase 3: Striking with right foot")
+                            print(f"  Executing forward kick")
                         
                         strike_progress = strike_elapsed / strike_duration
                         
-                        # 获取摆腿结束位置
-                        rf_pos = tsid_wrapper.get_placement_RF().translation
+                        # 获取后摆结束位置
+                        if not hasattr(tsid_wrapper, '_swing_end_pos'):
+                            tsid_wrapper._swing_end_pos = tsid_wrapper.get_placement_RF().translation.copy()
+                        swing_end_pos = tsid_wrapper._swing_end_pos
                         
-                        # 快速前踢轨迹
-                        strike_forward_distance = 0.25  # 向前踢25cm
-                        strike_down_height = 0.05       # 向下5cm（接触球的高度）
+                        # 前踢轨迹
+                        strike_forward_distance = 0.20  # 向前踢20cm
                         
-                        # 使用二次曲线实现加速踢腿
-                        accel_progress = strike_progress ** 2
-                        
-                        target_pos = rf_pos.copy()
-                        target_pos[0] += strike_forward_distance * accel_progress  # 快速前踢
-                        target_pos[2] -= strike_down_height * strike_progress      # 下降接触球
+                        # 使用平滑的踢腿轨迹
+                        target_pos = swing_end_pos.copy()
+                        target_pos[0] += strike_forward_distance * strike_progress  # 前踢
+                        target_pos[2] = swing_end_pos[2] - 0.04 * strike_progress  # 稍微下降
                         
                         # 设置踢球脚位置
                         foot_pose = pin.SE3(np.eye(3), target_pos)
                         if hasattr(tsid_wrapper, 'set_RF_pose_ref'):
                             tsid_wrapper.set_RF_pose_ref(foot_pose)
                         
-                        # 在击球瞬间输出信息
-                        if 0.4 < strike_progress < 0.6:
-                            print(f"  ⚽ BALL CONTACT! Foot position: [{target_pos[0]:.3f}, {target_pos[1]:.3f}, {target_pos[2]:.3f}]")
-                        
-                        if strike_elapsed > strike_duration - 0.1:
-                            print(f"  Strike complete - ball should be moving!")
+                        # 在踢腿过程中输出信息
+                        if strike_progress > 0.5 and strike_elapsed < 0.2:
+                            print(f"  Kicking motion executed")
                     
-                    # Phase 6.4: Recovery (恢复到稳定站立)
+                    # Phase 6.4: Recovery (恢复)
                     elif kicking_elapsed < total_kick_duration:
                         recovery_elapsed = kicking_elapsed - prepare_duration - swing_duration - strike_duration
                         if recovery_elapsed < 0.1:
-                            print(f"  Kick Phase 4: Recovery to stable stance")
+                            print(f"  Recovering to stable stance")
                         
                         recovery_progress = recovery_elapsed / recovery_duration
                         
-                        # 获取当前踢球脚位置
+                        # 获取当前右脚位置
                         rf_pos = tsid_wrapper.get_placement_RF().translation
-                        
-                        # 恢复到地面稳定位置
                         lf_pos = tsid_wrapper.get_placement_LF().translation
                         
-                        # 踢球脚回到合适的站立位置
+                        # 计算恢复目标位置
                         recovery_target = lf_pos.copy()
-                        recovery_target[0] += 0.05   # 比左脚稍微靠前5cm
-                        recovery_target[1] -= 0.20   # 右脚位置（肩宽距离）
-                        recovery_target[2] = lf_pos[2]  # 同一高度
+                        recovery_target[0] = lf_pos[0]      # 与左脚同一行
+                        recovery_target[1] = lf_pos[1] - 0.18  # 右脚位置（肩宽）
+                        recovery_target[2] = lf_pos[2]      # 同一高度
                         
                         # 平滑过渡到恢复位置
                         target_pos = rf_pos + recovery_progress * (recovery_target - rf_pos)
@@ -686,39 +680,33 @@ def main(args=None):
                         if hasattr(tsid_wrapper, 'set_RF_pose_ref'):
                             tsid_wrapper.set_RF_pose_ref(foot_pose)
                         
-                        # 恢复阶段后期重新建立接触
-                        if recovery_progress > 0.7:
-                            print(f"  Restoring foot contact...")
+                        # 恢复足部接触
+                        if recovery_progress > 0.6:
                             if hasattr(tsid_wrapper, 'add_contact_RF'):
                                 tsid_wrapper.add_contact_RF()
                         
                         # 重心回到双脚中心
-                        if recovery_progress > 0.5:
+                        if recovery_progress > 0.4:
                             rf = tsid_wrapper.get_placement_RF().translation
                             lf = tsid_wrapper.get_placement_LF().translation
                             com_target = (rf + lf) / 2.0
-                            com_target[2] = tsid_wrapper.comState().pos()[2]  # 保持高度
+                            com_target[2] = tsid_wrapper.comState().pos()[2]
                             
                             tsid_wrapper.setComRefState(com_target)
-                        
-                        if recovery_elapsed > recovery_duration - 0.1:
-                            print(f"  Recovery complete - stable stance achieved")
                     
-                    # Kicking sequence completed
+                    # Kicking completed
                     else:
                         if kicking_elapsed > total_kick_duration and kicking_elapsed < total_kick_duration + 0.1:
-                            print(f"\nKICKING SEQUENCE COMPLETED!")
-                            print(f"Ball should have been successfully kicked!")
+                            print(f"\nKicking motion completed")
                         
-                        if kicking_elapsed > total_kick_duration + 3.0:
-                            print(f"\nMission accomplished! Shutting down...")
+                        if kicking_elapsed > total_kick_duration + 2.0:
+                            print(f"\nWalking and kicking sequence finished")
                             break
                 
                 except Exception as e:
                     print(f"Kicking error: {e}")
-                    import traceback
-                    traceback.print_exc()
                     break
+
 
             ###################################################################
             # Simulation update
