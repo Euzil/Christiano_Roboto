@@ -190,7 +190,7 @@ class T4StandingRobotSimNode(Node):
         joint_positions = self.q_tsid[7:].tolist()
         
         # Command to the hardware robot
-        self.hardware_controller.setJointPositions(self.joint_names, joint_positions, 0.2, unit='rad')
+        self.hardware_controller.setJointPositions(self.joint_names, joint_positions, 0.4, unit='rad')
         
         self.get_logger().info(f"Set positions for joints {self.joint_names} to {joint_positions}")
       
