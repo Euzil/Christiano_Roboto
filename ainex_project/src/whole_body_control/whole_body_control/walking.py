@@ -17,6 +17,11 @@ from ament_index_python.packages import get_package_share_directory
 
 import matplotlib.pyplot as plt
 
+
+################################################################################
+# Visualization class to create plots for the Center of Masses
+################################################################################
+
 class Visualization:
     def __init__(self, tsid_wrapper):
         self.tsid_wrapper = tsid_wrapper
@@ -130,14 +135,17 @@ class Visualization:
 
         # get directory of current module
         bullet_description = get_package_share_directory("whole_body_control")
-        print(bullet_description)
 
         # store results
         fig_pos.savefig(os.path.join(bullet_description, "com_position_plot.png"), dpi=300)
         fig_vel.savefig(os.path.join(bullet_description, "com_velocity_plot.png"), dpi=300)
         fig_acc.savefig(os.path.join(bullet_description, "com_acceleration_plot.png"), dpi=300)
-    
-def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase, step_elapsed):
+
+################################################################################
+# Method for executing steps
+################################################################################
+
+def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase, step_elapsed, height):
     """
     Execute a single gait step along the path (with landing detection and knee bend contact logic)
     """
@@ -190,15 +198,15 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
             # Lift -> Move -> Lower
             if lift_progress < 0.3:
                 target_pos = current_foot_pos.copy()
-                target_pos[2] += 0.04 * (lift_progress / 0.3)
+                target_pos[2] += height * (lift_progress / 0.3)
             elif lift_progress < 0.7:
                 ratio = (lift_progress - 0.3) / 0.4
                 target_pos = current_foot_pos + ratio * (target_position - current_foot_pos)
-                target_pos[2] = current_foot_pos[2] + 0.04
+                target_pos[2] = current_foot_pos[2] + height
             else:
                 ratio = (lift_progress - 0.7) / 0.3
                 target_pos = target_position.copy()
-                target_pos[2] += 0.04 * (1 - ratio)
+                target_pos[2] += height * (1 - ratio)
 
             foot_pose = pin.SE3(np.eye(3), target_pos)
             if foot_side == 'right' and hasattr(tsid_wrapper, 'set_RF_pose_ref'):
@@ -224,7 +232,7 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
                        else tsid_wrapper.get_placement_LF().translation[2]
             expected_z = target_position[2]
 
-            if abs(actual_z - expected_z) > 0.004:  # >1.5cm suspended
+            if abs(actual_z - expected_z) > 0.004:  # >0.4cm suspended
                 print(" Foot not contacting ground - lowering COM to help foot land...")
                 com_current = tsid_wrapper.comState().pos()
                 lowered_com = com_current.copy()
@@ -274,6 +282,10 @@ def execute_step_along_path(tsid_wrapper, step_index, footstep_plan, step_phase,
 
     return False  # Step still in progress
 
+################################################################################
+# main walking controller managing everything
+################################################################################
+
 def main():
     rclpy.init()
     node = rclpy.create_node('walking_with_path_visualization')
@@ -306,14 +318,8 @@ def main():
         # State machine
         current_state = "HOME"
         state_start_time = 0.0
-        
-        # Phase durations
-        home_duration = 4.0
-        standing_duration = 3.0
-        planning_duration = 3.0
-        end_duration = 3.0
-        
-        # Walking data
+
+                # Walking data
         footstep_plan = []
         visual_ids = []
         current_step_index = 0
@@ -327,9 +333,30 @@ def main():
         # time
         t = 0.0
 
+        ################################################################################
+        # Parameter to adjust frequency in which the new joint positions are published 
+        # and commanded to the real hardware robot AiNex Christiano Roboto
+        ################################################################################
+
         # time frequency
         timer_frequency = 30
+
+        ################################################################################
+        # Parameter to adjust walking motion
+        ################################################################################
         
+        # Phase durations
+        home_duration = 4.0
+        standing_duration = 3.0
+        planning_duration = 3.0
+        end_duration = 3.0
+        
+        # Step length settings
+        first_step = 0.065  # and used for last step
+        other_step = 0.13   # used for every step except first and last one
+        num_steps = 10      # Even number: start with right foot
+        height = 0.04       # max step height
+
         print("\nStarting walking with path visualization...")
         
         while rclpy.ok():
@@ -397,11 +424,6 @@ def main():
 
                         footstep_plan = []
 
-                        # Step length settings
-                        first_step = 0.065
-                        other_step = 0.13
-                        num_steps = 10  # Even number: start with right foot
-
                         for i in range(num_steps):
                             if i == 0 or i == num_steps-1:
                                 step_length = first_step
@@ -464,7 +486,7 @@ def main():
                     
                     # Execute step
                     step_complete = execute_step_along_path(
-                        tsid_wrapper, current_step_index, footstep_plan, step_phase, step_elapsed
+                        tsid_wrapper, current_step_index, footstep_plan, step_phase, step_elapsed, height
                     )
                     
                     # Check if step is complete
