@@ -11,7 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', ['launch/launch.py']),  
-
+        ('share/' + package_name + '/launch', ['launch/sliders.launch.py']),
     ],
     install_requires=[
         'setuptools',
@@ -26,6 +26,8 @@ setup(
         'console_scripts': [
             't4_standing = whole_body_control.t4_standing:main',
             'without_pybullet_t4 = whole_body_control.t4_standing_without_pybullet:main',
+            'walking = whole_body_control.walking:main',
+            'squatting = whole_body_control.t4_squatting:main'
         ],
     },
 )

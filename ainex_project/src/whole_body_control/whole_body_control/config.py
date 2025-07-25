@@ -22,10 +22,11 @@ na = 24                                         # number of actuated joints for 
 # homing pose for Ainex robot
 q_actuated_home = np.zeros(na)
 # Ainex joint configuration: left leg (6) + right leg (6) + left arm (6) + right arm (6) = 24 joints
-q_actuated_home[:6] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])    # left leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
-q_actuated_home[6:12] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])  # right leg (hip_yaw, hip_roll, hip_pitch, knee, ank_pitch, ank_roll)
-q_actuated_home[12:18] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])   # left arm (sho_pitch, sho_roll, el_pitch, el_yaw, gripper)
-q_actuated_home[18:24] = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])   # right arm (sho_pitch, sho_roll, el_pitch, el_yaw, gripper)
+q_actuated_home[:2] = np.array([0.0, 0.0])                              # head (head pan, head tilt)
+q_actuated_home[2:8] = np.array([0.0, 0.0, -0.25, 0.5, 0.25, 0.0])      # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+q_actuated_home[8:13] = np.array([0.0, 0.5, 0.0, 0.0, 0.0])             # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+q_actuated_home[13:19] = np.array([0.0, 0.0, 0.25, -0.5, -0.25, 0.0])   # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+q_actuated_home[19:24] = np.array([0.0, -0.5, 0.0, 0.0, 0.0])           # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
 q_home = np.hstack([np.array([0, 0, 0.23, 0, 0, 0, 1]), q_actuated_home])  # Lower initial height for Ainex
 
 '''
@@ -70,9 +71,9 @@ base_frame_name = "base_link"           # base link
 ################################################################################
 
 # Task weights
-w_com = 1e1             # weight of center of mass task
+w_com = 2e1             # weight of center of mass task
 w_am = 1e-4             # weight of angular momentum task
-w_foot = 1e-1           # weight of the foot motion task: here no motion
+w_foot = 1e1            # weight of the foot motion task: here no motion
 w_hand = 1e-1           # weight of the hand motion task
 w_torso = 1             # weight torso orientation motion task
 w_feet_contact = 1e5    # weight of foot in contact (negative means infinite weight)
@@ -92,10 +93,11 @@ kp_am = 10.0            # proportional gain of angular momentum task
 
 # proportional gain of joint posture task for Ainex (24 joints)
 kp_posture = np.array([
+        10., 10.,                               # head
         10., 10., 10., 10., 10., 10.,           # left leg
+        100., 100., 100., 100., 100.,           # left arm
         10., 10., 10., 10., 10., 10.,           # right leg
-        10., 10., 10., 10., 10., 10.,           # left arm
-        10., 10., 10., 10., 10., 10.,           # right arm
+        100., 100., 100., 100., 100.,           # right arm
 ])
 
 masks_posture = np.ones(na)                     # mask out joint (here none)

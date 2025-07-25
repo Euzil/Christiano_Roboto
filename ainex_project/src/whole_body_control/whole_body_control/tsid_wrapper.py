@@ -97,6 +97,11 @@ class TSIDWrapper:
         assert self.model.existFrame(conf.rf_frame_name)
         assert self.model.existFrame(conf.lf_frame_name)
 
+        print("\n[INFO] Actuated joint order in q[7:]:")
+        for i in range(2, len(self.model.joints)):  # skip universe (0) and root_joint (1)
+            print(f"{i-2:2d}: {self.model.names[i]}")
+        print("[INFO] Total actuated joints:", len(self.model.joints) - 2)
+
         # set inital state
         q = conf.q_home
         v = np.zeros(robot.nv)
@@ -414,6 +419,45 @@ class TSIDWrapper:
         self.tau = np.zeros(self.robot.na)
         self.acc = np.zeros(self.robot.nv)
 
+        # Dictionaries to store currently active contacts and tasks
+        self.active_contacts = {}    
+        self.active_tasks = {}        
+        self.contact_tasks = {}       
+        self.motion_tasks = {}        
+
+        # Initialize foot contact points and corresponding tasks
+        self._setup_foot_contacts_and_tasks()
+
+        # Set up additional walking-related tasks based on the configuration
+        self._setup_walking_tasks(conf)
+
+    ############################################################################
+    # setup foot contact
+    ############################################################################
+
+    def _setup_foot_contacts_and_tasks(self):
+        """Set up mappings for foot contact and motion tasks"""
+        
+        # Map existing contact tasks
+        self.contact_tasks["left_foot_contact"] = self.contactLF
+        self.contact_tasks["right_foot_contact"] = self.contactRF
+        
+        # Map existing motion tasks
+        self.motion_tasks["left_foot_motion"] = self.leftFootTask
+        self.motion_tasks["right_foot_motion"] = self.rightFootTask
+        
+        # Initialize active contact states
+        if self.contact_LF_active:
+            self.active_contacts["left_foot_contact"] = self.contactLF
+        if self.contact_RF_active:
+            self.active_contacts["right_foot_contact"] = self.contactRF
+
+    def _setup_walking_tasks(self, conf):
+        """Set up task mappings required for walking"""
+        # This method exists mainly to maintain a consistent interface.
+        # Most walking-related tasks are already set during initialization.
+        pass
+
     ############################################################################
     # functions
     ############################################################################
@@ -448,7 +492,7 @@ class TSIDWrapper:
     def get_joint_idx_q(self, name):
         joint_id_pin = self.model.getJointId(name)
         return self.model.joints[joint_id_pin].idx_q
-
+    
     ############################################################################
     # com
     ############################################################################
@@ -763,3 +807,119 @@ class TSIDWrapper:
             return self.contactLH.getNormalForce(f)
         else:
             return 0.0
+
+    ############################################################################
+    # Walking Control - Contact Management
+    ############################################################################
+
+    def activateContact(self, contact_name):
+        """Activate contact constraint"""
+        if contact_name == "left_foot_contact":
+            self.add_contact_LF()
+        elif contact_name == "right_foot_contact":
+            self.add_contact_RF()
+        else:
+            print(f"Unknown contact: {contact_name}")
+
+    def deactivateContact(self, contact_name):
+        """Deactivate contact constraint"""
+        if contact_name == "left_foot_contact":
+            self.remove_contact_LF()
+        elif contact_name == "right_foot_contact":
+            self.remove_contact_RF()
+        else:
+            print(f"Unknown contact: {contact_name}")
+
+    ############################################################################
+    # Walking Control - Task Management
+    ############################################################################
+
+    def activateTask(self, task_name):
+        """Activate motion task"""
+        if task_name == "left_foot_motion":
+            # Left foot motion task is usually active by default; ensure it's tracked
+            if task_name not in self.active_tasks:
+                self.active_tasks[task_name] = self.leftFootTask
+        elif task_name == "right_foot_motion":
+            # Right foot motion task is also typically active
+            if task_name not in self.active_tasks:
+                self.active_tasks[task_name] = self.rightFootTask
+        else:
+            print(f"Unknown task: {task_name}")
+
+    def deactivateTask(self, task_name):
+        """Deactivate motion task"""
+        if task_name == "left_foot_motion":
+            # Note: foot motion tasks may be kept always active; remove if truly deactivating
+            if task_name in self.active_tasks:
+                del self.active_tasks[task_name]
+        elif task_name == "right_foot_motion":
+            if task_name in self.active_tasks:
+                del self.active_tasks[task_name]
+        else:
+            print(f"Unknown task: {task_name}")
+
+    def setTaskReference(self, task_name, pose_ref, vel_ref=None, acc_ref=None):
+        """Set reference pose, velocity, and acceleration for a motion task"""
+        if vel_ref is None:
+            vel_ref = np.zeros(6)
+        if acc_ref is None:
+            acc_ref = np.zeros(6)
+
+        if task_name == "left_foot_motion":
+            self.set_LF_pose_ref(pose_ref, vel_ref, acc_ref)
+        elif task_name == "right_foot_motion":
+            self.set_RF_pose_ref(pose_ref, vel_ref, acc_ref)
+        else:
+            print(f"Unknown task: {task_name}")
+
+    def setComReference(self, pos_ref, vel_ref=None, acc_ref=None):
+        """Set Center of Mass (CoM) reference state"""
+        self.setComRefState(pos_ref, vel_ref, acc_ref)
+
+    ############################################################################
+    # Walking Control - State Queries
+    ############################################################################
+
+    def getFramePose(self, frame_name):
+        """Get the pose of a given frame (returns a 4x4 transformation matrix)"""
+        if frame_name == "left_sole_link" or frame_name == self.conf.lf_frame_name:
+            se3_pose = self.get_placement_LF()
+        elif frame_name == "right_sole_link" or frame_name == self.conf.rf_frame_name:
+            se3_pose = self.get_placement_RF()
+        else:
+            # Generic frame query
+            frame_id = self.model.getFrameId(frame_name)
+            se3_pose = self.robot.framePosition(self.formulation.data(), frame_id)
+
+        # Convert SE3 to 4x4 matrix
+        pose_matrix = np.eye(4)
+        pose_matrix[:3, :3] = se3_pose.rotation
+        pose_matrix[:3, 3] = se3_pose.translation
+        return pose_matrix
+
+    def getCenterOfMass(self):
+        """Get current Center of Mass (CoM) position"""
+        return self.robot.com(self.formulation.data())
+
+    def getCenterOfMassVelocity(self):
+        """Get current Center of Mass (CoM) velocity"""
+        return self.robot.com_vel(self.formulation.data())
+
+    def getContactForces(self):
+        """Get contact forces for the left and right feet"""
+        forces = {}
+        if self.sol is not None:
+            forces["left_foot"] = self.get_LF_wrench(self.sol)
+            forces["right_foot"] = self.get_RF_wrench(self.sol)
+        else:
+            forces["left_foot"] = np.zeros(6)
+            forces["right_foot"] = np.zeros(6)
+        return forces
+
+    def solve(self, q, v, dt):
+        """Solve the inverse dynamics problem for walking control"""
+        # Use the existing update method to compute torque (tau) and acceleration (dv)
+        tau, dv = self.update(q, v, 0.0, do_sove=True)
+        return tau
+
