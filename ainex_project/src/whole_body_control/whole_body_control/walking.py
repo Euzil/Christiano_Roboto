@@ -9,6 +9,7 @@ import pinocchio as pin
 import rclpy
 import matplotlib.pyplot as plt
 import os
+import time 
 
 import whole_body_control.config as conf
 from whole_body_control.ainex import Ainex
@@ -295,12 +296,17 @@ def main(args=None):
                             'l_sho_pitch', 'l_sho_roll', 'l_el_pitch', 'l_el_yaw', 'l_gripper',
                             'r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 'r_ank_pitch', 'r_ank_roll',
                             'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
-    hardware_controller = JointController(node)
     
+    hardware_controller = JointController(node)
+
+    starting_joint_config = conf.q_actuated_home
     # Flag für Hardware-Controller Aktivierung
     hardware_control_active = False
-    hardware_start_time = 4.0  # 2 Sekunden Verzögerung
-    hardware_controller.setPosture('stand', 2.5)
+    hardware_start_time = 2  # 2 Sekunden Verzögerung
+    hardware_controller.setPosture('stand', 2)
+    time.sleep(3)
+    hardware_controller.setJointPositions(joint_names, starting_joint_config, 1 , unit='rad')
+
     try:
         print("=" * 70)
         print("WALKING WITH PATH VISUALIZATION IN PYBULLET")
@@ -698,6 +704,8 @@ def main(args=None):
                     else:
                         if kicking_elapsed > total_kick_duration and kicking_elapsed < total_kick_duration + 0.1:
                             print(f"\nKicking motion completed")
+                            current_state = "CELEBRATION"
+                            state_start_time = t
                         
                         if kicking_elapsed > total_kick_duration + 2.0:
                             print(f"\nWalking and kicking sequence finished")
@@ -710,111 +718,7 @@ def main(args=None):
             ###################################################################
             # PHASE 7: CELEBRATION
             ###################################################################
-            if current_state == "CELEBRATION":
-                if t - state_start_time == 0:
-                    state_start_time = t
-                    print(f"\n[{t:.1f}s] PHASE 7: CELEBRATION")
-                    print("- Raising hands in victory!")
-                
-                celebration_elapsed = t - state_start_time
-                
-                # Celebration parameters
-                raise_duration = 2.0        # 举手时间
-                hold_duration = 3.0         # 保持时间
-                total_celebration_duration = raise_duration + hold_duration
-                
-                try:
-                    # Phase 7.1: Raise hands
-                    if celebration_elapsed < raise_duration:
-                        if celebration_elapsed < 0.1:
-                            print(f"  Raising hands")
-                        
-                        raise_progress = celebration_elapsed / raise_duration
-                        
-                        # 根据Ainex机器人的关节配置设置手臂角度
-                        # 左臂关节：l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper
-                        # 右臂关节：r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper
-                        
-                        # 初始手臂位置（home position）
-                        left_arm_home = np.array([-0.5, 0.5, 0.0, -0.8, 0.0])    # 左臂初始位置
-                        right_arm_home = np.array([0.5, -0.5, 0.0, 0.8, 0.0])    # 右臂初始位置
-                        
-                        # 庆祝举手位置
-                        left_arm_celebration = np.array([-1.4, 0.8, -0.3, -0.5, 0.0])   # 左臂举起：肩部前举，肩部外展，肘部稍弯
-                        right_arm_celebration = np.array([1.4, -0.8, 0.3, 0.5, 0.0])    # 右臂举起：肩部前举，肩部外展，肘部稍弯
-                        
-                        # 计算当前目标角度（平滑过渡）
-                        left_arm_target = left_arm_home + raise_progress * (left_arm_celebration - left_arm_home)
-                        right_arm_target = right_arm_home + raise_progress * (right_arm_celebration - right_arm_home)
-                        
-                        # 设置手臂关节角度（假设有关节控制接口）
-                        if hasattr(tsid_wrapper, 'set_joint_positions'):
-                            # 构建完整的关节角度数组
-                            q_current = tsid_wrapper.get_joint_positions()  # 获取当前关节角度
-                            q_target = q_current.copy()
-                            
-                            # 更新左臂关节 (索引 8:13)
-                            q_target[8:13] = left_arm_target
-                            # 更新右臂关节 (索引 19:24) 
-                            q_target[19:24] = right_arm_target
-                            
-                            tsid_wrapper.set_joint_positions(q_target)
-                        
-                        elif hasattr(tsid_wrapper, 'set_arm_joints'):
-                            # 如果有专门的手臂控制接口
-                            tsid_wrapper.set_arm_joints('left', left_arm_target)
-                            tsid_wrapper.set_arm_joints('right', right_arm_target)
-                        
-                        # 保持身体稳定
-                        rf = tsid_wrapper.get_placement_RF().translation
-                        lf = tsid_wrapper.get_placement_LF().translation
-                        com_target = (rf + lf) / 2.0
-                        com_target[2] = tsid_wrapper.comState().pos()[2]
-                        tsid_wrapper.setComRefState(com_target)
-                    
-                    # Phase 7.2: Hold hands up
-                    elif celebration_elapsed < total_celebration_duration:
-                        hold_elapsed = celebration_elapsed - raise_duration
-                        if hold_elapsed < 0.1:
-                            print(f"  Victory! Hands raised!")
-                        
-                        # 保持庆祝手势
-                        left_arm_celebration = np.array([-1.4, 0.8, -0.3, -0.5, 0.0])
-                        right_arm_celebration = np.array([1.4, -0.8, 0.3, 0.5, 0.0])
-                        
-                        if hasattr(tsid_wrapper, 'set_joint_positions'):
-                            q_current = tsid_wrapper.get_joint_positions()
-                            q_target = q_current.copy()
-                            q_target[8:13] = left_arm_celebration   # 左臂
-                            q_target[19:24] = right_arm_celebration # 右臂
-                            tsid_wrapper.set_joint_positions(q_target)
-                        
-                        elif hasattr(tsid_wrapper, 'set_arm_joints'):
-                            tsid_wrapper.set_arm_joints('left', left_arm_celebration)
-                            tsid_wrapper.set_arm_joints('right', right_arm_celebration)
-                        
-                        # 保持重心稳定
-                        rf = tsid_wrapper.get_placement_RF().translation
-                        lf = tsid_wrapper.get_placement_LF().translation
-                        com_target = (rf + lf) / 2.0
-                        com_target[2] = tsid_wrapper.comState().pos()[2]
-                        tsid_wrapper.setComRefState(com_target)
-                    
-                    # Celebration completed
-                    else:
-                        if celebration_elapsed > total_celebration_duration and celebration_elapsed < total_celebration_duration + 0.1:
-                            print(f"\nMISSION ACCOMPLISHED!")
-                            print(f"Walking, kicking, and celebration completed successfully!")
-                        
-                        if celebration_elapsed > total_celebration_duration + 1.0:
-                            print(f"Sequence finished")
-                            break
-                
-                except Exception as e:
-                    print(f"Celebration error: {e}")
-                    print(f"Note: Make sure your TSID wrapper has joint control methods")
-                    break
-
+            
 
             ###################################################################
             # Simulation update

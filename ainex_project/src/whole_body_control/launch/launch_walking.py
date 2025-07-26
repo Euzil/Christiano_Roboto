@@ -50,7 +50,7 @@ def generate_launch_description():
 
     # Add the nodes to the launch description
     ld.add_action(robot_state_publisher)
-    ld.add_action(rviz_node)
+    #ld.add_action(rviz_node)
     ld.add_action(walking_node)
 
     return ld

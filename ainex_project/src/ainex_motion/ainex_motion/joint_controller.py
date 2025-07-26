@@ -448,11 +448,16 @@ def main(args=None):
     # Note: always set enough sleep time to allow the robot to reach the position
     joint_controller.setPosture('stand', 0.8)
     time.sleep(2)
-    joint_controller.setPosture('standzero', 0.8)
-    time.sleep(2)
-    joint_controller.setPosture('crouch', 0.8)
-    time.sleep(2)
-
+    positions = joint_controller.getJointPositions('all', unit='deg')
+    node.get_logger().info(f"Joint Position: {positions}")
+    #joint_controller.setPosture('standzero', 0.8)
+    time.sleep(5)
+    positions = joint_controller.getJointPositions('all', unit='deg')
+    node.get_logger().info(f"Joint Position: {positions}")
+    #joint_controller.setPosture('crouch', 0.8)
+    time.sleep(3)
+    positions = joint_controller.getJointPositions('all', unit='deg')
+    node.get_logger().info(f"Joint Position: {positions}")
     '''Joint Controller - Set Joint Position demo'''
     joint_names = ['l_sho_roll', 'l_sho_pitch']
     joint_controller.setJointPositions(joint_names, [0, 0], 1, unit='rad')
