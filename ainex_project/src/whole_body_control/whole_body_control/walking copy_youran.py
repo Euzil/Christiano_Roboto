@@ -523,12 +523,12 @@ def main(args=None):
                             if not hip_command_executed or (t - hip_command_time) >= hip_command_buffer:
                                 joint_positions = q_tsid[7:].tolist()
                                 # Sende nur Hip-Pitch Gelenke (Index 4 und 15)
-                                #hardware_controller.setJointPositions(
-                                #    ['l_hip_pitch', 'r_hip_pitch'], 
-                                #    [-0.1, 0.1], 
-                                #    1, 
-                                #    unit='rad'
-                                #)
+                                hardware_controller.setJointPositions(
+                                    ['l_hip_pitch', 'r_hip_pitch'], 
+                                    [-0.1, 0.1], 
+                                    1, 
+                                    unit='rad'
+                                )
                                 print(f"  Hip-Pitch joints set to [-0.45, 0.45] for next step")
                                 
                                 # Setze Zeitpuffer-Flags
