@@ -297,6 +297,13 @@ def main(args=None):
                             'r_hip_yaw', 'r_hip_roll', 'r_hip_pitch', 'r_knee', 'r_ank_pitch', 'r_ank_roll',
                             'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
     
+    q_celebration = np.zeros(24)
+    q_celebration[:2] = np.array([0.0, 0.0])                              # head (head pan, head tilt)
+    q_celebration[2:8] = np.array([0.0, 0.0, -0.2, 0.4, 0.20, 0.0])      # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+    q_celebration[8:13] = np.array([0.5, 0.5, 0.0, 0, 0.0])             # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+    q_celebration[13:19] = np.array([0.0, 0.0, 0.2, -0.4, -0.20, 0.0])   # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+    q_celebration[19:24] = np.array([-0.5, -0.5, 0.0, 0, 0.0])           # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
+    
     hardware_controller = JointController(node)
 
     starting_joint_config = conf.q_actuated_home
@@ -378,7 +385,12 @@ def main(args=None):
         phase_duration = 1.5
 
         print("\nStarting walking with path visualization...")
-        
+        # bool values for celebration phase
+        celebration_active = False 
+        move_1_finished = False 
+        move_2_finished = False
+        move_3_finished = False
+
         while rclpy.ok():
             
             ###################################################################
@@ -719,6 +731,59 @@ def main(args=None):
             # PHASE 7: CELEBRATION
             ###################################################################
             
+            elif current_state == "CELEBRATION":
+                if t - state_start_time == 0:
+                    state_start_time = t
+                    print(f"\n[{t:.1f}s] PHASE 7: CELEBRATION")
+                    print("- Disabling TSID control for celebration")
+                    hardware_control_active = False  # ❌ Disable TSID hardware control
+                
+                celebration_elapsed = t - state_start_time
+                
+                try:
+                    # Celebration sequence with timed phases
+                    crouch_duration = 2.0
+                    stand_duration = 2.0  
+                    victory_pose_duration = 5.0
+                    total_celebration_duration = crouch_duration + stand_duration + victory_pose_duration
+                    
+                    # Phase 7.1: Crouch down
+                    if celebration_elapsed < crouch_duration and not move_1_finished:
+                        if celebration_elapsed < 0.1:
+                            print(f"  Crouching down...")
+                            hardware_controller.setPosture('crouch', 0.8)
+                            move_1_finished = True
+                            time.sleep(2)  # Wait for crouch to stabilize
+                    
+                    # Phase 7.2: Stand up
+                    elif celebration_elapsed < crouch_duration + stand_duration and not move_2_finished:
+                        stand_elapsed = celebration_elapsed - crouch_duration
+                        if stand_elapsed < 0.1:
+                            print(f"  Standing up...")
+                            hardware_controller.setPosture('stand', 0.8)
+                            move_2_finished = True
+                            time.sleep(2)
+                    
+                    # Phase 7.3: Victory pose
+                    elif celebration_elapsed < total_celebration_duration and not move_3_finished:
+                        victory_elapsed = celebration_elapsed - crouch_duration - stand_duration
+                        if victory_elapsed < 0.1:
+                            print(f"  Victory pose - arms up!")
+                            hardware_controller.setJointPositions(joint_names, q_celebration, 0.6, unit='rad')
+                            celebration_active = True
+                            move_3_finished = True
+                            time.sleep(2)
+                    
+                    # Celebration completed
+                    else:
+                        if celebration_elapsed > total_celebration_duration and celebration_elapsed < total_celebration_duration + 0.1:
+                            print(f"\n🎉 CELEBRATION COMPLETE! 🎉")
+                            print("Walking and kicking sequence finished successfully!")
+                            break
+                
+                except Exception as e:
+                    print(f"Celebration error: {e}")
+                    break
 
             ###################################################################
             # Simulation update
@@ -750,13 +815,16 @@ def main(args=None):
                 hardware_control_active = True
                 print(f"\n[{t:.1f}s] Hardware control activated - Starting joint position commands")
             
-            # Only send joint commands after delay
-            if hardware_control_active:
+            # Only send TSID joint commands if NOT in celebration
+            if hardware_control_active and current_state != "CELEBRATION":
                 # Convert numpy array slice to list for setJointPositions
                 joint_positions = q_tsid[7:].tolist()
                 
                 # Command to the hardware robot
                 hardware_controller.setJointPositions(joint_names, joint_positions, 0.03, unit='rad')
+            elif current_state == "CELEBRATION":
+                # During celebration, don't send TSID commands
+                pass
             else:
                 # Optional: Log that hardware control is waiting
                 if int(t * 10) % 10 == 0:  # Log every 1 second

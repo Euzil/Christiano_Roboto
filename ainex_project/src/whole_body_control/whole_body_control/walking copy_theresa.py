@@ -683,3 +683,75 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
+
+    elif current_state == "CELEBRATION":
+                #time.sleep(5)
+                if t - state_start_time == 0:
+                    state_start_time = t
+                    print(f"\n[{t:.1f}s] PHASE 7: CELEBRATION")
+                    print("- Performing victory celebration sequence")
+                
+                celebration_elapsed = t - state_start_time
+                
+                try:
+                    # Celebration sequence with timed phases
+                    crouch_duration = 2.0
+                    stand_duration = 2.0
+                    victory_pose_duration = 5.0
+                    total_celebration_duration = crouch_duration + stand_duration + victory_pose_duration
+                    
+                    # Phase 7.1: Crouch down
+                    if celebration_elapsed < crouch_duration:
+                        if celebration_elapsed < 0.1:
+                            print(f"  Crouching down...")
+                            hardware_controller.setPosture('crouch', 0.8)
+                    
+                    # Phase 7.2: Stand up
+                    elif celebration_elapsed < crouch_duration + stand_duration:
+                        stand_elapsed = celebration_elapsed - crouch_duration
+                        if stand_elapsed < 0.1:
+                            print(f"  Standing up...")
+                            hardware_controller.setPosture('stand', 0.8)
+                    
+                    # Phase 7.3: Victory pose
+                    elif celebration_elapsed < total_celebration_duration:
+                        victory_elapsed = celebration_elapsed - crouch_duration - stand_duration
+                        if victory_elapsed < 0.1:
+                            print(f"  Victory pose - arms up!")
+                            hardware_controller.setJointPositions(joint_names, q_celebration, 1.0, unit='rad')
+                        
+                        # Show celebration progress
+                        if int(victory_elapsed) % 2 == 0 and victory_elapsed > 1.0:
+                            remaining_time = victory_pose_duration - victory_elapsed
+                            print(f"  Celebrating... {remaining_time:.1f}s remaining")
+                    
+                    # Celebration completed
+                    else:
+                        if celebration_elapsed > total_celebration_duration and celebration_elapsed < total_celebration_duration + 0.1:
+                            print(f"\n🎉 CELEBRATION COMPLETE! 🎉")
+                            print("Walking and kicking sequence finished successfully!")
+                            print("=" * 70)
+                            break
+                
+                except Exception as e:
+                    print(f"Celebration error: {e}")
+                    print("Ending celebration sequence...")
+                    break
+
+
+                    q_celebration = np.zeros(24)
+    q_celebration[:2] = np.array([0.0, 0.0])                              # head (head pan, head tilt)
+    q_celebration[2:8] = np.array([0.0, 0.0, -0.2, 0.4, 0.20, 0.0])      # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+    q_celebration[8:13] = np.array([0.5, 0.5, 0.0, 0, 0.0])             # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+    q_celebration[13:19] = np.array([0.0, 0.0, 0.2, -0.4, -0.20, 0.0])   # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+    q_celebration[19:24] = np.array([-0.5, -0.5, 0.0, 0, 0.0])           # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
+    
