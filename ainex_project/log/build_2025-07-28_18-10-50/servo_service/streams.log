@@ -1,0 +1,495 @@
+[0.045s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_motion:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision:/opt/ros/rolling /usr/bin/cmake /workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service
+[0.395s] -- The C compiler identification is GNU 13.3.0
+[0.487s] -- The CXX compiler identification is GNU 13.3.0
+[0.517s] -- Detecting C compiler ABI info
+[0.669s] -- Detecting C compiler ABI info - done
+[0.691s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.692s] -- Detecting C compile features
+[0.693s] -- Detecting C compile features - done
+[0.714s] -- Detecting CXX compiler ABI info
+[0.927s] -- Detecting CXX compiler ABI info - done
+[0.949s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.949s] -- Detecting CXX compile features
+[0.950s] -- Detecting CXX compile features - done
+[0.982s] -- Found ament_cmake: 2.7.2 (/opt/ros/rolling/share/ament_cmake/cmake)
+[1.289s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.419s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.584s] -- Found geometry_msgs: 5.5.0 (/opt/ros/rolling/share/geometry_msgs/cmake)
+[1.730s] -- Found rosidl_generator_c: 4.9.3 (/opt/ros/rolling/share/rosidl_generator_c/cmake)
+[1.790s] -- Found rosidl_generator_cpp: 4.9.3 (/opt/ros/rolling/share/rosidl_generator_cpp/cmake)
+[1.831s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.899s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.048s] -- Found rosidl_default_generators: 1.7.1 (/opt/ros/rolling/share/rosidl_default_generators/cmake)
+[2.130s] -- Found rosidl_adapter: 4.9.3 (/opt/ros/rolling/share/rosidl_adapter/cmake)
+[3.425s] -- Found ament_cmake_ros: 0.14.0 (/opt/ros/rolling/share/ament_cmake_ros/cmake)
+[4.829s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[5.285s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[5.897s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[6.000s] -- Found ament_lint_auto: 0.19.1 (/opt/ros/rolling/share/ament_lint_auto/cmake)
+[6.066s] -- Added test 'lint_cmake' to check CMake code style
+[6.070s] -- Added test 'xmllint' to check XML markup files
+[6.078s] -- Configuring done (6.0s)
+[6.180s] -- Generating done (0.1s)
+[6.196s] -- Build files have been written to: /workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service
+[6.206s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_motion:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision:/opt/ros/rolling /usr/bin/cmake /workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service
+[6.207s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_motion:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision:/opt/ros/rolling /usr/bin/cmake --build /workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service -- -j8 -l8
+[6.288s] [  1%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[6.300s] [  1%] Built target ament_cmake_python_symlink_servo_service
+[6.677s] running egg_info
+[6.678s] creating servo_service.egg-info
+[6.707s] writing servo_service.egg-info/PKG-INFO
+[6.708s] writing dependency_links to servo_service.egg-info/dependency_links.txt
+[6.708s] writing top-level names to servo_service.egg-info/top_level.txt
+[6.708s] writing manifest file 'servo_service.egg-info/SOURCES.txt'
+[6.819s] [  1%] Built target servo_service__rosidl_generator_type_description
+[6.843s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[6.859s] [  2%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[7.670s] reading manifest file 'servo_service.egg-info/SOURCES.txt'
+[7.671s] writing manifest file 'servo_service.egg-info/SOURCES.txt'
+[7.717s] [  2%] Built target ament_cmake_python_build_servo_service_egg
+[8.270s] [  2%] Built target servo_service__cpp
+[8.766s] [  4%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/change_servo_positions__description.c.o[0m
+[8.766s] [  5%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/change_servo_positions__type_support.c.o[0m
+[8.766s] [  5%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_servo_positions__type_support.c.o[0m
+[8.766s] [  4%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/change_servo_positions__functions.c.o[0m
+[8.766s] [  6%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_servo_positions__description.c.o[0m
+[8.775s] [  6%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_servo_positions__functions.c.o[0m
+[8.800s] [  7%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_joint_lock__functions.c.o[0m
+[8.805s] [  8%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_joint_lock__description.c.o[0m
+[8.853s] [  8%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_joint_lock__type_support.c.o[0m
+[8.892s] [  9%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/get_servo_positions__description.c.o[0m
+[8.897s] [ 10%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/get_servo_positions__functions.c.o[0m
+[8.902s] [ 11%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/get_servo_positions__type_support.c.o[0m
+[8.939s] [ 11%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_posture__description.c.o[0m
+[8.940s] [ 13%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_posture__type_support.c.o[0m
+[8.942s] [ 13%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/msg/detail/set_posture__functions.c.o[0m
+[8.958s] [ 14%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_lock__description.c.o[0m
+[8.961s] [ 14%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_lock__functions.c.o[0m
+[9.005s] [ 15%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_lock__type_support.c.o[0m
+[9.012s] [ 16%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_temp__description.c.o[0m
+[9.026s] [ 16%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_temp__type_support.c.o[0m
+[9.046s] [ 17%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_temp__functions.c.o[0m
+[9.048s] [ 18%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_deviation__description.c.o[0m
+[9.099s] [ 19%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_deviation__type_support.c.o[0m
+[9.106s] [ 20%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_deviation__functions.c.o[0m
+[9.127s] [ 20%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_voltage__description.c.o[0m
+[9.158s] [ 22%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_voltage__functions.c.o[0m
+[9.160s] [ 22%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/servo_voltage__type_support.c.o[0m
+[9.161s] [ 23%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_position__description.c.o[0m
+[9.180s] [ 23%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_position__functions.c.o[0m
+[9.200s] [ 24%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_position__type_support.c.o[0m
+[9.228s] [ 25%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_range__description.c.o[0m
+[9.264s] [ 26%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_range__functions.c.o[0m
+[9.289s] [ 26%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_c.dir/rosidl_generator_c/servo_service/srv/detail/joint_range__type_support.c.o[0m
+[9.411s] [ 27%] [32m[1mLinking C shared library libservo_service__rosidl_generator_c.so[0m
+[9.485s] [ 27%] Built target servo_service__rosidl_generator_c
+[9.510s] [ 27%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[9.510s] [ 29%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[9.510s] [ 29%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[9.516s] [ 29%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[9.516s] [ 30%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[9.526s] [ 31%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[10.707s] [ 32%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/msg/change_servo_positions__type_support.cpp.o[0m
+[10.718s] [ 33%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/msg/set_servo_positions__type_support.cpp.o[0m
+[10.789s] [ 33%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/msg/set_joint_lock__type_support.cpp.o[0m
+[10.886s] [ 34%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/msg/get_servo_positions__type_support.cpp.o[0m
+[10.966s] [ 34%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/msg/set_posture__type_support.cpp.o[0m
+[10.991s] [ 35%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/srv/joint_lock__type_support.cpp.o[0m
+[11.014s] [ 36%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/msg/change_servo_positions__type_support.cpp.o[0m
+[11.114s] [ 37%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/msg/set_servo_positions__type_support.cpp.o[0m
+[11.116s] [ 38%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/msg/set_joint_lock__type_support.cpp.o[0m
+[11.118s] [ 39%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/srv/servo_temp__type_support.cpp.o[0m
+[11.221s] [ 40%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/srv/servo_deviation__type_support.cpp.o[0m
+[11.326s] [ 40%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/srv/servo_voltage__type_support.cpp.o[0m
+[11.417s] [ 41%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/msg/detail/change_servo_positions__type_support.c.o[0m
+[11.434s] [ 42%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/msg/detail/change_servo_positions__type_support.cpp.o[0m
+[11.443s] [ 43%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/srv/joint_position__type_support.cpp.o[0m
+[11.557s] [ 44%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_c.dir/rosidl_typesupport_c/servo_service/srv/joint_range__type_support.cpp.o[0m
+[11.589s] [ 45%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/msg/detail/set_servo_positions__type_support.c.o[0m
+[11.715s] [ 46%] [32m[1mLinking CXX shared library libservo_service__rosidl_typesupport_c.so[0m
+[11.733s] [ 47%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/msg/detail/set_joint_lock__type_support.c.o[0m
+[11.832s] [ 47%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/msg/detail/get_servo_positions__type_support.c.o[0m
+[11.910s] [ 47%] Built target servo_service__rosidl_typesupport_c
+[11.914s] [ 48%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/msg/detail/set_servo_positions__type_support.cpp.o[0m
+[11.947s] [ 49%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/msg/detail/set_posture__type_support.c.o[0m
+[11.951s] [ 49%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/msg/detail/set_joint_lock__type_support.cpp.o[0m
+[12.039s] [ 50%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/srv/detail/joint_lock__type_support.c.o[0m
+[12.054s] [ 50%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/msg/get_servo_positions__type_support.cpp.o[0m
+[12.077s] [ 51%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/msg/set_posture__type_support.cpp.o[0m
+[12.186s] [ 52%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/srv/detail/servo_temp__type_support.c.o[0m
+[12.302s] [ 52%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/srv/detail/servo_deviation__type_support.c.o[0m
+[12.456s] [ 53%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/srv/detail/servo_voltage__type_support.c.o[0m
+[12.487s] [ 54%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/msg/detail/get_servo_positions__type_support.cpp.o[0m
+[12.567s] [ 55%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/srv/detail/joint_position__type_support.c.o[0m
+[12.690s] [ 56%] [32mBuilding C object CMakeFiles/servo_service__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/servo_service/srv/detail/joint_range__type_support.c.o[0m
+[12.733s] [ 57%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/srv/joint_lock__type_support.cpp.o[0m
+[12.760s] [ 57%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/srv/servo_temp__type_support.cpp.o[0m
+[12.770s] [ 58%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/msg/detail/set_posture__type_support.cpp.o[0m
+[12.843s] [ 59%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/srv/servo_deviation__type_support.cpp.o[0m
+[12.868s] [ 59%] [32m[1mLinking C shared library libservo_service__rosidl_typesupport_introspection_c.so[0m
+[12.887s] [ 59%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/msg/detail/dds_fastrtps/change_servo_positions__type_support.cpp.o[0m
+[12.957s] [ 59%] Built target servo_service__rosidl_typesupport_introspection_c
+[12.999s] [ 60%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/msg/detail/dds_fastrtps/set_servo_positions__type_support.cpp.o[0m
+[13.103s] [ 61%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/msg/detail/change_servo_positions__type_support_c.cpp.o[0m
+[13.478s] [ 61%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/msg/detail/set_servo_positions__type_support_c.cpp.o[0m
+[13.594s] [ 62%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/srv/detail/joint_lock__type_support.cpp.o[0m
+[13.718s] [ 63%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/srv/servo_voltage__type_support.cpp.o[0m
+[13.853s] [ 64%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/msg/detail/dds_fastrtps/set_joint_lock__type_support.cpp.o[0m
+[13.990s] [ 65%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/msg/detail/set_joint_lock__type_support_c.cpp.o[0m
+[14.365s] [ 65%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/srv/detail/servo_temp__type_support.cpp.o[0m
+[14.408s] [ 66%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/srv/detail/servo_deviation__type_support.cpp.o[0m
+[14.599s] [ 67%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/srv/joint_position__type_support.cpp.o[0m
+[14.854s] [ 68%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/srv/detail/servo_voltage__type_support.cpp.o[0m
+[14.924s] [ 69%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/msg/detail/dds_fastrtps/get_servo_positions__type_support.cpp.o[0m
+[15.031s] [ 70%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/msg/detail/get_servo_positions__type_support_c.cpp.o[0m
+[15.284s] [ 71%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/msg/detail/set_posture__type_support_c.cpp.o[0m
+[15.286s] [ 72%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/srv/detail/joint_position__type_support.cpp.o[0m
+[15.697s] [ 72%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/servo_service/srv/joint_range__type_support.cpp.o[0m
+[15.719s] [ 72%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/servo_service/srv/detail/joint_range__type_support.cpp.o[0m
+[15.857s] [ 72%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/msg/detail/dds_fastrtps/set_posture__type_support.cpp.o[0m
+[16.041s] [ 72%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/joint_lock__type_support_c.cpp.o[0m
+[16.162s] [ 73%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/srv/detail/dds_fastrtps/joint_lock__type_support.cpp.o[0m
+[16.417s] [ 74%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/servo_temp__type_support_c.cpp.o[0m
+[16.454s] [ 75%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/srv/detail/dds_fastrtps/servo_temp__type_support.cpp.o[0m
+[16.618s] [ 76%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/servo_deviation__type_support_c.cpp.o[0m
+[16.842s] [ 77%] [32m[1mLinking CXX shared library libservo_service__rosidl_typesupport_cpp.so[0m
+[17.318s] [ 77%] Built target servo_service__rosidl_typesupport_cpp
+[17.333s] [ 78%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/srv/detail/dds_fastrtps/servo_deviation__type_support.cpp.o[0m
+[17.352s] [ 79%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/servo_voltage__type_support_c.cpp.o[0m
+[17.352s] [ 80%] [32m[1mLinking CXX shared library libservo_service__rosidl_typesupport_introspection_cpp.so[0m
+[17.561s] [ 80%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/joint_position__type_support_c.cpp.o[0m
+[17.596s] [ 80%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/srv/detail/dds_fastrtps/servo_voltage__type_support.cpp.o[0m
+[17.864s] [ 80%] Built target servo_service__rosidl_typesupport_introspection_cpp
+[17.901s] [ 81%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/srv/detail/dds_fastrtps/joint_position__type_support.cpp.o[0m
+[17.979s] [ 82%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/joint_range__type_support_c.cpp.o[0m
+[18.101s] [ 83%] [32mBuilding CXX object CMakeFiles/servo_service__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/servo_service/srv/detail/dds_fastrtps/joint_range__type_support.cpp.o[0m
+[19.117s] [ 84%] [32m[1mLinking CXX shared library libservo_service__rosidl_typesupport_fastrtps_c.so[0m
+[19.269s] [ 84%] Built target servo_service__rosidl_typesupport_fastrtps_c
+[19.465s] [ 85%] [32m[1mLinking CXX shared library libservo_service__rosidl_typesupport_fastrtps_cpp.so[0m
+[19.611s] [ 85%] Built target servo_service__rosidl_typesupport_fastrtps_cpp
+[19.640s] [ 85%] Built target servo_service
+[19.672s] [ 86%] [34m[1mGenerating Python code for ROS interfaces[0m
+[21.501s] [ 86%] Built target servo_service__py
+[21.542s] [ 87%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/msg/_change_servo_positions_s.c.o[0m
+[21.542s] [ 87%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/msg/_set_joint_lock_s.c.o[0m
+[21.543s] [ 89%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/srv/_servo_deviation_s.c.o[0m
+[21.543s] [ 89%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/msg/_set_posture_s.c.o[0m
+[21.545s] [ 90%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/msg/_set_servo_positions_s.c.o[0m
+[21.545s] [ 91%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/msg/_get_servo_positions_s.c.o[0m
+[21.546s] [ 91%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/srv/_servo_temp_s.c.o[0m
+[21.546s] [ 92%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/srv/_joint_lock_s.c.o[0m
+[21.989s] [ 93%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/srv/_servo_voltage_s.c.o[0m
+[21.996s] [ 93%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/srv/_joint_range_s.c.o[0m
+[21.996s] [ 94%] [32mBuilding C object CMakeFiles/servo_service__rosidl_generator_py.dir/rosidl_generator_py/servo_service/srv/_joint_position_s.c.o[0m
+[22.375s] [ 95%] [32m[1mLinking C shared library libservo_service__rosidl_generator_py.so[0m
+[22.467s] [ 95%] Built target servo_service__rosidl_generator_py
+[22.505s] [ 96%] [32mBuilding C object CMakeFiles/servo_service_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/servo_service/_servo_service_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[22.505s] [ 96%] [32mBuilding C object CMakeFiles/servo_service_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/servo_service/_servo_service_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[22.510s] [ 97%] [32mBuilding C object CMakeFiles/servo_service_s__rosidl_typesupport_c.dir/rosidl_generator_py/servo_service/_servo_service_s.ep.rosidl_typesupport_c.c.o[0m
+[22.790s] [ 98%] [32m[1mLinking C shared module rosidl_generator_py/servo_service/servo_service_s__rosidl_typesupport_c.so[0m
+[22.834s] [ 99%] [32m[1mLinking C shared module rosidl_generator_py/servo_service/servo_service_s__rosidl_typesupport_fastrtps_c.so[0m
+[22.840s] [100%] [32m[1mLinking C shared module rosidl_generator_py/servo_service/servo_service_s__rosidl_typesupport_introspection_c.so[0m
+[22.850s] [100%] Built target servo_service_s__rosidl_typesupport_c
+[22.944s] [100%] Built target servo_service_s__rosidl_typesupport_introspection_c
+[22.944s] [100%] Built target servo_service_s__rosidl_typesupport_fastrtps_c
+[22.987s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_motion:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision:/opt/ros/rolling /usr/bin/cmake --build /workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service -- -j8 -l8
+[22.988s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_motion:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision:/opt/ros/rolling /usr/bin/cmake --install /workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service
+[23.006s] -- Install configuration: ""
+[23.010s] -- Execute custom install script
+[23.010s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/ament_index/resource_index/rosidl_interfaces/servo_service
+[23.024s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/ChangeServoPositions.json
+[23.038s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetServoPositions.json
+[23.051s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetJointLock.json
+[23.068s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/GetServoPositions.json
+[23.086s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetPosture.json
+[23.104s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointLock.json
+[23.126s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoTemp.json
+[23.141s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoDeviation.json
+[23.166s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoVoltage.json
+[23.185s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointPosition.json
+[23.206s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointRange.json
+[23.225s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/change_servo_positions.h
+[23.241s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__functions.h
+[23.252s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__struct.h
+[23.264s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__type_support.h
+[23.276s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__functions.h
+[23.289s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__struct.h
+[23.305s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__type_support.h
+[23.322s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__functions.h
+[23.335s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__struct.h
+[23.348s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__type_support.h
+[23.359s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__functions.h
+[23.370s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__struct.h
+[23.380s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__type_support.h
+[23.395s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__functions.h
+[23.413s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__struct.h
+[23.429s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__type_support.h
+[23.444s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/get_servo_positions.h
+[23.457s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/rosidl_generator_c__visibility_control.h
+[23.468s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/set_joint_lock.h
+[23.479s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/set_posture.h
+[23.493s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/set_servo_positions.h
+[23.509s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__functions.h
+[23.526s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__struct.h
+[23.541s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__type_support.h
+[23.552s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__functions.h
+[23.563s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__struct.h
+[23.574s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__type_support.h
+[23.586s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__functions.h
+[23.602s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__struct.h
+[23.618s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__type_support.h
+[23.634s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__functions.h
+[23.647s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__struct.h
+[23.658s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__type_support.h
+[23.670s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__functions.h
+[23.680s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__struct.h
+[23.696s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__type_support.h
+[23.712s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__functions.h
+[23.729s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__struct.h
+[23.743s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__type_support.h
+[23.754s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/joint_lock.h
+[23.765s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/joint_position.h
+[23.776s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/joint_range.h
+[23.789s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/servo_deviation.h
+[23.805s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/servo_temp.h
+[23.821s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/servo_voltage.h
+[23.836s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/library_path.sh
+[23.848s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/library_path.dsv
+[23.860s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__rosidl_typesupport_fastrtps_c.h
+[23.871s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__rosidl_typesupport_fastrtps_c.h
+[23.883s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__rosidl_typesupport_fastrtps_c.h
+[23.898s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__rosidl_typesupport_fastrtps_c.h
+[23.915s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__rosidl_typesupport_fastrtps_c.h
+[23.930s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[23.944s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__rosidl_typesupport_fastrtps_c.h
+[23.955s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__rosidl_typesupport_fastrtps_c.h
+[23.966s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__rosidl_typesupport_fastrtps_c.h
+[23.977s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__rosidl_typesupport_fastrtps_c.h
+[23.990s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__rosidl_typesupport_fastrtps_c.h
+[24.006s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__rosidl_typesupport_fastrtps_c.h
+[24.024s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/change_servo_positions.hpp
+[24.039s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__builder.hpp
+[24.053s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__struct.hpp
+[24.066s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__traits.hpp
+[24.079s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__type_support.hpp
+[24.091s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__builder.hpp
+[24.103s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__struct.hpp
+[24.116s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__traits.hpp
+[24.128s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__type_support.hpp
+[24.141s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__builder.hpp
+[24.157s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__struct.hpp
+[24.174s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__traits.hpp
+[24.191s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__type_support.hpp
+[24.209s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__builder.hpp
+[24.223s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__struct.hpp
+[24.239s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__traits.hpp
+[24.254s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__type_support.hpp
+[24.270s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__builder.hpp
+[24.282s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__struct.hpp
+[24.296s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__traits.hpp
+[24.312s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__type_support.hpp
+[24.328s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/get_servo_positions.hpp
+[24.344s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/rosidl_generator_cpp__visibility_control.hpp
+[24.355s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/set_joint_lock.hpp
+[24.366s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/set_posture.hpp
+[24.377s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/set_servo_positions.hpp
+[24.390s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__builder.hpp
+[24.404s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__struct.hpp
+[24.419s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__traits.hpp
+[24.433s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__type_support.hpp
+[24.446s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__builder.hpp
+[24.457s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__struct.hpp
+[24.468s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__traits.hpp
+[24.480s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__type_support.hpp
+[24.493s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__builder.hpp
+[24.509s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__struct.hpp
+[24.526s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__traits.hpp
+[24.541s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__type_support.hpp
+[24.552s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__builder.hpp
+[24.563s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__struct.hpp
+[24.574s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__traits.hpp
+[24.586s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__type_support.hpp
+[24.602s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__builder.hpp
+[24.619s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__struct.hpp
+[24.633s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__traits.hpp
+[24.646s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__type_support.hpp
+[24.657s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__builder.hpp
+[24.668s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__struct.hpp
+[24.679s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__traits.hpp
+[24.692s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__type_support.hpp
+[24.708s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/joint_lock.hpp
+[24.725s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/joint_position.hpp
+[24.739s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/joint_range.hpp
+[24.750s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/servo_deviation.hpp
+[24.762s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/servo_temp.hpp
+[24.773s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/servo_voltage.hpp
+[24.785s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__rosidl_typesupport_fastrtps_cpp.hpp
+[24.800s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__rosidl_typesupport_fastrtps_cpp.hpp
+[24.816s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__rosidl_typesupport_fastrtps_cpp.hpp
+[24.833s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__rosidl_typesupport_fastrtps_cpp.hpp
+[24.847s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__rosidl_typesupport_fastrtps_cpp.hpp
+[24.858s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[24.869s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__rosidl_typesupport_fastrtps_cpp.hpp
+[24.881s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__rosidl_typesupport_fastrtps_cpp.hpp
+[24.895s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__rosidl_typesupport_fastrtps_cpp.hpp
+[24.911s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__rosidl_typesupport_fastrtps_cpp.hpp
+[24.927s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__rosidl_typesupport_fastrtps_cpp.hpp
+[24.941s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__rosidl_typesupport_fastrtps_cpp.hpp
+[24.953s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__rosidl_typesupport_introspection_c.h
+[24.964s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__rosidl_typesupport_introspection_c.h
+[24.975s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__rosidl_typesupport_introspection_c.h
+[24.987s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__rosidl_typesupport_introspection_c.h
+[25.003s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__rosidl_typesupport_introspection_c.h
+[25.019s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[25.034s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__rosidl_typesupport_introspection_c.h
+[25.047s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__rosidl_typesupport_introspection_c.h
+[25.058s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__rosidl_typesupport_introspection_c.h
+[25.069s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__rosidl_typesupport_introspection_c.h
+[25.081s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__rosidl_typesupport_introspection_c.h
+[25.094s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__rosidl_typesupport_introspection_c.h
+[25.111s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/change_servo_positions__rosidl_typesupport_introspection_cpp.hpp
+[25.128s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/get_servo_positions__rosidl_typesupport_introspection_cpp.hpp
+[25.142s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_joint_lock__rosidl_typesupport_introspection_cpp.hpp
+[25.154s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_posture__rosidl_typesupport_introspection_cpp.hpp
+[25.165s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/msg/detail/set_servo_positions__rosidl_typesupport_introspection_cpp.hpp
+[25.176s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_lock__rosidl_typesupport_introspection_cpp.hpp
+[25.188s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_position__rosidl_typesupport_introspection_cpp.hpp
+[25.204s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/joint_range__rosidl_typesupport_introspection_cpp.hpp
+[25.219s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_deviation__rosidl_typesupport_introspection_cpp.hpp
+[25.235s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_temp__rosidl_typesupport_introspection_cpp.hpp
+[25.249s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/include/servo_service/servo_service/srv/detail/servo_voltage__rosidl_typesupport_introspection_cpp.hpp
+[25.260s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/pythonpath.sh
+[25.272s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/pythonpath.dsv
+[25.283s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service-0.0.0-py3.12.egg-info/PKG-INFO
+[25.299s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service-0.0.0-py3.12.egg-info/SOURCES.txt
+[25.315s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service-0.0.0-py3.12.egg-info/dependency_links.txt
+[25.332s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service-0.0.0-py3.12.egg-info/top_level.txt
+[25.346s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/__init__.py
+[25.357s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/_servo_service_s.ep.rosidl_typesupport_c.c
+[25.368s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/_servo_service_s.ep.rosidl_typesupport_fastrtps_c.c
+[25.380s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/_servo_service_s.ep.rosidl_typesupport_introspection_c.c
+[25.394s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/__init__.py
+[25.411s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_change_servo_positions.py
+[25.428s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_change_servo_positions_s.c
+[25.442s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_get_servo_positions.py
+[25.454s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_get_servo_positions_s.c
+[25.465s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_joint_lock.py
+[25.476s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_joint_lock_s.c
+[25.488s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_posture.py
+[25.504s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_posture_s.c
+[25.520s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_servo_positions.py
+[25.535s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_servo_positions_s.c
+[25.548s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/servo_service_s__rosidl_typesupport_c.so
+[25.559s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/servo_service_s__rosidl_typesupport_fastrtps_c.so
+[25.571s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/servo_service_s__rosidl_typesupport_introspection_c.so
+[25.582s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/__init__.py
+[25.597s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_lock.py
+[25.613s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_lock_s.c
+[25.630s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_position.py
+[25.643s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_position_s.c
+[25.654s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_range.py
+[25.665s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_range_s.c
+[25.676s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_deviation.py
+[25.688s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_deviation_s.c
+[25.704s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_temp.py
+[25.720s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_temp_s.c
+[25.737s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_voltage.py
+[25.751s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_voltage_s.c
+[25.762s] -- Up-to-date symlink: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/servo_service_s__rosidl_typesupport_fastrtps_c.so
+[25.763s] -- Up-to-date symlink: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/servo_service_s__rosidl_typesupport_introspection_c.so
+[25.763s] -- Up-to-date symlink: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/servo_service_s__rosidl_typesupport_c.so
+[25.763s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/ChangeServoPositions.idl
+[25.775s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetServoPositions.idl
+[25.787s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetJointLock.idl
+[25.804s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/GetServoPositions.idl
+[25.820s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetPosture.idl
+[25.837s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointLock.idl
+[25.851s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoTemp.idl
+[25.863s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoDeviation.idl
+[25.875s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoVoltage.idl
+[25.890s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointPosition.idl
+[25.904s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointRange.idl
+[25.922s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/ChangeServoPositions.msg
+[25.938s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetServoPositions.msg
+[25.951s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetJointLock.msg
+[25.962s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/GetServoPositions.msg
+[25.974s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/msg/SetPosture.msg
+[25.985s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointLock.srv
+[26.001s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoTemp.srv
+[26.018s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoDeviation.srv
+[26.037s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/ServoVoltage.srv
+[26.048s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointPosition.srv
+[26.060s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/srv/JointRange.srv
+[26.071s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/ament_index/resource_index/package_run_dependencies/servo_service
+[26.083s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/ament_index/resource_index/parent_prefix_path/servo_service
+[26.097s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/ament_prefix_path.sh
+[26.114s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/ament_prefix_path.dsv
+[26.130s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/path.sh
+[26.143s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/environment/path.dsv
+[26.156s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/local_setup.bash
+[26.167s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/local_setup.sh
+[26.179s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/local_setup.zsh
+[26.192s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/local_setup.dsv
+[26.209s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/package.dsv
+[26.226s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/ament_index/resource_index/packages/servo_service
+[26.240s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/rosidl_cmake-extras.cmake
+[26.253s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/ament_cmake_export_dependencies-extras.cmake
+[26.264s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/ament_cmake_export_include_directories-extras.cmake
+[26.276s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/ament_cmake_export_libraries-extras.cmake
+[26.287s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/ament_cmake_export_targets-extras.cmake
+[26.307s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[26.326s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[26.340s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_serviceConfig.cmake
+[26.353s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_serviceConfig-version.cmake
+[26.364s] -- Symlinking: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/package.xml
+[26.376s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_generator_c.so
+[26.377s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_generator_c.so" to ""
+[26.377s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_fastrtps_c.so
+[26.378s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_fastrtps_c.so" to ""
+[26.378s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_fastrtps_cpp.so
+[26.379s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_fastrtps_cpp.so" to ""
+[26.380s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_introspection_c.so
+[26.380s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_introspection_c.so" to ""
+[26.381s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_c.so
+[26.381s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_c.so" to ""
+[26.381s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_introspection_cpp.so
+[26.383s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_introspection_cpp.so" to ""
+[26.383s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_cpp.so
+[26.384s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_typesupport_cpp.so" to ""
+[26.474s] Listing '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service'...
+[26.474s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/__init__.py'...
+[26.475s] Listing '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/__init__.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_change_servo_positions.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_get_servo_positions.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_joint_lock.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_posture.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/msg/_set_servo_positions.py'...
+[26.475s] Listing '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/__init__.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_lock.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_position.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_joint_range.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_deviation.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_temp.py'...
+[26.475s] Compiling '/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/python3.12/site-packages/servo_service/srv/_servo_voltage.py'...
+[26.480s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_generator_py.so
+[26.481s] -- Set non-toolchain portion of runtime path of "/workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/lib/libservo_service__rosidl_generator_py.so" to ""
+[26.481s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_generator_cExport.cmake
+[26.481s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_generator_cExport-noconfig.cmake
+[26.481s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_typesupport_fastrtps_cExport.cmake
+[26.481s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[26.482s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_generator_cppExport.cmake
+[26.482s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_typesupport_fastrtps_cppExport.cmake
+[26.482s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[26.482s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_introspection_cExport.cmake
+[26.482s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[26.483s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_cExport.cmake
+[26.483s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_cExport-noconfig.cmake
+[26.483s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_introspection_cppExport.cmake
+[26.483s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[26.484s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_cppExport.cmake
+[26.484s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/servo_service__rosidl_typesupport_cppExport-noconfig.cmake
+[26.484s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_generator_pyExport.cmake
+[26.484s] -- Installing: /workspaces/workspaces/Christiano_Roboto/ainex_project/install/servo_service/share/servo_service/cmake/export_servo_service__rosidl_generator_pyExport-noconfig.cmake
+[26.487s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/whole_body_control:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/simulator:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_motion:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision:/opt/ros/rolling /usr/bin/cmake --install /workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service

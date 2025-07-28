@@ -1,0 +1,16 @@
+{
+  "package_name": "servo_service",
+  "non_idl_tuples": [
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:msg/ChangeServoPositions.msg",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:msg/SetServoPositions.msg",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:msg/SetJointLock.msg",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:msg/GetServoPositions.msg",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:msg/SetPosture.msg",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:srv/JointLock.srv",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:srv/ServoTemp.srv",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:srv/ServoDeviation.srv",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:srv/ServoVoltage.srv",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:srv/JointPosition.srv",
+    "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service:srv/JointRange.srv"
+  ]
+}
