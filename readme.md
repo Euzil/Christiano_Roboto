@@ -22,7 +22,7 @@ This project implements a comprehensive walking controller for the AiNex humanoi
 - Real-time footstep planning and execution
 - Coordinated center-of-mass (COM) management
 - Hardware safety mechanisms and error handling
-- Real-time visualization in PyBullet
+- Visualization in Rviz
 - Comprehensive logging and feedback
 
 ## Architecture
@@ -31,21 +31,21 @@ This project implements a comprehensive walking controller for the AiNex humanoi
 - **ROS2** (Robot Operating System) - Communication framework
 - **Pinocchio** - Rigid body dynamics library
 - **TSID** (Task Space Inverse Dynamics) - Control framework
-- **PyBullet** - Physics simulation and visualization
+- **Rviz** - Visualization
 - **AiNex Motion Controller** - Hardware interface
 
 ### Control Framework
 ```
-┌─────────────────┐    ┌──────────────┐    ┌─────────────────┐
-│   walking.py    │───▶│ TSID Wrapper │───▶│ Hardware Robot  │
-│ (State Machine) │    │ (Control)    │    │ (AiNex)         │
-└─────────────────┘    └──────────────┘    └─────────────────┘
-         │                       │
-         ▼                       ▼
-┌─────────────────┐    ┌──────────────┐
-│ PyBullet Sim    │    │ Joint States │
-│ (Visualization) │    │ (ROS2 Topics)│
-└─────────────────┘    └──────────────┘
+┌─────────────────┐    ┌──────────────┐   
+│   walking.py    │───▶│ TSID Wrapper │
+│ (State Machine) │    │ (Control)    │  
+└─────────────────┘    └──────────────┘    
+         │                      
+         ▼                     
+┌─────────────────┐    
+│ Hardware Robot  │   
+│ (AiNex)         │   
+└─────────────────┘  
 ```
 
 ## Installation & Setup
@@ -55,13 +55,13 @@ This project implements a comprehensive walking controller for the AiNex humanoi
 # Ensure you're in the dev container with Ubuntu 24.04.2 LTS
 # Install ROS2 dependencies (if not already installed)
 sudo apt update
-sudo apt install ros-humble-desktop python3-colcon-common-extensions
+sudo apt install ros-rolling-desktop python3-colcon-common-extensions
 ```
 
 ### 2. Build the Package
 ```bash
 cd /workspaces/workspaces/Christiano_Roboto/ainex_project
-colcon build --packages-select whole_body_control --symlink-install
+colcon build --symlink-install
 source install/setup.bash
 ```
 
@@ -74,8 +74,8 @@ ros2 run whole_body_control --help
 
 ## Usage
 
-### 🤖 Simulation Mode (Default)
-Run the walking controller in simulation with PyBullet visualization:
+### 🤖 Simulation Mode
+Run the walking controller in simulation with Rviz visualization:
 
 ```bash
 cd /workspaces/workspaces/Christiano_Roboto/ainex_project
