@@ -1,0 +1,16 @@
+[2.065s] Invoking command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision/build --no-deps symlink_data
+[2.679s] running develop
+[3.041s] running egg_info
+[3.070s] writing ainex_vision.egg-info/PKG-INFO
+[3.070s] writing dependency_links to ainex_vision.egg-info/dependency_links.txt
+[3.070s] writing entry points to ainex_vision.egg-info/entry_points.txt
+[3.070s] writing requirements to ainex_vision.egg-info/requires.txt
+[3.071s] writing top-level names to ainex_vision.egg-info/top_level.txt
+[4.260s] writing manifest file 'ainex_vision.egg-info/SOURCES.txt'
+[4.299s] running build_ext
+[4.299s] Creating /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision/lib/python3.12/site-packages/ainex-vision.egg-link (link to .)
+[4.300s] Installing camera_sub script to /workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision/lib/ainex_vision
+[4.300s] 
+[4.300s] Installed /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision
+[4.300s] running symlink_data
+[4.369s] Invoked command in '/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision' returned '0': PYTHONPATH=/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspaces/workspaces/Christiano_Roboto/ainex_project/install/ainex_vision/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_vision/build --no-deps symlink_data
