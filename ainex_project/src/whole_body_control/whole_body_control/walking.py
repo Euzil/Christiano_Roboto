@@ -306,9 +306,9 @@ def main(args=None):
     
     q_celebration = np.zeros(24)
     q_celebration[:2] = np.array([0.0, 0.0])                                # head (head pan, head tilt)
-    q_celebration[2:8] = np.array([0.0, 0.0, -0.2, 0.4, 0.20, 0.0])         # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+    q_celebration[2:8] = np.array([0.0, -0.2, -0.2, 0.4, 0.20, -0.2])         # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
     q_celebration[8:13] = np.array([0.5, 0.5, 0.0, 0, 0.0])                 # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
-    q_celebration[13:19] = np.array([0.0, 0.0, 0.2, -0.4, -0.20, 0.0])      # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+    q_celebration[13:19] = np.array([0.0, 0.2, 0.2, -0.4, -0.20, 0.2])      # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
     q_celebration[19:24] = np.array([-0.5, -0.5, 0.0, 0, 0.0])              # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
     
     hardware_controller = JointController(node)
@@ -385,7 +385,7 @@ def main(args=None):
         # Step length settings
         first_step = 0.065      # and used for last step
         other_step = 0.13       # used for every step except first and last one
-        num_steps = 10           # Even number: start with right foot
+        num_steps = 5          # Even number: start with right foot
         height = 0.03           # max step height
 
         # how long one step takes
