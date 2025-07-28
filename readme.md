@@ -2,6 +2,10 @@
 
 **Team Members:** Theresa Gräbner, Youran Wang, Djamal Halim
 
+## Contribution
+
+Every team member contributed equally to the project.
+
 ## Overview
 
 This project implements a comprehensive walking controller for the AiNex humanoid robot that features a complete motion sequence from standing to ball kicking with celebration. The system uses Task Space Inverse Dynamics (TSID) for whole-body control and integrates with ROS2 for real-time robot communication.
@@ -22,7 +26,7 @@ This project implements a comprehensive walking controller for the AiNex humanoi
 - Real-time footstep planning and execution
 - Coordinated center-of-mass (COM) management
 - Hardware safety mechanisms and error handling
-- Visualization in Rviz
+- Real-time visualization in RViz
 - Comprehensive logging and feedback
 
 ## Architecture
@@ -31,21 +35,16 @@ This project implements a comprehensive walking controller for the AiNex humanoi
 - **ROS2** (Robot Operating System) - Communication framework
 - **Pinocchio** - Rigid body dynamics library
 - **TSID** (Task Space Inverse Dynamics) - Control framework
-- **Rviz** - Visualization
+- **RViz** - 3D visualization and monitoring
 - **AiNex Motion Controller** - Hardware interface
 
 ### Control Framework
 ```
-┌─────────────────┐    ┌──────────────┐   
-│   walking.py    │───▶│ TSID Wrapper │
-│ (State Machine) │    │ (Control)    │  
-└─────────────────┘    └──────────────┘    
-         │                      
-         ▼                     
-┌─────────────────┐    
-│ Hardware Robot  │   
-│ (AiNex)         │   
-└─────────────────┘  
+┌─────────────────┐    ┌──────────────┐    ┌─────────────────┐
+│   walking.py    │───▶│ TSID Wrapper │───▶│ Hardware Robot  │
+│ (State Machine) │    │ (Control)    │    │ (AiNex)         │
+└─────────────────┘    └──────────────┘    └─────────────────┘
+
 ```
 
 ## Installation & Setup
@@ -74,54 +73,53 @@ ros2 run whole_body_control --help
 
 ## Usage
 
-### 🤖 Simulation Mode
-Run the walking controller in simulation with Rviz visualization:
+### 🔬 Simulation Mode with RViz
+Run the walking controller in full simulation with RViz visualization:
 
 ```bash
+# Terminal 1: Start simulation with RViz
 cd /workspaces/workspaces/Christiano_Roboto/ainex_project
 source install/setup.bash
-ros2 run whole_body_control walking
+ros2 launch whole_body_control launch_simulation.py
+
+# This automatically launches:
+# - AiNex robot model
+# - RViz with pre-configured visualization
+# - Joint state publishers
+# - Transform publishers
 ```
 
 **What happens in simulation:**
+- RViz opens with robot visualization and trajectory display
+- Robot starts in home position
+- Establishes stable standing posture
+- Plans footstep trajectory (20 steps forward) 
+- Executes walking motion with real-time joint state feedback
+
+**RViz Features:**
+- Real-time robot model visualization
+- Joint state monitoring
+- Center of mass trajectory
+
+### 🤖 Hardware Control Mode
+Run the walking controller directly without simulation:
+
+```bash
+cd /workspaces/workspaces/Christiano_Roboto/ainex_project
+source install/setup.bash
+ros2 launch whole_body_control launch_hardware.py
+```
+
+**What happens in hardware mode:**
 - Robot starts in home position
 - Establishes stable standing posture
 - Plans footstep trajectory (20 steps forward)
-- Executes walking motion with real-time visualization
+- Executes walking motion with TSID control
 - Performs ball kicking sequence
 - Concludes with celebration routine
 
-### 🦾 Hardware Mode (Real Robot)
-For controlling the actual AiNex robot hardware:
 
-#### Step 1: Launch Hardware Interface
-```bash
-# Terminal 1: Start the hardware interface
-cd /workspaces/workspaces/Christiano_Roboto/ainex_project
-source install/setup.bash
-ros2 launch ainex_bringup launch_hardware.launch.py
 
-# This launches:
-# - Joint state publisher
-# - Hardware controllers
-# - Safety monitoring
-# - Communication interfaces
-```
-
-#### Step 2: Run Walking Controller
-```bash
-# Terminal 2: Execute walking sequence
-cd /workspaces/workspaces/Christiano_Roboto/ainex_project
-source install/setup.bash
-ros2 run whole_body_control walking
-```
-
-#### Step 3: Monitor Robot Status
-```bash
-# Terminal 3: Monitor joint states and system status
-ros2 topic echo /joint_states
-ros2 topic list | grep ainex
-```
 
 ### 🔧 Configuration Parameters
 
@@ -152,44 +150,44 @@ shift_com_z = -0.02     # Vertical COM adjustment (m)
 ### State Machine Overview
 The walking controller implements a finite state machine with 7 distinct phases:
 
-#### Phase 1: HOME (2.0s)
+#### Phase 1: HOME
 - Initializes robot configuration
 - Sets up TSID wrapper and control framework
 - Establishes initial joint positions
 
-#### Phase 2: STANDING (1.5s)
+#### Phase 2: STANDING 
 - Activates hardware control interface
 - Establishes stable bipedal stance
 - Centers COM between feet
 - Prepares for dynamic motion
 
-#### Phase 3: PLANNING (3.0s)
+#### Phase 3: PLANNING 
 - Generates footstep trajectory
-- Creates visual markers in PyBullet
+- Creates visual markers in RViz
 - Calculates optimal step sequence
 - Validates path feasibility
 
-#### Phase 4: WALKING (Variable duration)
+#### Phase 4: WALKING 
 Each step consists of 4 sub-phases:
-1. **COM Shift** (25% of phase) - Transfer weight to support foot
-2. **Lift & Move** (25% of phase) - Lift swing foot and move forward
-3. **Place** (25% of phase) - Lower foot to target position
-4. **Shift Back** (25% of phase) - Transfer weight to new support foot
+1. **COM Shift** - Transfer weight to support foot
+2. **Lift & Move** - Lift swing foot and move forward
+3. **Place** - Lower foot to target position
+4. **Shift Back** - Transfer weight to new support foot
 
-#### Phase 5: END POSITION (4.0s)
+#### Phase 5: END POSITION 
 - Stabilizes robot after walking
 - Centers COM for balanced stance
 - Prepares for kicking motion
 
-#### Phase 6: KICKING (4.6s total)
-1. **Preparation** (1.5s) - Shift COM to support leg
-2. **Backswing** (1.0s) - Retract kicking leg
-3. **Strike** (0.6s) - Forward kick motion
-4. **Recovery** (1.5s) - Return to stable stance
+#### Phase 6: KICKING
+1. **Preparation** - Shift COM to support leg
+2. **Backswing** - Retract kicking leg
+3. **Strike** - Forward kick motion
+4. **Recovery** - Return to stable stance
 
-#### Phase 7: CELEBRATION (9.0s)
+#### Phase 7: CELEBRATION 
 - Victory pose sequence
-- Posture changes (crouch → stand → arms up)
+- Posture changes (crouch → stand → arms down)
 - System shutdown and cleanup
 
 ### Hardware Integration
@@ -208,6 +206,7 @@ Each step consists of 4 sub-phases:
 - Gradual motion transitions
 - Error recovery mechanisms
 
+
 ## Troubleshooting
 
 ### Common Issues
@@ -219,72 +218,53 @@ rm -rf build/ install/ log/
 colcon build --packages-select whole_body_control
 ```
 
-#### 2. Hardware Connection Issues
+#### 2. Hardware Connection Check
+Before running any hardware commands, verify the robot connection:
+
 ```bash
-# Check hardware interface status
-ros2 service list | grep hardware
-ros2 topic hz /joint_states
+# Step 1: Check network connectivity to robot
+ping 192.168.50.203
+
+# Step 2: Verify ROS2 nodes are running
+ros2 node list
+
+# Look for these essential nodes:
+# - /Joint_Control
+# - /camera_publisher
 ```
 
-#### 3. Simulation Display Issues
+**If nodes are missing:**
+1. **Power cycle the robot** - Turn robot off and on again (usually 1-3 times)
+2. **Check battery level** - Low battery can cause connection issues, plug in charger if needed
+3. **Wait 30-60 seconds** after power-on before checking nodes again
+4. **Repeat ping and node list** commands until both nodes appear
+
+**Typical startup sequence:**
 ```bash
-# Ensure X11 forwarding for PyBullet visualization
-export DISPLAY=:0
+# After robot power-on, wait and check:
+ping 192.168.50.203
+ros2 node list | grep -E "(Joint_Control|camera_publisher)"
+
+# If missing, power cycle again and repeat
 ```
 
-### Debug Mode
-Enable detailed logging by modifying the debug level in `walking.py`:
-```python
-# Add at the top of main():
-import logging
-logging.basicConfig(level=logging.DEBUG)
+#### 3. ROS Domain ID Configuration
+Check and configure the correct ROS Domain ID in your Docker container:
+
+```bash
+# Check current ROS Domain ID
+echo $ROS_DOMAIN_ID
+
+# If empty or incorrect, set to 43 (our project setting)
+export ROS_DOMAIN_ID=43
+
+# Verify the setting
+echo $ROS_DOMAIN_ID
+
+# Make it permanent for current session
+echo "export ROS_DOMAIN_ID=43" >> ~/.bashrc
+source ~/.bashrc
 ```
 
-## Project Structure
+**Note:** Our project uses ROS_DOMAIN_ID=43. Ensure this matches between your Docker container and the robot system.
 
-```
-ainex_project/
-├── src/whole_body_control/
-│   ├── whole_body_control/
-│   │   ├── walking.py              # Main walking controller
-│   │   ├── tsid_wrapper.py         # TSID interface
-│   │   ├── visualization.py        # PyBullet visualization
-│   │   └── execute_step_along_path.py # Step execution logic
-│   └── package.xml
-├── launch/
-│   └── launch_hardware.launch.py   # Hardware launch file
-└── config/
-    └── robot_config.yaml           # Robot parameters
-```
-
-## Performance Metrics
-
-- **Walking Speed:** ~0.087 m/s (13cm steps at 1.5s intervals)
-- **Control Frequency:** 30Hz
-- **Step Accuracy:** ±2mm positioning precision
-- **Total Sequence Time:** ~45-60 seconds
-- **Success Rate:** >95% in simulation, >90% on hardware
-
-## Future Enhancements
-
-- [ ] Dynamic obstacle avoidance
-- [ ] Adaptive step length based on terrain
-- [ ] Real-time trajectory replanning
-- [ ] Advanced balance recovery
-- [ ] Multi-ball kicking sequences
-- [ ] Integration with computer vision for ball detection
-
-## Contributing
-
-1. Follow the existing code structure and naming conventions
-2. Add comprehensive comments for new features
-3. Test in simulation before hardware deployment
-4. Update this README for significant changes
-
-## License
-
-This project is part of the AiNex humanoid robot research initiative.
-
----
-
-**Contact:** For technical questions, contact the development team or refer to the project documentation.
