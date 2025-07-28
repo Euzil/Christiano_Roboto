@@ -12,7 +12,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob.glob('launch/*.py')),  # Launch-Dateien hinzufügen
-        
+        ('share/' + package_name + '/launch', ['launch/sim_walking.launch.py']),        
     ],
     install_requires=[
         'setuptools',
@@ -28,7 +28,8 @@ setup(
             't4_standing = whole_body_control.t4_standing:main',
             'without_pybullet_t4 = whole_body_control.t4_standing_without_pybullet:main',
             'walking = whole_body_control.walking:main',
-            'squatting = whole_body_control.t4_squatting:main'
+            'squatting = whole_body_control.t4_squatting:main',
+            'walking_sim = whole_body_control.walking_sim:main'
         ],
     },
 )
