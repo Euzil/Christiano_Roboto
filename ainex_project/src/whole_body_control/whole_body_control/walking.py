@@ -385,7 +385,7 @@ def main(args=None):
         # Step length settings
         first_step = 0.065      # and used for last step
         other_step = 0.13       # used for every step except first and last one
-        num_steps = 5           # Even number: start with right foot
+        num_steps = 10           # Even number: start with right foot
         height = 0.03           # max step height
 
         # how long one step takes
