@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_files("/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service" FILES "/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service/msg/SetPosture.idl" "DESTINATION" "share/servo_service/msg")

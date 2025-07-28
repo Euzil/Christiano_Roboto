@@ -1,8 +1,35 @@
 """
-Walking with Path Visualization in PyBullet
-Display path in PyBullet, then follow the path step by step
-STANDING -> PLANNING (with visualization) -> WALKING (follow path)
+Humanoid Robot Walking Controller with Ball Kicking Capability
+
+This module implements a comprehensive walking controller for the AiNex humanoid robot
+featuring a complete motion sequence from standing to ball kicking with celebration.
+
+Features:
+- Multi-phase state machine (Home → Standing → Planning → Walking → End → Kicking → Celebration)
+- TSID-based trajectory optimization and whole-body control
+- Real-time footstep planning and path execution
+- Coordinated ball kicking motion with recovery
+- Hardware integration with motion primitives
+- Comprehensive logging and real-time feedback
+
+Architecture:
+- Uses Task Space Inverse Dynamics (TSID) for control
+- Integrates with ROS2 for robot communication
+- Employs Pinocchio for rigid body dynamics
+
+Author: Theresa Gräbner, Djamal Halim, Youran Wang
+Institution: ICS, TU Munich 
+Project: Christiano Roboto - AiNex Humanoid Robot Walking Control
+Date: 29.07.2025
+Version: 1.0
+
+Dependencies:
+- ROS2 (Robot Operating System)
+- Pinocchio (Rigid body dynamics library)
+- TSID (Task Space Inverse Dynamics)
+- AiNex motion controller interface
 """
+
 
 import numpy as np
 import pinocchio as pin
@@ -305,7 +332,7 @@ def main(args=None):
                    'r_sho_pitch', 'r_sho_roll', 'r_el_pitch', 'r_el_yaw', 'r_gripper']
     
     q_celebration = np.zeros(24)
-    q_celebration[:2] = np.array([0.0, 0.0])                                # head (head pan, head tilt)
+    q_celebration[:2] = np.array([0.0, 0.4])                                # head (head pan, head tilt)
     q_celebration[2:8] = np.array([0.0, -0.2, -0.2, 0.4, 0.20, -0.2])         # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
     q_celebration[8:13] = np.array([0.5, 0.5, 0.0, 0, 0.0])                 # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
     q_celebration[13:19] = np.array([0.0, 0.2, 0.2, -0.4, -0.20, 0.2])      # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
@@ -314,9 +341,9 @@ def main(args=None):
     hardware_controller = JointController(node)
 
     starting_joint_config = conf.q_actuated_home
-    # Flag für Hardware-Controller Aktivierung
+    # Hardware controller activation flag
     hardware_control_active = False
-    hardware_start_time = 2  # 2 Sekunden Verzögerung
+    hardware_start_time = 2  # 2 seconds before starting hardware control
     hardware_controller.setPosture('stand', 2)
     time.sleep(3)
     hardware_controller.setJointPositions(joint_names, starting_joint_config, 1 , unit='rad')
@@ -385,7 +412,7 @@ def main(args=None):
         # Step length settings
         first_step = 0.065      # and used for last step
         other_step = 0.13       # used for every step except first and last one
-        num_steps = 5          # Even number: start with right foot
+        num_steps = 20          # Even number: start with right foot
         height = 0.03           # max step height
 
         # how long one step takes

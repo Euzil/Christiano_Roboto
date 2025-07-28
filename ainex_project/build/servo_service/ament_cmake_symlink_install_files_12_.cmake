@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_files("/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service" FILES "/opt/ros/rolling/lib/python3.12/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/servo_service/environment")

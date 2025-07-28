@@ -1,1 +1,0 @@
-/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_typesupport_introspection_cpp/servo_service/msg/detail/set_servo_positions__rosidl_typesupport_introspection_cpp.hpp

@@ -1,1 +1,0 @@
-/workspaces/workspaces/Christiano_Roboto/ainex_project/src/whole_body_control/launch/sliders.launch.py

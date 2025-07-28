@@ -1,1 +1,0 @@
-/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_typesupport_fastrtps_c/servo_service/srv/detail/joint_range__rosidl_typesupport_fastrtps_c.h

@@ -1,1 +1,0 @@
-/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/ament_cmake_environment_hooks/local_setup.zsh
