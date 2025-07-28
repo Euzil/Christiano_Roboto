@@ -1,1 +1,0 @@
-/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_typesupport_introspection_c/servo_service/msg/rosidl_typesupport_introspection_c__visibility_control.h

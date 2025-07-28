@@ -1,2 +1,0 @@
-[console_scripts]
-camera_sub = ainex_vision.camera_sub:main

@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_files("/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service" FILES "/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_generator_type_description/servo_service/srv/JointPosition.json" "DESTINATION" "share/servo_service/srv")

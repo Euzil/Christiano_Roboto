@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_files("/workspaces/workspaces/Christiano_Roboto/ainex_project/src/ainex_description" FILES "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/ainex_description/package.xml" "DESTINATION" "share/ainex_description")
