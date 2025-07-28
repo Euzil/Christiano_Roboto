@@ -21,13 +21,13 @@ na = 24                                         # number of actuated joints for 
 
 # homing pose for Ainex robot
 q_actuated_home = np.zeros(na)
-# Ainex joint configuration: left leg (6) + right leg (6) + left arm (6) + right arm (6) = 24 joints
-q_actuated_home[:2] = np.array([0.0, 0.0])                              # head (head pan, head tilt)
-q_actuated_home[2:8] = np.array([0.0, 0.0, -0.2, 0.4, 0.20, 0.0])      # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
-q_actuated_home[8:13] = np.array([-0.5, 0.5, 0.0, -0.8, 0.0])             # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
-q_actuated_home[13:19] = np.array([0.0, 0.0, 0.2, -0.4, -0.20, 0.0])   # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
-q_actuated_home[19:24] = np.array([0.5, -0.5, 0.0, 0.8, 0.0])           # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
-q_home = np.hstack([np.array([0, 0, 0.23, 0, 0, 0, 1]), q_actuated_home])  # Lower initial height for Ainex
+# Ainex joint configuration: head(2) + left leg (6) + left arm (5) + right leg (6) + right arm (5) = 24 joints
+q_actuated_home[:2] = np.array([0.0, 0.0])                                      # head (head pan, head tilt)
+q_actuated_home[2:8] = np.array([0.0, 0.0, -0.2, 0.4, 0.20, 0.0])               # left leg (l_hip_yaw, l_hip_roll, l_hip_pitch, ,l_knee, l_ank_pitch, l_ank_roll)
+q_actuated_home[8:13] = np.array([-0.5, 0.5, 0.0, -0.8, 0.0])                   # left arm (l_sho_pitch, l_sho_roll, l_el_pitch, l_el_yaw, l_gripper)
+q_actuated_home[13:19] = np.array([0.0, 0.0, 0.2, -0.4, -0.20, 0.0])            # right leg (r_hip_yaw, r_hip_roll, r_hip_pitch, r_knee, r_ank_pitch, r_ank_roll)
+q_actuated_home[19:24] = np.array([0.5, -0.5, 0.0, 0.8, 0.0])                   # right arm (r_sho_pitch, r_sho_roll, r_el_pitch, r_el_yaw, r_gripper)
+q_home = np.hstack([np.array([0, 0, 0.23, 0, 0, 0, 1]), q_actuated_home])       # Lower initial height for Ainex
 
 '''
 Ainex joint mapping:
