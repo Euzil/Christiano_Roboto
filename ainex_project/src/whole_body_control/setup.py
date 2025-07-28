@@ -12,7 +12,6 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob.glob('launch/*.py')),  # Launch-Dateien hinzufügen
-        ('share/' + package_name + '/launch', ['launch/sim_walking.launch.py']),        
     ],
     install_requires=[
         'setuptools',

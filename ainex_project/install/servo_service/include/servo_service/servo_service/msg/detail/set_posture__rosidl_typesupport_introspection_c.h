@@ -1,0 +1,1 @@
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_typesupport_introspection_c/servo_service/msg/detail/set_posture__rosidl_typesupport_introspection_c.h

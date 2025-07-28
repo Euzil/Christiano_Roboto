@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_files("/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service" FILES "/workspaces/workspaces/Christiano_Roboto/ainex_project/src/servo_service/package.xml" "DESTINATION" "share/servo_service")

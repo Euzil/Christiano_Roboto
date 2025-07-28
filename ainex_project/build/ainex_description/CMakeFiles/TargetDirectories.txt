@@ -1,0 +1,9 @@
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/uninstall.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/ainex_description_uninstall.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/test.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/edit_cache.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/rebuild_cache.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/list_install_components.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/install.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/install/local.dir
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/ainex_description/CMakeFiles/install/strip.dir

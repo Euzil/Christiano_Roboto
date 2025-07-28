@@ -1,0 +1,11 @@
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:msg/ChangeServoPositions.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:msg/SetServoPositions.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:msg/SetJointLock.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:msg/GetServoPositions.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:msg/SetPosture.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:srv/JointLock.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:srv/ServoTemp.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:srv/ServoDeviation.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:srv/ServoVoltage.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:srv/JointPosition.idl
+/workspaces/workspaces/Christiano_Roboto/ainex_project/build/servo_service/rosidl_adapter/servo_service:srv/JointRange.idl

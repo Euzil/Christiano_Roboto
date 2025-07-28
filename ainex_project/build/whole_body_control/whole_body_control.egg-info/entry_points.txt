@@ -1,0 +1,6 @@
+[console_scripts]
+squatting = whole_body_control.t4_squatting:main
+t4_standing = whole_body_control.t4_standing:main
+walking = whole_body_control.walking:main
+walking_sim = whole_body_control.walking_sim:main
+without_pybullet_t4 = whole_body_control.t4_standing_without_pybullet:main
