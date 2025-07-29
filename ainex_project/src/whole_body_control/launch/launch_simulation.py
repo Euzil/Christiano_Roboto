@@ -20,7 +20,7 @@ def generate_launch_description():
     
     # File paths
     ainex_urdf_file_path = os.path.join(ainex_description_pkg_share, 'robots', 'ainex.urdf')
-    rviz_config_path = os.path.join(whole_body_control_pkg_share, 'config', 'config.rviz')
+    rviz_config_path = os.path.join(whole_body_control_pkg_share, 'rviz', 'config.rviz')
 
     with open(ainex_urdf_file_path, 'r') as urdf_temp:
         robot_description = urdf_temp.read()

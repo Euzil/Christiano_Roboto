@@ -59,7 +59,7 @@ sudo apt install ros-rolling-desktop python3-colcon-common-extensions
 
 ### 2. Build the Package
 ```bash
-cd /workspaces/workspaces/Christiano_Roboto/ainex_project
+cd /Christiano_Roboto/ainex_project
 colcon build --symlink-install
 source install/setup.bash
 ```
@@ -78,7 +78,7 @@ Run the walking controller in full simulation with RViz visualization:
 
 ```bash
 # Terminal 1: Start simulation with RViz
-cd /workspaces/workspaces/Christiano_Roboto/ainex_project
+cd /Christiano_Roboto/ainex_project
 source install/setup.bash
 ros2 launch whole_body_control launch_simulation.py
 
@@ -105,7 +105,7 @@ ros2 launch whole_body_control launch_simulation.py
 Run the walking controller directly without simulation:
 
 ```bash
-cd /workspaces/workspaces/Christiano_Roboto/ainex_project
+cd /Christiano_Roboto/ainex_project
 source install/setup.bash
 ros2 launch whole_body_control launch_hardware.py
 ```
@@ -117,9 +117,6 @@ ros2 launch whole_body_control launch_hardware.py
 - Executes walking motion with TSID control
 - Performs ball kicking sequence
 - Concludes with celebration routine
-
-
-
 
 ### 🔧 Configuration Parameters
 

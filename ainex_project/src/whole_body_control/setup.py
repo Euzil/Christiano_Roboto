@@ -1,5 +1,6 @@
 from setuptools import find_packages, setup
-import glob  # Add this import
+import glob
+import os
 
 package_name = 'whole_body_control'
 
@@ -11,7 +12,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', glob.glob('launch/*.py')),  # Launch-Dateien hinzufügen
+        ('share/' + package_name + '/launch', glob.glob('launch/*.py')),  
+        (os.path.join('share', package_name, 'rviz'), glob.glob('rviz/*.rviz'))
     ],
     install_requires=[
         'setuptools',
